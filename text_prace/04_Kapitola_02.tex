@@ -1,0 +1,50 @@
+\chapter{Teorie}
+% Druhá kapitola s matematikou \texorpdfstring{$\int\! f(x)\,\mathrm{d}x$}{int f(x) dx} v~názvu
+%% matematicke symboly nelze do zalozek v PDF vlozit - proto slouzi prikaz \texorpdfstring{toto se vysazi}{toto se
+%% vlozi do zalozek v PDF} - nektere symboly vlozit lze, viz kapitolu 50 v dokumentaci
+%% http://mirrors.ctan.org/macros/latex/contrib/hyperref/hyperref.pdf
+%% viz take http://orgmode.org/worg/org-symbols.html
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% UKAZKA OPAKOVANI MATEMATICKYCH SYMBOLU %%%%%%%%%%%%%
+% 
+% ukázka opakování na řádkovém zlomu ukázka opakování na řádkovém zlomu zlom $c+ a+ b$
+% 
+% ukázka opakování na řádkovém zlomu ukázka opakování na řádkovém zlomu zl $c- a- b$
+% 
+% ukázka opakování na řádkovém zlomu ukázka opakování na řádkovém zlomu zlo $c\cdot a\cdot b$
+% 
+% ukázka opakování na řádkovém zlomu ukázka opakování na řádkovém zlomu zl $c\setminus a\setminus b$
+% 
+
+\section{Parciální atomové náboje}
+
+Parciální atomové náboje jsou reálná čísla, která popisují asymetrické rozložení elektronové hustoty na chemické vazbě. Vznikají v důsledku rozdílných elektronegativit vazebných partnerů. Pokud v chemické vazbě figuruje vysoce elektronegativní atom, pak tento k sobě přitahuje vazebný elektronový pár, čímž se zvyšuje elektronová hustota v~ jeho okolí a dochází ke vzniku parciálního záporného náboje ($\delta$-). V okolí méně elektronegativního vazebného partnera se elektronová hustota naopak snižuje a~na atomu dochází ke vzniku parciálního kladného náboje ($\delta$+). 
+
+Koncept parciálních atomových nábojů je pouze teoretický, hodnoty nábojů proto nelze získat pomocí experimentu. Jelikož jsou ale významným faktorem pro predikci fyzikálních, chemických a biologických vlastností molekul, bylo pro jejich stanovení vyvinuto množství výpočetních metod. Tyto se dělí na metody kvantově-mechanické a metody empirické. Kvantově-mechanické metody poskytují přesnější výsledky, ovšem za cenu vysoké časové náročnosti. Empirické metody dosahují v porovnání s QM metodami velmi dobrých výsledků, a to ve výrazněji kratším čase. Žádná z vyvinutých empirických metod však není uznána za všeobecně platnou a použitelnost konkrétních metod se hodnotí na základě reprodukovatelnosti výsledků.  
+
+% not sure if se kontext te vseobecne platnosti a pouzitelnosti nevztahuje pouze na empiricke metody. DOTAZ
+
+Aplikaci parciálních atomových nábojů lze nalézt ve výpočetní chemii a chemoinformatice. Parciální atomové náboje slouží k predikci elektrostatických a termodynamických vlastností popisujících reaktivitu molekul. Uplatňují se v molekulovém modelování při virtuálním screeningu, hledání vazebných míst proteinů nebo při návrhu farmakoforů. Prokázaly se jako platné deskriptory v QSAR a QSPR modelech. V anorganické chemii se uplatňují při popisu toku elektronů v bateriích a katalyzátorech. 
+
+
+\section{Kvantově-mechanické metody}
+Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Limitujícím faktorem pro jejich použití je jejich složitost, konkrétně pro \textit{ab-initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. QM metody se dělí na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab-initio}.
+
+\subsection{Kvantová mechanika - teorie}
+Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. Jejím základním principem je vlnově-korpuskulární dualismus. %, připisující mikročástici jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem
+Vlna je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí, která popisuje dynamický stav částice a nese veškeré informace, které lze o částici získat. Druhá mocnina vlnové funkce ${\lvert \Psi \rvert}^2(x, y, z)$ odpovídá hustotě pravděpodobnosti nalezení částice v daném bodě. Integrací funkce  ${\lvert \Psi \rvert}^2(x, y, z)$ přes libovolný rozsah os $x, y, z$ pak získáváme pravděpodobnost výskytu částice v daném prostoru.% celý prostor pak nutně získáváme $$ \int_{space}\lvert \Psi \rvert^2 dxdydz = 1$$Říkáme, že funkce $\Psi$ je normalizovaná. Volatron s. 30, Atkins s. 262 NECHAT TO TU?
+
+Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému.
+Vlnová funkce je řešením Schrödingerovy rovnice $$ H\Psi = E\Psi$$ kde $H$ je operátor Hamiltonián a $E$
+ je energie systému. Hamiltonián bere na vstup vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci Hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru. Řešení Schrödingerovy rovnice pro daný systém tedy odpovídá hledání dvojic vlastních funkcí a vlastních hodnot operátoru $H$ vyhovujících rovnici xx.
+ 
+ Schrödingerova rovnice je exaktně řešitelná pouze pro vybrané problémy. Jedním z nich je atom vodíku. Pro víceelektronové systémy je nutno do výpočtu zavádět velké množství aproximací. 
+ 
+\subsection{DFT}
+\section{Empirické metody}
+\subsection{EEM}
+\subsection{PEOE}
+
+\section{Parametrizace}
