@@ -30,21 +30,36 @@ Aplikaci parciálních atomových nábojů lze nalézt ve výpočetní chemii a 
 
 
 \section{Kvantově-mechanické metody}
-Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Limitujícím faktorem pro jejich použití je jejich složitost, konkrétně pro \textit{ab-initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. QM metody se dělí na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab-initio}.
+Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Limitujícím faktorem pro jejich použití je jejich složitost, konkrétně pro \textit{ab initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. QM metody se dělí na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}.
 
-\subsection{Kvantová mechanika - teorie}
-Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. Jejím základním principem je vlnově-korpuskulární dualismus. %, připisující mikročástici jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem
+Metody \textit{ab initio} a metody semiempirické 
+
+\subsection{Základy kvantové mechaniky}
+%Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. 
+K rozvoji kvantové mechaniky došlo ve 20. letech 20. století v reakci na newtonovskou mechaniku, která se pro popis mikročástic (např. elektronů) prokázala nevhodnou již na konci 19. století.  
+Základním principem QM je vlnově-korpuskulární dualismus. %, připisující mikročástici jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem
 Vlna je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí, která popisuje dynamický stav částice a nese veškeré informace, které lze o částici získat. Druhá mocnina vlnové funkce ${\lvert \Psi \rvert}^2(x, y, z)$ odpovídá hustotě pravděpodobnosti nalezení částice v daném bodě. Integrací funkce  ${\lvert \Psi \rvert}^2(x, y, z)$ přes libovolný rozsah os $x, y, z$ pak získáváme pravděpodobnost výskytu částice v daném prostoru.% celý prostor pak nutně získáváme $$ \int_{space}\lvert \Psi \rvert^2 dxdydz = 1$$Říkáme, že funkce $\Psi$ je normalizovaná. Volatron s. 30, Atkins s. 262 NECHAT TO TU?
 
 Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému.
 Vlnová funkce je řešením Schrödingerovy rovnice $$ H\Psi = E\Psi$$ kde $H$ je operátor Hamiltonián a $E$
- je energie systému. Hamiltonián bere na vstup vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci Hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru. Řešení Schrödingerovy rovnice pro daný systém tedy odpovídá hledání dvojic vlastních funkcí a vlastních hodnot operátoru $H$ vyhovujících rovnici xx.
+ je energie systému. Hamiltonián bere na vstup vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci Hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru. 
+ %Řešení Schrödingerovy rovnice pro daný systém tedy odpovídá hledání dvojic vlastních funkcí a vlastních hodnot operátoru $H$ vyhovujících rovnici xx.
  
  Schrödingerova rovnice je exaktně řešitelná pouze pro vybrané problémy. Jedním z nich je atom vodíku. Pro víceelektronové systémy je nutno do výpočtu zavádět velké množství aproximací, z nichž nejznámější je Born-Oppenheimerova aproximace. % Elementary quantum chemistry, Frank L. Pilar
- Jejím základním konceptem je oddělení pohybu jader atomů od pohybu elektronů, vycházející z předpokladu, že jádra složená z protonů a neutronů, které jsou oproti elektronům více než 1800krát těžší, se pohybují výrazně pomaleji než elektrony samotné. Řešení Schrödingerovy rovnice $$H\Psi(r, R) = E\Psi(r, R)$$se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů. $\Psi(r, R)$ je vlnová funkce systému, závislá na souřadnicích elektronů $(r)$, tak na souřadnicích jader $(R)$.
-\subsection{DFT}
-\section{Empirické metody}
-\subsection{EEM}
-\subsection{PEOE}
+ Jejím základním konceptem je oddělení pohybu jader atomů od pohybu elektronů, vycházející z předpokladu, že jádra, mnohonásobně těžší než elektrony,
+ %složená z protonů a neutronů, které jsou oproti elektronům více než 1800krát těžší, 
+ se pohybují výrazně pomaleji než elektrony samotné. Řešení Schrödingerovy rovnice $$H\Psi(r, R) = E\Psi(r, R)$$se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů. $\Psi(r, R)$ je vlnová funkce systému, závislá na souřadnicích elektronů $(r)$, tak na souřadnicích jader $(R)$.
+ 
 
-\section{Parametrizace}
+ 
+\subsection{Příklady kvantově-mechanických metod}
+\section{Empirické metody}
+\subsection{PEOE}
+\subsection{EEM (v rámci ní Parametrizace)}
+\section{Statistické pojmy}
+\subsection{Průměrná a maximální absolutní odchylka}
+\subsection{RMSD}
+\subsection{Pearsonův korelační koeficient}
+
+
+
