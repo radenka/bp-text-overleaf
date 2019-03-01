@@ -20,39 +20,49 @@
 
 \section{Parciální atomové náboje}
 
-Parciální atomové náboje jsou reálná čísla, která popisují asymetrické rozložení elektronové hustoty na chemické vazbě. Vznikají v důsledku rozdílných elektronegativit vazebných partnerů. Pokud v chemické vazbě figuruje vysoce elektronegativní atom, pak tento k sobě přitahuje vazebný elektronový pár, čímž se zvyšuje elektronová hustota v~ jeho okolí a dochází ke vzniku parciálního záporného náboje ($\delta$-). V okolí méně elektronegativního vazebného partnera se elektronová hustota naopak snižuje a~na atomu dochází ke vzniku parciálního kladného náboje ($\delta$+). 
+Parciální atomové náboje \cite{Atkins} jsou reálná čísla, která popisují asymetrické rozložení e\-lek\-tronové hustoty na chemické vazbě. Vznikají v důsledku rozdílných elektronegativit vazebných partnerů. Pokud v chemické vazbě figuruje vysoce elektronegativní atom, pak tento k sobě přitahuje vazebný elektronový pár, čímž se zvyšuje elektronová hustota v~ jeho okolí a dochází ke vzniku parciálního záporného náboje ($\delta$-). V okolí elektropozitivnějšího vazebného partnera se elektronová hustota naopak snižuje a~na atomu dochází ke vzniku parciálního kladného náboje ($\delta$+). 
 
-Koncept parciálních atomových nábojů je pouze teoretický, hodnoty nábojů proto nelze získat pomocí experimentu. Jelikož jsou ale významným faktorem pro predikci fyzikálních, chemických a biologických vlastností molekul, bylo pro jejich stanovení vyvinuto množství výpočetních metod. Tyto se dělí na metody kvantově-mechanické a metody empirické. Kvantově-mechanické metody poskytují přesnější výsledky, ovšem za cenu vysoké časové náročnosti. Empirické metody dosahují v porovnání s QM metodami velmi dobrých výsledků, a to ve výrazněji kratším čase. Žádná z vyvinutých empirických metod však není uznána za všeobecně platnou a použitelnost konkrétních metod se hodnotí na základě reprodukovatelnosti výsledků.  
+Koncept parciálních atomových nábojů je pouze teoretický, hodnoty nábojů proto nelze získat pomocí experimentu \cite{Leach}. Jelikož jsou ale významným faktorem pro predikci fyzikálních, chemických a biologických vlastností molekul, bylo pro jejich stanovení vyvinuto množství výpočetních metod. Tyto se dělí na metody kvantově-mechanické a metody empirické. Kvantově-mechanické metody poskytují přesnější výsledky, ovšem za cenu vysoké časové náročnosti. Empirické metody dosahují v porovnání s QM metodami velmi dobrých výsledků, a to ve výrazně kratším čase. Žádná z vyvinutých empirických metod však není uznána za všeobecně platnou a použitelnost konkrétních metod se hodnotí na základě reprodukovatelnosti výsledků \cite{Gasteiger:Textbook}. 
 
-% not sure if se kontext te vseobecne platnosti a pouzitelnosti nevztahuje pouze na empiricke metody. DOTAZ
 
-Aplikaci parciálních atomových nábojů lze nalézt ve výpočetní chemii a chemoinformatice. Parciální atomové náboje slouží k predikci elektrostatických a termodynamických vlastností popisujících reaktivitu molekul. Uplatňují se v molekulovém modelování při virtuálním screeningu, hledání vazebných míst proteinů nebo při návrhu farmakoforů. Prokázaly se jako platné deskriptory v QSAR a QSPR modelech. V anorganické chemii se uplatňují při popisu toku elektronů v bateriích a katalyzátorech. 
+Aplikaci parciálních atomových nábojů lze nalézt ve výpočetní chemii a chemoinformatice, kde slouží k predikci elektrostatických a termodynamických vlastností popisujících reaktivitu molekul. Uplatňují se v molekulových simulacích \cite{molsimul}, ve virtuálním screeningu \cite{virtscreen}, při hledání vazebných míst proteinů nebo při návrhu farmakoforů. Prokázaly se jako platné deskriptory v QSAR a QSPR modelech \cite{Ghaf:QSAR, Karel:QSAR+QSPR}. V anorganické chemii se uplatňují při popisu toku elektronů v bateriích a katalyzátorech \cite{innorg}. 
 
 
 \section{Kvantově-mechanické metody}
-Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Limitujícím faktorem pro jejich použití je jejich složitost, konkrétně pro \textit{ab initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. QM metody se dělí na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}.
+Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Dělí se na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}. \textit{Ab initio} metody (lat. \textit{ab initio} - od počátku) staví výpočty na teoretickém aparátu a k řešení Schrödingerovy rovnice přistupují numericky%využívají minimum aproximací
+, z čehož vyplývá jejich velká výpočetní náročnost. Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE, část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
 
-Metody \textit{ab initio} a metody semiempirické 
+Limitujícím faktorem pro použití QM metod je jejich složitost, konkrétně pro \textit{ab initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. 
+% !!! U ab-inito metod (sprazene klastry, perturbation theory) slozitost az n^7!! Viz Hugova DP, str 25 https://is.muni.cz/auth/th/otfyl/DP_Semrad_H.pdf
 
 \subsection{Základy kvantové mechaniky}
 %Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. 
-K rozvoji kvantové mechaniky došlo ve 20. letech 20. století v reakci na newtonovskou mechaniku, která se pro popis mikročástic (např. elektronů) prokázala nevhodnou již na konci 19. století.  
+K rozvoji kvantové mechaniky došlo ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát nevyhovoval popisu mikročástic (např. elektronů).  
 Základním principem QM je vlnově-korpuskulární dualismus. %, připisující mikročástici jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem
-Vlna je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí, která popisuje dynamický stav částice a nese veškeré informace, které lze o částici získat. Druhá mocnina vlnové funkce ${\lvert \Psi \rvert}^2(x, y, z)$ odpovídá hustotě pravděpodobnosti nalezení částice v daném bodě. Integrací funkce  ${\lvert \Psi \rvert}^2(x, y, z)$ přes libovolný rozsah os $x, y, z$ pak získáváme pravděpodobnost výskytu částice v daném prostoru.% celý prostor pak nutně získáváme $$ \int_{space}\lvert \Psi \rvert^2 dxdydz = 1$$Říkáme, že funkce $\Psi$ je normalizovaná. Volatron s. 30, Atkins s. 262 NECHAT TO TU?
+Vlna je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí, která popisuje dynamický stav částice a nese veškeré informace, které lze o částici získat \cite{Cely}. %Druhá mocnina vlnové funkce ${\lvert \Psi \rvert}^2(x, y, z)$ odpovídá hustotě pravděpodobnosti nalezení částice v daném bodě. Integrací funkce  ${\lvert \Psi \rvert}^2(x, y, z)$ přes libovolný rozsah os $x, y, z$ pak získáváme pravděpodobnost výskytu částice v daném prostoru.% celý prostor pak nutně získáváme $$ \int_{space}\lvert \Psi \rvert^2 dxdydz = 1$$Říkáme, že funkce $\Psi$ je normalizovaná. Volatron s. 30, Atkins s. 262 NECHAT TO TU?
 
 Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému.
 Vlnová funkce je řešením Schrödingerovy rovnice $$ H\Psi = E\Psi$$ kde $H$ je operátor Hamiltonián a $E$
- je energie systému. Hamiltonián bere na vstup vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci Hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru. 
+ je energie systému. Hamiltonián bere na vstup vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci Hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru \cite{Volatron}. 
  %Řešení Schrödingerovy rovnice pro daný systém tedy odpovídá hledání dvojic vlastních funkcí a vlastních hodnot operátoru $H$ vyhovujících rovnici xx.
  
  Schrödingerova rovnice je exaktně řešitelná pouze pro vybrané problémy. Jedním z nich je atom vodíku. Pro víceelektronové systémy je nutno do výpočtu zavádět velké množství aproximací, z nichž nejznámější je Born-Oppenheimerova aproximace. % Elementary quantum chemistry, Frank L. Pilar
  Jejím základním konceptem je oddělení pohybu jader atomů od pohybu elektronů, vycházející z předpokladu, že jádra, mnohonásobně těžší než elektrony,
  %složená z protonů a neutronů, které jsou oproti elektronům více než 1800krát těžší, 
- se pohybují výrazně pomaleji než elektrony samotné. Řešení Schrödingerovy rovnice $$H\Psi(r, R) = E\Psi(r, R)$$se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů. $\Psi(r, R)$ je vlnová funkce systému, závislá na souřadnicích elektronů $(r)$, tak na souřadnicích jader $(R)$.
+ se pohybují výrazně pomaleji než elektrony samotné. Řešení Schrödingerovy rovnice $$H\Psi(r, R) = E\Psi(r, R)$$se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů. $\Psi(r, R)$ je vlnová funkce systému, závislá jak na souřadnicích elektronů $(r)$, tak na souřadnicích jader $(R)$.
  
-
+Problém řešení víceelektronových systémů nastává při zahrnutí elektronových interakcí do výpočtu. Interakce elektronů molekuly lze řešit pomocí přiblížení metody nezávislých částic (SCF, Self-Consistent Field), která pracuje s modelem elektronu pohybujícím se v průměrném poli ostatních elektronů. Původní problém se tak rozkládá na řešení jednoelektronových rovnic, zahrnující působení vnějšího elektronového pole. Teorii SCF využívá Hartree-Fockova metoda, označována jako HF-SCF. 
+% Jako zdroj uvest Quantum Chemistry, Ira N. Levine, Chapter 11 Many-electron atoms
  
 \subsection{Příklady kvantově-mechanických metod}
+Důležitým krokem \textit{ab initio} a semi-empirických metod je výběr bázové sady. Bázová sada je soubor vlnových funkcí reprezentující atomové orbitaly, jejichž vhodnou lineární kombinací (LCAO) lze následně vyjádřit vlnovou funkci molekuly. %Bázová sada obsahující nejmenší možný počet atomových orbitalů potřebných pro konstrukci molekulových orbitalů se označuje jako \textit{minimální báze}. 
+Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly Gaussova typu (GTO). Kombinace několika Gaussových orbitalů přibližuje tzv. Slaterův orbital (STO), který je pro výpočet vlnové funkce molekuly méně vhodný z důvodu složitosti výpočtů. Příkladem bázových sad jsou STO-3G, STO-4G či obecně STO-\textit{n}G, kde \textit{n} je počet orbitalů Gaussova typu reprezentujících jeden atomový orbital. 
+
+Krokem vedoucím k výpočtu hodnot parciálních nábojů je provedení populační analýzy, která popisuje rozložení elektronů v orbitalech atomu či molekuly. Mullikenova populační analýza 
+
+\subsubsection{Hartree-Fockova metoda}
+\subsubsection{EHT}
+\subsubsection{DFT}
 \section{Empirické metody}
 \subsection{PEOE}
 \subsection{EEM (v rámci ní Parametrizace)}
