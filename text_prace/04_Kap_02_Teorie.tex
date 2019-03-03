@@ -37,7 +37,7 @@ Limitujícím faktorem pro použití QM metod je jejich složitost, konkrétně 
 
 \subsection{Základy kvantové mechaniky}
 %Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. 
-K rozvoji kvantové mechaniky došlo ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát nevyhovoval popisu mikročástic (např. elektronů).  
+K rozvoji kvantové mechaniky došlo ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát nepostačoval pro popis mikrosvěta.  
 Základním principem QM je vlnově-korpuskulární dualismus. %, připisující mikročástici jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem
 Vlna je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí, která popisuje dynamický stav částice a nese veškeré informace, které lze o částici získat \cite{Cely}. %Druhá mocnina vlnové funkce ${\lvert \Psi \rvert}^2(x, y, z)$ odpovídá hustotě pravděpodobnosti nalezení částice v daném bodě. Integrací funkce  ${\lvert \Psi \rvert}^2(x, y, z)$ přes libovolný rozsah os $x, y, z$ pak získáváme pravděpodobnost výskytu částice v daném prostoru.% celý prostor pak nutně získáváme $$ \int_{space}\lvert \Psi \rvert^2 dxdydz = 1$$Říkáme, že funkce $\Psi$ je normalizovaná. Volatron s. 30, Atkins s. 262 NECHAT TO TU?
 
@@ -61,8 +61,10 @@ Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly 
 
 Krokem vedoucím k výpočtu hodnot parciálních nábojů je provedení populační analýzy, která popisuje rozložení elektronové hustoty v molekule. Příkladem je Mullikenova populační analýza (\textit{Mulliken population analysis}, MPA), % R. S. Mulliken, “Electronic population analysis on LCAO–MO molecularwave functions. I,”The Journal of Chemical Physics, vol. 23, no. 10, pp. 1833–1840, 1955.
 která elektronovou hustotu určuje dle obsazenosti atomových orbitalů  elektrony. V rámci chemické vazby je elektronová hustota rovnoměrně rozdělena mezi vazebné partnery, není tedy brána v potaz možná rozdílnost elektronegativit. Výsledky MPA jsou také silně závislé na použitém kvantově-mechanickém přístupu a na velikosti bázové sady.
-Nevýhody MPA, zejména nepřesnost výsledků související s rozšiřováním bázové sady, řeší přirozená populační analýza (Natural population analysis, NPA), pracující s přirozenými atomovými orbitaly. Přirozené atomové orbitaly jsou nejprve vypočteny z bázové sady atomových orbitalů a jsou následně použity pro výpočet ortonormálních přirozených vazebných orbitalů (Natural bonding orbitals, NBO). Na základě NBO se poté provadí populační analýza. %  A. E. Reed, R. B. Weinstock and F. Weinhold. Natural population analysis.J. Chem.Phys. 83(2):735-746, 198
+Nevýhody MPA, zejména nepřesnost výsledků související s rozšiřováním bázové sady, řeší přirozená populační analýza (\textit{Natural population analysis}, NPA), pracující s přirozenými atomovými orbitaly. 
+Přirozené atomové orbitaly jsou nejprve vypočteny z bázové sady atomových orbitalů a jsou následně použity pro výpočet ortonormálních přirozených vazebných orbitalů (\textit{Natural bonding orbitals}, NBO). Na základě NBO se poté provadí populační analýza. %  A. E. Reed, R. B. Weinstock and F. Weinhold. Natural population analysis.J. Chem.Phys. 83(2):735-746, 198
 
+Odlišný přístup finálního výpočtu parciálních atomových nábojů představuje metoda \textit{Atoms-in-Molecules} (AIM), která přiřazuje náboje atomům na základě integrace elektronové hustoty přes prostor příslušící danému atomu. Dalším možným přístupem je výpočet parciálních atomových nábojů na základě elektrostatických potenciálů molekuly (metody založené na \textit{Molecular Electrostatic Potential-derived charges}, MEP). 
 
 
 \subsubsection{Hartree-Fockova metoda}
