@@ -51,25 +51,40 @@ Vlnová funkce je řešením Schrödingerovy rovnice $$ H\Psi = E\Psi$$ kde $H$ 
  %složená z protonů a neutronů, které jsou oproti elektronům více než 1800krát těžší, 
  se pohybují výrazně pomaleji než elektrony samotné. Řešení Schrödingerovy rovnice $$H\Psi(r, R) = E\Psi(r, R)$$se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů. $\Psi(r, R)$ je vlnová funkce systému, závislá jak na souřadnicích elektronů $(r)$, tak na souřadnicích jader $(R)$.
  
-Problém řešení víceelektronových systémů nastává při zahrnutí elektronových interakcí do výpočtu. Interakce elektronů molekuly lze řešit pomocí přiblížení metody nezávislých částic (SCF, Self-Consistent Field), která pracuje s modelem elektronu pohybujícím se v průměrném poli ostatních elektronů. Původní problém se tak rozkládá na řešení jednoelektronových rovnic, zahrnující působení vnějšího elektronového pole. Teorii SCF využívá Hartree-Fockova metoda, označována jako HF-SCF. 
-% Jako zdroj uvest Quantum Chemistry, Ira N. Levine, Chapter 11 Many-electron atoms
- 
 \subsection{Přehled kvantově-mechanických metod}
 Důležitým krokem \textit{ab initio} a semi-empirických metod je výběr bázové sady. Bázová sada je soubor vlnových funkcí reprezentující atomové orbitaly, jejichž vhodnou lineární kombinací (LCAO) lze následně vyjádřit vlnovou funkci molekuly. %Bázová sada obsahující nejmenší možný počet atomových orbitalů potřebných pro konstrukci molekulových orbitalů se označuje jako \textit{minimální báze}. 
 Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly Gaussova typu (GTO). Kombinace několika Gaussových orbitalů přibližuje tzv. Slaterův orbital (STO), který je pro výpočet vlnové funkce molekuly méně vhodný z důvodu složitosti výpočtů. Bázových sad existuje nepřeberné množství, např. bázové sady STO-3G, STO-4G či obecně STO-\textit{n}G, kde \textit{n} je počet orbitalů Gaussova typu reprezentujících jeden atomový orbital.
 %sady 6-31G* či 6-311G.
 
-Krokem vedoucím k výpočtu hodnot parciálních nábojů je provedení populační analýzy, která popisuje rozložení elektronové hustoty v molekule. Příkladem je Mullikenova populační analýza (\textit{Mulliken population analysis}, MPA), % R. S. Mulliken, “Electronic population analysis on LCAO–MO molecularwave functions. I,”The Journal of Chemical Physics, vol. 23, no. 10, pp. 1833–1840, 1955.
+Krokem vedoucím k výpočtu hodnot parciálních nábojů je provedení populační analýzy, která popisuje rozložení elektronové hustoty v molekule. Příkladem je Mullikenova populační analýza (\textit{Mulliken Population Analysis}, MPA), % R. S. Mulliken, “Electronic population analysis on LCAO–MO molecularwave functions. I,”The Journal of Chemical Physics, vol. 23, no. 10, pp. 1833–1840, 1955.
 která elektronovou hustotu určuje dle obsazenosti atomových orbitalů  elektrony. V rámci chemické vazby je elektronová hustota rovnoměrně rozdělena mezi vazebné partnery, není tedy brána v potaz možná rozdílnost elektronegativit. Výsledky MPA jsou také silně závislé na použitém kvantově-mechanickém přístupu a na velikosti bázové sady.
-Nevýhody MPA, zejména nepřesnost výsledků související s rozšiřováním bázové sady, řeší přirozená populační analýza (\textit{Natural population analysis}, NPA), pracující s přirozenými atomovými orbitaly. 
-Přirozené atomové orbitaly jsou nejprve vypočteny z bázové sady atomových orbitalů a jsou následně použity pro výpočet ortonormálních přirozených vazebných orbitalů (\textit{Natural bonding orbitals}, NBO). Na základě NBO se poté provadí populační analýza. %  A. E. Reed, R. B. Weinstock and F. Weinhold. Natural population analysis.J. Chem.Phys. 83(2):735-746, 198
+Nevýhody MPA, zejména nepřesnost výsledků související s rozšiřováním bázové sady, řeší přirozená populační analýza (\textit{Natural Population Analysis}, NPA), pracující s přirozenými atomovými orbitaly. 
+Přirozené atomové orbitaly jsou nejprve vypočteny z bázové sady a jsou následně použity pro výpočet ortonormálních přirozených vazebných orbitalů (\textit{Natural bonding orbitals}, NBO). Na základě NBO se poté provadí populační analýza. %  A. E. Reed, R. B. Weinstock and F. Weinhold. Natural population analysis.J. Chem.Phys. 83(2):735-746, 198
 
 Odlišný přístup finálního výpočtu parciálních atomových nábojů představuje metoda \textit{Atoms-in-Molecules} (AIM), která přiřazuje náboje atomům na základě integrace elektronové hustoty přes prostor příslušící danému atomu. Dalším možným přístupem je výpočet parciálních atomových nábojů na základě elektrostatických potenciálů molekuly (metody založené na \textit{Molecular Electrostatic Potential-derived charges}, MEP). 
 
 
 \subsubsection{Hartree-Fockova metoda}
-\subsubsection{EHT}
+Problém řešení víceelektronových systémů nastává při zahrnutí elektronových interakcí do výpočtu. Hartree-Fockova metoda rozkládá původní problém \textit{n}-elektronové Schrödingerovy rovnice na řešení \textit{n} jednoelektronových rovnic. Využívá přiblížení pomocí metody nezávislých částic (\textit{Self-Consistent Field}, SCF), která pracuje s modelem elektronu pohybujícím se v průměrném poli ostatních elektronů. HF metoda tedy nezahrnuje korelaci pohybu elektronů.
+% ver2 
+%Interakce elektronu s ostatními elektrony je tedy aproximována na působení vnějšího elektronového pole na danou částici.
+% ver1 
+%Jednotlivé jednoelektronové rovnice tedy zahrnují působení vnějšího elektronového pole. 
+Jednoelektronové rovnice jsou určeny předpisem
+\begin{equation}
+    \hat{F} \chi_i = \varepsilon_i \chi_i
+\end{equation}
+kde Fockův operátor $\hat{F}$ je Hamiltonián aplikovaný na jednoelektronový (atomový nebo molekulový) orbital a $\varepsilon_i$ je odpovídající Langrangeův multiplikátor. Metoda pracuje iterativně a konečné řešení rovnic určuje na základě ustálení výsledků jednotlivých iterací výpočtu.
+
+% PŮVODNÍ TEXT K SCF: Problém řešení víceelektronových systémů nastává při zahrnutí elektronových interakcí do výpočtu. Interakce elektronů molekuly lze řešit pomocí přiblížení metody nezávislých částic (SCF, Self-Consistent Field), která pracuje s modelem elektronu pohybujícím se v průměrném poli ostatních elektronů. Původní problém se tak rozkládá na řešení jednoelektronových rovnic, zahrnující působení vnějšího elektronového pole. Teorii SCF využívá Hartree-Fockova metoda, označována jako HF-SCF. 
+
+% Jako zdroj uvest Quantum Chemistry, Ira N. Levine, Chapter 11 Many-electron atom;, Computattonal Chemistry, Errol Lewards
+
 \subsubsection{DFT}
+Teorie funkcionálu hustoty (\textit{Density Functional Theory}, DFT). Postup kvantových metod: výpočet molekulových orbitalů (řešení vlnové funkce) a následné odvození energií a vlastností molekul. Myšlenka DFT: všecky elektronové vlastnosti se získají z elektronové hustoty (např energie systému/energie základního stavu). Jak ale elektronovou hustotu získat? a jak z ní získat požadované vlastnosti molekul? 
+
+\subsubsection{Semiempirické metody}
+
 \section{Empirické metody}
 \subsection{PEOE}
 \subsection{EEM (v rámci ní Parametrizace)}
