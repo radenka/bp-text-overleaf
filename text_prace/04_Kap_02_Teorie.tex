@@ -81,13 +81,43 @@ kde Fockův operátor $\hat{F}$ je Hamiltonián aplikovaný na jednoelektronový
 % Jako zdroj uvest Quantum Chemistry, Ira N. Levine, Chapter 11 Many-electron atom;, Computattonal Chemistry, Errol Lewards
 
 \subsubsection{DFT}
-Teorie funkcionálu hustoty (\textit{Density Functional Theory}, DFT). Postup kvantových metod: výpočet molekulových orbitalů (řešení vlnové funkce) a následné odvození energií a vlastností molekul. Myšlenka DFT: všecky elektronové vlastnosti se získají z elektronové hustoty (např energie systému/energie základního stavu). Jak ale elektronovou hustotu získat? a jak z ní získat požadované vlastnosti molekul? 
+Metody založené na teorii funkcionálu hustoty (\textit{Density Functional Theory}, DFT) nevycházejí z řešení vlnové funkce, ale  poznatky staví na rozložení elektronové hustoty v molekule, ze které následně odvozují energii systému a další vlastnosti molekuly. Do výpočtů DFT metod je narozdíl od Hartee-Fockovy metody zahrnuta i korelační energie elektronů. Ve výpočtech figurují pouze tři neznámé (souřadnice \textit{x}, \textit{y}, \textit{z}), zatímco řešení Schrödingerovy rovnice obsahuje 4\textit{n} neznámých, kde \textit{n} představuje počet elektronů systému. Metody odvozené od DFT jsou tak výpočetně méně náročné a poskytují přesnější výsledky.
 
+Jedním z cílů DFT metod je výpočet celkové energie elektronů na základě elektronové hustoty.\textit{ Funkcionál} je v rámci DFT metod chápán jako zobrazení, které zobrazuje funkci, představující elektronovu hustotu, do množiny reálných čísel popisujících energii elektronů. Říkáme, že energie elektronů je funkcionálem elektronové hustoty. %slozitost elektronu SE: Lewards; Gasteiger; Leach; Levine; citovat články od Peti a Bichiho
+% Myšlenka DFT: všecky elektronové vlastnosti se získají z elektronové hustoty (např. energie systému/energie základního stavu - Leach) (Peťa BP). Jednodušší v porovnání s výpočtem vlnové funkce, kde je zahrnut ještě popis elektronu. Leach: Cílem DFT je výpočet elektronové hustoty systému a zní získání celkové energie elektronů (electronic energy).
+% Typy používaných funkcionálů: Local Density Aproximation (LDA), Generalized Gradient Aproximation (GGA) a Hybrid Functionals (hybridní funkcionály).
 \subsubsection{Semiempirické metody}
 
 \section{Empirické metody}
 \subsection{PEOE}
-\subsection{EEM (v rámci ní Parametrizace)}
+Metoda PEOE (\textit{Partial Equalization of Orbital Electronegativity}), známá také pod jménem autorů jako metoda Gasteiger-Marsili, byla poprvé publikována v roce 1980 [c]. Metodu lze aplikovat pouze na systémy obsahující $\sigma$ vazby a nekonjugované $\pi$  vazby, později však byla autory rozšířena i o výpočet systémů konjugovaných $\pi$ vazeb. V rámci metody není uvažována 3D struktura molekuly, pracuje se pouze s její topologií. 
+
+Koncept elektronegativity atomových orbitalů, na němž je metoda založena, vychází z Mullikenovy definice elektronegativity $\chi_A$ atomu \textit{A}
+\begin{equation}
+    \chi_A = \frac{1}{2}(I_A + E_A)
+\end{equation}
+Dle Mullikena je elektronegativita atomu určena hodnotami elektronových afinit $ E_A$ a ionizačních potenciálů $I_A$ jeho valenčních stavů. PEOE připisuje na základě hodnot $I_A$ a $ E_A$ elektronegativitu každému orbitalu valenčního stavu atomu. Elektronegativita $\chi_{iv}$ orbitalu \textit{iv} na atomu \textit{i}
+\begin{equation}
+\label{PEOE_elneg}
+    \chi_{iv} = a_{iv} + b_{iv}Q_i + c_{iv}Q_i^2
+\end{equation}
+je ovlivněna náboji ostatních orbitalů a tedy i celkovým nábojem příslušného atomu $Q_i$. Koeficienty $a_{iv}$, $b_{iv}$ a $c_{iv}$ jsou empirické parametry vypočtené z ionizačních potenciálů a elektronových afinit neutrálního, kationtového a aniontového stavu příslušného orbitalu. (za PEOE vložit tabulku parametrů abc, viz Gasteiger s. 330)
+
+Při vzniku vazby dochází na základě elektronegativity atomů k přesunu elektronů od elektropozitivnějšího atomu směrem k elektronegativnějšímu. Interagují spolu příslušné atomové orbitaly a dochází k částečné ekvalizaci (vyrovnání) jejich nábojů. Mno\-žství přeneseného náboje mezi atomy \textit{A} a \textit{B} v \textit{k}-té iteraci výpočtu, kde atom \textit{B} má vyšší elektronegativitu, je definováno jako 
+\begin{equation}
+\label{transfer}
+    Q^{\langle k \rangle} = \frac{\chi_B^{\langle k \rangle} - \chi_A^{\langle k \rangle}}{\chi_A^+} \cdot \alpha^k
+    % \Bigg(\frac{1}{2}\Bigg)
+\end{equation}
+kde $\chi_A^+$ označuje elektronegativitu kationtu atomu \textit{A}. Iniciální výpočet elektronegativity orbitalu (\ref{PEOE_elneg}) pracuje s formálním nábojem atomu. Po výpočtu příspěvků přenesených nábojů (\ref{transfer}) všech vazebných partnerů atomu je náboj daného atomu přepočítán a použit v další iteraci. Množství přeneseného náboje mezi dvěma atomy se v každé iteraci výpočtu snižuje a vypočtené hodnoty nábojů atomů postupně konvergují. Přibližně po šesté iteraci dochází k ustálení výpočtů. 
+
+Díky přesnosti a rychlosti výpočtů byla PEOE implementována do většiny programů pro molekulové modelování jako základní metoda výpočtu atomových nábojů. Reziduální elektronegativita atomů, získaná na základě PEOE, se prokázala vhodnou pro popis indukčního efektu v molekulách. 
+%náboje vypočtené pomocí PEOE použity ve výpočtech dipolových momentů nebo posunů v rámci 13C NMR
+\subsection{EEM}
+%Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům 
+
+\subsection{Parametrizace}
+\subsection{Atomové typy}
 \section{Statistické pojmy}
 \subsection{Průměrná a maximální absolutní odchylka}
 \subsection{RMSD}
