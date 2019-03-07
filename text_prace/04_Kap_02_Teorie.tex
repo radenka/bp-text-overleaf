@@ -89,6 +89,7 @@ Jedním z cílů DFT metod je výpočet celkové energie elektronů na základě
 \subsubsection{Semiempirické metody}
 
 \section{Empirické metody}
+- 2 typy: metody pracující s 2D strukturou a metody pracující s 3D strukturou molekuly. PEOE první typ, EEM druhý. (zdroj: DOI: 10.1021/ci400448n)
 \subsection{PEOE}
 Metoda PEOE (\textit{Partial Equalization of Orbital Electronegativity}), známá také pod jménem autorů jako metoda Gasteiger-Marsili, byla poprvé publikována v roce 1980 [c]. Metodu lze aplikovat pouze na systémy obsahující $\sigma$ vazby a nekonjugované $\pi$  vazby, později však byla autory rozšířena i o výpočet systémů konjugovaných $\pi$ vazeb. V rámci metody není uvažována 3D struktura molekuly, pracuje se pouze s její topologií. 
 
@@ -103,7 +104,7 @@ Dle Mullikena je elektronegativita atomu určena hodnotami elektronových afinit
 \end{equation}
 je ovlivněna náboji ostatních orbitalů a tedy i celkovým nábojem příslušného atomu $Q_i$. Koeficienty $a_{iv}$, $b_{iv}$ a $c_{iv}$ jsou empirické parametry vypočtené z ionizačních potenciálů a elektronových afinit neutrálního, kationtového a aniontového stavu příslušného orbitalu. (za PEOE vložit tabulku parametrů abc, viz Gasteiger s. 330)
 
-Při vzniku vazby dochází na základě elektronegativity atomů k přesunu elektronů od elektropozitivnějšího atomu směrem k elektronegativnějšímu. Interagují spolu příslušné atomové orbitaly a dochází k částečné ekvalizaci (vyrovnání) jejich nábojů. Mno\-žství přeneseného náboje mezi atomy \textit{A} a \textit{B} v \textit{k}-té iteraci výpočtu, kde atom \textit{B} má vyšší elektronegativitu, je definováno jako 
+Při vzniku vazby dochází vlivem elektronegativity atomů k přesunu elektronů od elektropozitivnějšího atomu směrem k elektronegativnějšímu. Interagují spolu přísluš\-né atomové orbitaly a dochází k částečné ekvalizaci (vyrovnání) jejich nábojů. Množ\-ství přeneseného náboje mezi atomy \textit{A} a \textit{B} v \textit{k}-té iteraci výpočtu, kde atom \textit{B} má vyšší elektronegativitu, je definováno jako 
 \begin{equation}
 \label{transfer}
     Q^{\langle k \rangle} = \frac{\chi_B^{\langle k \rangle} - \chi_A^{\langle k \rangle}}{\chi_A^+} \cdot \alpha^k
@@ -112,9 +113,82 @@ Při vzniku vazby dochází na základě elektronegativity atomů k přesunu ele
 kde $\chi_A^+$ označuje elektronegativitu kationtu atomu \textit{A}. Iniciální výpočet elektronegativity orbitalu (\ref{PEOE_elneg}) pracuje s formálním nábojem atomu. Po výpočtu příspěvků přenesených nábojů (\ref{transfer}) všech vazebných partnerů atomu je náboj daného atomu přepočítán a použit v další iteraci. Množství přeneseného náboje mezi dvěma atomy se v každé iteraci výpočtu snižuje a vypočtené hodnoty nábojů atomů postupně konvergují. Přibližně po šesté iteraci dochází k ustálení výpočtů. 
 
 Díky přesnosti a rychlosti výpočtů byla PEOE implementována do většiny programů pro molekulové modelování jako základní metoda výpočtu atomových nábojů. Reziduální elektronegativita atomů, získaná na základě PEOE, se prokázala vhodnou pro popis indukčního efektu v molekulách. 
-%náboje vypočtené pomocí PEOE použity ve výpočtech dipolových momentů nebo posunů v rámci 13C NMR
+%náboje vypočtené pomocí PEOE použity ve výpočtech dipolových momentů nebo posunů v rámci 13C NMR; ZDROJE citované v článku PEOE, v Gasteigerovi, Krabík a Bichi DP, disert.
+
 \subsection{EEM}
-%Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům 
+Autoři Mortier, Ghosh a Shankar publikovali metodu elektronové ekvalizace (\textit{Electronegativity Equalization Method}, EEM) v r. 1986. Teoretický základ metody vychází z teorie funkcionálu hustoty, na němž je vystavěn matematický aparát pro výpočet atomových nábojů. EEM využívá referenční náboje získané kvantově-mechanickými metodami, pomocí nichž parametrizuje vlastní výpočty. Díky rychlým a poměrně přesným výpočtům se stala metoda hojně využívanou a byla použita např. pro výpočet parciálních nábojů zeolitů, organických molekul nebo polypeptidů.
+
+Výchozím konceptem metody je Sandersonův princip ekvalizace elektronegativity. Dle něj je každému atomu přiřazena stejná elektronegativita jako je elektronegativita ostatních atomů molekuly. Podle rovnice 
+\begin{equation}
+\label{Sanders}
+    \overline{\chi} = \chi_1 = \chi_2 = \chi_3 = ... = \chi_N
+\end{equation}
+kde \textit{N} je počet atomů, se elektronegativita každého atomu rovná průměrné elektronegativitě molekuly $\overline{\chi}$. Sandersonův postulát je potvrzen principy DFT. % možná radši vymazat
+
+Další základním principem metody je princip zachování náboje. Celkový náboj molekuly (\textit{Q}) odpovídá součtu dílčích atomových nábojů $q_i$.
+\begin{equation}
+\label{EEM_chargesum}
+    \sum_{i} q_i = Q
+\end{equation}
+
+Třetí základní princip představuje efektivní elektronegativita $\chi_i$ atomu \textit{i}. Jelikož metoda pracuje s prostorovým uspořádáním molekuly, započítává se při určování elektronegativity jednotivých atomů \textit{i} jeho molekulové okolí. Sumace ve vzorci reprezentuje elektrostatickou interakci atomu \textit{i} s dalšími atomy molekuly v závislosti na jejich vzdálenosti $R_{ij}$.
+\begin{equation}
+\label{EEM_elneg}
+    \chi_i = A_i + B_i\cdot q_i + \kappa \sum_{j \neq i}^{N} \frac{q_j}{R_{ij}}
+\end{equation}
+kde 
+
+
+
+- složitost $O(N^3)$ N = počet atomů v molekule (Krab)
+
+MORTIER 1986
+- výpočet bere v potaz geometrii molekuly, elneg  počítána na základě vzdálenosti atomů 
+- započítání konektivity atomů vede ke korektnějším výpočtům atomových nábojů
+- vzorec pro výpočet elneg atomu A zahrnuje tvrdost atomu A a korekci označenou $\Delta$, která upravuje výslednou elektronegativitu atomu na základě interakce s okolními ato\-my (molekulové okolí). Korekce zahrnuje vliv okolních atomů i atomu samotného. 
+- cíl: vyjádřit korekce empiricky, možnost přenositelnosti na různé typy atomů
+- vzorec efektivn9 elneg souží pro výpočet nábojů atomu za předokladu, že všechny ostatní členy rovnice jsou známy
+
+JIROUSKOVA
+- cíl parametrizace: získat hodnoty Ai, Bi, k pro všechny specifikované atomové typy
+- postup EEM parametrizace: výpočet QM nábojů tréninkové sady, výpočet $\overline{\chi}$ dle spešl vzorce + znalost $R_{ij}$ pro všechny atomy -> úprava rce \ref{EEM_elneg}, nalezení vhodné hodnoty $\kappa$ pro každý atomový typ; následné ověření výsledků parametrizace výpočtem parciálních atomových nábojů za užití parametrů Ai, Bi, k získaných v předchozím kroku
+  
+- parametry $A_i, B_i$ zahrnují elektronegativitu $\chi_{i}^{0}$ a tvrdost $\eta_{i}^{0}$ neutrálního izolovaného atomu  a korekce prostředí $\Delta \chi_i$, $\Delta \eta_i$
+\begin{equation}
+    A_i = \chi_{i}^{0} + \Delta \chi_i
+\end{equation}
+\begin{equation}
+        B_i = 2(\eta_{i}^{0} + \Delta \eta_i)
+\end{equation}
+- sumace reprezentuje elektrostatickou interakci atomu i s dalšími atomy molekuly %Varekova doi/10.1021/ci400448n
+- proces parametrizace - hledání hodnot parametrů $A_i, B_i, \kappa$ tak, aby jejich užití co nejpřesněji reprodukovalo náboje získané z QM výpočtů
+- řádek matice = jeden atom, sloučení řádků matice pod jeden atomový typ, pro který se počítají Ai, Bi %Varekova doi/10.1021/ci400448n
+- EEM matice: rozměr N+1 x N+1, N je počet atomů v molekule; kombinace vztahů \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} určuje systém lineárních rovnic, ze kterých lze na základě hodnot proměnných Q, $R_{ij}$, $\kappa$, $A_i$, $B_i$ získat hodnotu parciálních atomových nábojů a hodnotu průměrné elnegativity molekuly $\overline{\chi}$ %Varekova doi/10.1021/ci400448n
+IONESCU: 
+- napočítání QM -> volba intervalu hodnot pro parametr k -> výpočet A, B a výběr 
+
+
+- navazující metody: ABEEM obšlehnout od Krabíka
+\begin{equation}
+\label{EEM_matrix}
+ \begin{pmatrix}
+  B_{1} & \frac{\kappa}{r_{1,2}} & \cdots & \frac{\kappa}{r_{1,n}} & -1\\
+  \frac{\kappa}{r_{1,2}} & B_{2} & \cdots & \frac{\kappa}{r_{2,n}} & -1 \\
+  \vdots  & \vdots  & \ddots & \vdots & \vdots  \\
+  \frac{\kappa}{r_{1,n}} & \frac{\kappa}{r_{2,n}} & \cdots & B_{n} & -1 \\
+  1 & 1 & \cdots & 1 & 0
+ \end{pmatrix} .
+ \begin{pmatrix}
+ q_{1} \\ q_{2} \\ \vdots \\ q_{n} \\ \overline{\chi}
+ \end{pmatrix} =
+ \begin{pmatrix}
+ -A_{1} \\ -A_{2} \\ \vdots \\ -A_{n} \\ Q
+ \end{pmatrix}
+\end{equation}
+
+
+%- !!! pozn. parciální atomové náboje klíčovým aparátem pro výpočet silových polí v molekulových simulacích
+%Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
 
 \subsection{Parametrizace}
 \subsection{Atomové typy}
