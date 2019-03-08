@@ -89,7 +89,7 @@ Jedním z cílů DFT metod je výpočet celkové energie elektronů na základě
 \subsubsection{Semiempirické metody}
 
 \section{Empirické metody}
-- 2 typy: metody pracující s 2D strukturou a metody pracující s 3D strukturou molekuly. PEOE první typ, EEM druhý. (zdroj: DOI: 10.1021/ci400448n)
+Empirické metody výpočtu parciálních atomových nábojů byly vyvinuty v reakci na velkou výpočetní náročnost QM metod. V porovnání s nimi dosahují velmi dobrých výsledků a to ve výrazně kratším čase. Empirické metody se dělí na dvě hlavní skupiny, a to metody pracující s topologií molekuly (jinak řečeno s její 2D strukturou) a metody pracující s prostorovým uspořádáním molekuly. Metody zastupující obě uvedené skupiny, jmenovitě metoda PEOE a metoda EEM, jsou popsány v odstavcích níže.
 \subsection{PEOE}
 Metoda PEOE (\textit{Partial Equalization of Orbital Electronegativity}), známá také pod jménem autorů jako metoda Gasteiger-Marsili, byla poprvé publikována v roce 1980 [c]. Metodu lze aplikovat pouze na systémy obsahující $\sigma$ vazby a nekonjugované $\pi$  vazby, později však byla autory rozšířena i o výpočet systémů konjugovaných $\pi$ vazeb. V rámci metody není uvažována 3D struktura molekuly, pracuje se pouze s její topologií. 
 
@@ -116,7 +116,7 @@ Díky přesnosti a rychlosti výpočtů byla PEOE implementována do většiny p
 %náboje vypočtené pomocí PEOE použity ve výpočtech dipolových momentů nebo posunů v rámci 13C NMR; ZDROJE citované v článku PEOE, v Gasteigerovi, Krabík a Bichi DP, disert.
 
 \subsection{EEM}
-Autoři Mortier, Ghosh a Shankar publikovali metodu elektronové ekvalizace (\textit{Electronegativity Equalization Method}, EEM) v r. 1986. Teoretický základ metody vychází z teorie funkcionálu hustoty, na němž je vystavěn matematický aparát pro výpočet atomových nábojů. EEM využívá referenční náboje získané kvantově-mechanickými metodami, pomocí nichž parametrizuje vlastní výpočty. Díky rychlým a poměrně přesným výpočtům se stala metoda hojně využívanou a byla použita např. pro výpočet parciálních nábojů zeolitů, organických molekul nebo polypeptidů.
+Autoři Mortier, Ghosh a Shankar publikovali metodu elektronové ekvalizace (\textit{Electronegativity Equalization Method}, EEM) v r. 1986. Teoretický základ metody vychází z teorie funkcionálu hustoty, na němž je vystavěn matematický aparát pro výpočet atomových nábojů. EEM využívá referenční náboje získané kvantově-mechanickými metodami, pomocí nichž parametrizuje vlastní výpočty. Díky nízké výpočetní náročnosti ($\Theta(N^3)$, kde \textit{N} je počet atomů systému) a poměrně přesným výsledkům se stala metoda hojně využívanou a byla použita např. pro výpočet parciálních nábojů zeolitů, organických molekul nebo polypeptidů.
 
 Výchozím konceptem metody je Sandersonův princip ekvalizace elektronegativity. Dle něj je každému atomu přiřazena stejná elektronegativita jako je elektronegativita ostatních atomů molekuly. Podle rovnice 
 \begin{equation}
@@ -131,44 +131,21 @@ Další základním principem metody je princip zachování náboje. Celkový n�
     \sum_{i} q_i = Q
 \end{equation}
 
-Třetí základní princip představuje efektivní elektronegativita $\chi_i$ atomu \textit{i}. Jelikož metoda pracuje s prostorovým uspořádáním molekuly, započítává se při určování elektronegativity jednotivých atomů \textit{i} jeho molekulové okolí. Sumace ve vzorci reprezentuje elektrostatickou interakci atomu \textit{i} s dalšími atomy molekuly v závislosti na jejich vzdálenosti $R_{ij}$.
+Třetí základní princip představuje efektivní elektronegativita $\chi_i$ atomu \textit{i}. Jelikož metoda pracuje s prostorovým uspořádáním molekuly, započítává se při určování elektronegativity atomu \textit{i} jeho molekulové okolí. Sumace ve vzorci reprezentuje elektrostatickou interakci atomu \textit{i} s dalšími \textit{N} atomy \textit{j} molekuly  v závislosti na jejich vzdálenosti $R_{ij}$.
 \begin{equation}
 \label{EEM_elneg}
     \chi_i = A_i + B_i\cdot q_i + \kappa \sum_{j \neq i}^{N} \frac{q_j}{R_{ij}}
 \end{equation}
-kde 
-
-
-
-- složitost $O(N^3)$ N = počet atomů v molekule (Krab)
-
-MORTIER 1986
-- výpočet bere v potaz geometrii molekuly, elneg  počítána na základě vzdálenosti atomů 
-- započítání konektivity atomů vede ke korektnějším výpočtům atomových nábojů
-- vzorec pro výpočet elneg atomu A zahrnuje tvrdost atomu A a korekci označenou $\Delta$, která upravuje výslednou elektronegativitu atomu na základě interakce s okolními ato\-my (molekulové okolí). Korekce zahrnuje vliv okolních atomů i atomu samotného. 
-- cíl: vyjádřit korekce empiricky, možnost přenositelnosti na různé typy atomů
-- vzorec efektivn9 elneg souží pro výpočet nábojů atomu za předokladu, že všechny ostatní členy rovnice jsou známy
-
-JIROUSKOVA
-- cíl parametrizace: získat hodnoty Ai, Bi, k pro všechny specifikované atomové typy
-- postup EEM parametrizace: výpočet QM nábojů tréninkové sady, výpočet $\overline{\chi}$ dle spešl vzorce + znalost $R_{ij}$ pro všechny atomy -> úprava rce \ref{EEM_elneg}, nalezení vhodné hodnoty $\kappa$ pro každý atomový typ; následné ověření výsledků parametrizace výpočtem parciálních atomových nábojů za užití parametrů Ai, Bi, k získaných v předchozím kroku
-  
-- parametry $A_i, B_i$ zahrnují elektronegativitu $\chi_{i}^{0}$ a tvrdost $\eta_{i}^{0}$ neutrálního izolovaného atomu  a korekce prostředí $\Delta \chi_i$, $\Delta \eta_i$
+V rovnici kromě nábojů $q_i$, $q_j$ interagujících atomů vystupují empirické parametry $A_i$, $B_i$ a $\kappa$. Parametry  $A_i$ a $B_i$ zahrnují elektronegativitu $\chi_{i}^{0}$ a tvrdost $\eta_{i}^{0}$ neutrálního izolovaného atomu a korekce $\Delta \chi_i$, $\Delta \eta_i$, které upravují výslednou elektronegativitu $\chi_i$ atomu na základě jeho interakce s prostředím molekuly. 
 \begin{equation}
     A_i = \chi_{i}^{0} + \Delta \chi_i
 \end{equation}
 \begin{equation}
         B_i = 2(\eta_{i}^{0} + \Delta \eta_i)
 \end{equation}
-- sumace reprezentuje elektrostatickou interakci atomu i s dalšími atomy molekuly %Varekova doi/10.1021/ci400448n
-- proces parametrizace - hledání hodnot parametrů $A_i, B_i, \kappa$ tak, aby jejich užití co nejpřesněji reprodukovalo náboje získané z QM výpočtů
-- řádek matice = jeden atom, sloučení řádků matice pod jeden atomový typ, pro který se počítají Ai, Bi %Varekova doi/10.1021/ci400448n
-- EEM matice: rozměr N+1 x N+1, N je počet atomů v molekule; kombinace vztahů \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} určuje systém lineárních rovnic, ze kterých lze na základě hodnot proměnných Q, $R_{ij}$, $\kappa$, $A_i$, $B_i$ získat hodnotu parciálních atomových nábojů a hodnotu průměrné elnegativity molekuly $\overline{\chi}$ %Varekova doi/10.1021/ci400448n
-IONESCU: 
-- napočítání QM -> volba intervalu hodnot pro parametr k -> výpočet A, B a výběr 
+Cílem metody je empiricky nalézt hodnoty korekcí pro definované atomové typy a zajistit tak znovupoužitelnost uvedených parametrů. 
 
-
-- navazující metody: ABEEM obšlehnout od Krabíka
+Řešení systému s \textit{N} atomy vede po kombinaci vztahů  \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} na systém \textit{N}+1 lineárních rovnic o \textit{N}+1 neznámých ($q_1$, $q_2$, $q_3$, ... , $q_N$, $\overline{\chi}$).
 \begin{equation}
 \label{EEM_matrix}
  \begin{pmatrix}
@@ -185,12 +162,36 @@ IONESCU:
  -A_{1} \\ -A_{2} \\ \vdots \\ -A_{n} \\ Q
  \end{pmatrix}
 \end{equation}
+Po předchozí parametrizaci (sekce \ref{param}) získáváme z matice hodnoty parciálních atomových nábojů, které jsou následně porovnány s referenčními QM náboji. Proces uzavírá statistické vyhodnocení vypočtených dat.
 
-
-%- !!! pozn. parciální atomové náboje klíčovým aparátem pro výpočet silových polí v molekulových simulacích
-%Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
+Na principu EEM byly později vyvinuty další empirické metody jako např. \textit{Atom-Bond Electronegativity Equalization Method} (ABEEM) nebo \textit{General Bond Electronegativity Equalization Method} (GBEEM).
 
 \subsection{Parametrizace}
+\label{param}
+Parametrizace je základním nástrojem empirických modelů, jejichž cílem je reproduk\-ce experimentálních dat. Využívá se především v metodách pro výpočet parciálnách atomových nábojů. Parametrizovat lze silová pole pro výpočty molekulové mechaniky nebo také \textit{ab initio} výpočty zahrnující korelační energii elektronů. Cílem parametrizace je nalezení hodnot empirických parametrů, na základě kterých je dosaženo co nejlepší shody experimentálních a empirických výpočtů. 
+
+Parametrizace empirických metod pro výpočet parciálních atomových nábojů se skládá z následujících kroků:
+
+\begin{enumerate}
+\itemsep0em
+    \item Výběr tréninkové sady molekul obsahující atomy, které v dostatečné míře reprezentující atomové typy, jež chceme parametrizovat
+    \item Výpočet parciálních atomových nábojů tréninkové sady pomocí QM
+    \item Parametrizace tréninkové sady na základě nábojů získaných v kroku 2
+    \item Výpočet nábojů testovací sady molekul kvantově-mechanickou a parametrizovanou empirickou metodou
+    \item Statistické vyhodnocení parametrizace
+\end{enumerate}
+
+Cílem EEM je na základě znalosti parciálních nábojů odvozených z QM určit hodnoty parametrů $A_i$, $B_i$ a $\kappa$ (viz \ref{EEM_matrix}) pro každý atom molekuly. Pro zjednodušení výpočtu jsou odpovídající řádky matice (atomy molekuly) sloučeny pod jeden atomový typ, pro který jsou počítány výše zmíněné parametry. Ty jsou na základě znalosti dílčích atomových nábojů ($q_1$, $q_2$, $q_3$, ... , $q_N$) a elektronegativity molekuly $\overline{\chi}$ získány z rovnice \ref{EEM_elneg} upravené na tvar 
+\begin{equation}
+   A_i + B_i\cdot q_i = \overline{\chi} - \kappa \sum_{j \neq i}^{N} \frac{q_j}{R_{ij}}
+\end{equation}
+Pro každou hodnotu parametru $\kappa$ ze zvoleného intervalu jsou hledány vhodné hodnoty parametrů $A_i$a $B_i$. Každému atomovému typu je pak přiřazena trojice hodnot $A_i$, $B_i$ a $\kappa$, která nejlépe reprodukuje náboje získané QM výpočty.
+
+
+%- !!! pozn. parciální atomové náboje klíčovým aparátem pro výpočet silových polí v molekulových simulacích (prvni clanek)
+%Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; 
+%dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
+
 \subsection{Atomové typy}
 \section{Statistické pojmy}
 \subsection{Průměrná a maximální absolutní odchylka}
