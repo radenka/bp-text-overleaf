@@ -87,9 +87,13 @@ Jedním z cílů DFT metod je výpočet celkové energie elektronů na základě
 % Myšlenka DFT: všecky elektronové vlastnosti se získají z elektronové hustoty (např. energie systému/energie základního stavu - Leach) (Peťa BP). Jednodušší v porovnání s výpočtem vlnové funkce, kde je zahrnut ještě popis elektronu. Leach: Cílem DFT je výpočet elektronové hustoty systému a zní získání celkové energie elektronů (electronic energy).
 % Typy používaných funkcionálů: Local Density Aproximation (LDA), Generalized Gradient Aproximation (GGA) a Hybrid Functionals (hybridní funkcionály).
 \subsubsection{Semiempirické metody}
-
+- QM ve své době limitovány nedostatečnými výpočetními zdroji, aplikace pouze pro malé molekuly -> SE metody: ve větší míře využití aproximací nebo části výpočtů parametrizují na základě exerimentálních dat, snaží se přiblížit své výsedky QM výpočtům
+- příklady metod: EHT rozšířená Hückelova metoda
+- modernější metody: CNDO (využití SCF teorie pro popis elektronových interakcí), založená na ZDO aproximaci (Zero Differential Overlap) - nejsou brány v potaz překryvy orbitalů odlišného typu, jejich překryv roven nule
+- INDO nahradila CNDO - nahrazení hrubých ZDO aproximací, zahrnutí vzájemných interakcí elektronů přislušících stejnému atomu
+- Další vyvinuté metody: NDDO a z ní odvozená MNDO; dále AM1 nebo PM3
 \section{Empirické metody}
-Empirické metody výpočtu parciálních atomových nábojů byly vyvinuty v reakci na velkou výpočetní náročnost QM metod. V porovnání s nimi dosahují velmi dobrých výsledků a to ve výrazně kratším čase. Empirické metody se dělí na dvě hlavní skupiny, a to metody pracující s topologií molekuly (jinak řečeno s její 2D strukturou) a metody pracující s prostorovým uspořádáním molekuly. Metody zastupující obě uvedené skupiny, jmenovitě metoda PEOE a metoda EEM, jsou popsány v odstavcích níže.
+Empirické metody výpočtu parciálních atomových nábojů byly vyvinuty v reakci na velkou výpočetní náročnost QM metod. V porovnání s QM metodami dosahují velmi přesných výsledků, a to ve výrazně kratším čase. Empirické metody se dělí na dvě hlavní skupiny, a to metody pracující s topologií molekuly (jinak řečeno s její 2D strukturou) a metody pracující s prostorovým uspořádáním molekuly. Metody zastupující obě uvedené skupiny, jmenovitě metoda PEOE a metoda EEM, jsou popsány v odstavcích níže.
 \subsection{PEOE}
 Metoda PEOE (\textit{Partial Equalization of Orbital Electronegativity}), známá také pod jménem autorů jako metoda Gasteiger-Marsili, byla poprvé publikována v roce 1980 [c]. Metodu lze aplikovat pouze na systémy obsahující $\sigma$ vazby a nekonjugované $\pi$  vazby, později však byla autory rozšířena i o výpočet systémů konjugovaných $\pi$ vazeb. V rámci metody není uvažována 3D struktura molekuly, pracuje se pouze s její topologií. 
 
@@ -168,7 +172,7 @@ Na principu EEM byly později vyvinuty další empirické metody jako např. \te
 
 \subsection{Parametrizace}
 \label{param}
-Parametrizace je základním nástrojem empirických modelů, jejichž cílem je reproduk\-ce experimentálních dat. Využívá se především v metodách pro výpočet parciálnách atomových nábojů. Parametrizovat lze silová pole pro výpočty molekulové mechaniky nebo také \textit{ab initio} výpočty zahrnující korelační energii elektronů. Cílem parametrizace je nalezení hodnot empirických parametrů, na základě kterých je dosaženo co nejlepší shody experimentálních a empirických výpočtů. 
+Parametrizace je základním nástrojem empirických modelů, jejichž cílem je reproduk\-ce experimentálních dat. Parametrizovat lze silová pole pro výpočty molekulové mechaniky nebo také \textit{ab initio} výpočty zahrnující korelační energii elektronů. Cílem parametrizace je nalezení hodnot parametrů, po jejichž integraci do empirického modelu je dosaženo co nejlepší shody experimentálních a empirických výpočtů. 
 
 Parametrizace empirických metod pro výpočet parciálních atomových nábojů se skládá z následujících kroků:
 
@@ -193,6 +197,11 @@ Pro každou hodnotu parametru $\kappa$ ze zvoleného intervalu jsou hledány vho
 %dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
 
 \subsection{Atomové typy}
+- silná souvislost s parametrizací empirických metod výpočtu parciálních at. nábojů; přiřazení atomu ke zvolenému atomovému typu, pro který jsou vypočteny empirické parametry
+- otázky/úkoly bp: Jak jemná či hrubá může být kategorizace atomů, aby následná parametrizace poskytovala co nejpřesnější výsledky? + otestovat
+Jsou v rámci parametrizace některé charakteristiky atomu vhodnější pro volbu atomových typů než charakteristiky jiné? - chrakteristika = klasifikátor. Navrhnuté klasifikátory: hybridizace, nejvyšší řád vazby, atomová skupina (blízké chemické okolí)
+- různé úrovně návrhu atomových typů napříč empirickými metodami: od triviálních atomových typů klasifikujících atom podle jejich protonového čísla po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatická jádra, postranní řetězce aminokyselin)
+- souvislost návrhu atomových typů s typem zkoumaných molekul (pro výpočet nábojů polypeptidů definováno více atomových typů)
 \section{Statistické pojmy}
 \subsection{Průměrná a maximální absolutní odchylka}
 \subsection{RMSD}
