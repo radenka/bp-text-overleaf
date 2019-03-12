@@ -30,7 +30,8 @@ Aplikaci parciálních atomových nábojů lze nalézt ve výpočetní chemii a 
 
 \section{Kvantově-mechanické metody}
 Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Dělí se na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}. \textit{Ab initio} metody (lat. \textit{ab initio} - od počátku) staví výpočty na teoretickém aparátu a k řešení Schrödingerovy rovnice přistupují numericky%využívají minimum aproximací
-, z čehož vyplývá jejich velká výpočetní náročnost. Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE, část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
+, z čehož vyplývá jejich velká výpočetní náročnost. Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE, pro zjednodušení výpočtů ale využívají kromě značné míry aproximací také data z experimentu. 
+%část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
 
 Limitujícím faktorem pro použití QM metod je jejich složitost, konkrétně pro \textit{ab initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. 
 % !!! U ab-inito metod (sprazene klastry, perturbation theory) slozitost az n^7!! Viz Hugova DP, str 25 https://is.muni.cz/auth/th/otfyl/DP_Semrad_H.pdf
@@ -87,11 +88,21 @@ Jedním z cílů DFT metod je výpočet celkové energie elektronů na základě
 % Myšlenka DFT: všecky elektronové vlastnosti se získají z elektronové hustoty (např. energie systému/energie základního stavu - Leach) (Peťa BP). Jednodušší v porovnání s výpočtem vlnové funkce, kde je zahrnut ještě popis elektronu. Leach: Cílem DFT je výpočet elektronové hustoty systému a zní získání celkové energie elektronů (electronic energy).
 % Typy používaných funkcionálů: Local Density Aproximation (LDA), Generalized Gradient Aproximation (GGA) a Hybrid Functionals (hybridní funkcionály).
 \subsubsection{Semiempirické metody}
-- QM ve své době limitovány nedostatečnými výpočetními zdroji, aplikace pouze pro malé molekuly -> SE metody: ve větší míře využití aproximací nebo části výpočtů parametrizují na základě exerimentálních dat, snaží se přiblížit své výsedky QM výpočtům
-- příklady metod: EHT rozšířená Hückelova metoda
-- modernější metody: CNDO (využití SCF teorie pro popis elektronových interakcí), založená na ZDO aproximaci (Zero Differential Overlap) - nejsou brány v potaz překryvy orbitalů odlišného typu, jejich překryv roven nule
-- INDO nahradila CNDO - nahrazení hrubých ZDO aproximací, zahrnutí vzájemných interakcí elektronů přislušících stejnému atomu
-- Další vyvinuté metody: NDDO a z ní odvozená MNDO; dále AM1 nebo PM3
+QM metody byly v době svého vzniku limitovány nedostatečnými výpočetními zdroji. Problém vyřešil rozvoj semi-empirických metod, které část výpočtů parametrizují nebo aproximují na základě experimentálních dat, přičemž se snaží přiblížit QM výpočtům. 
+
+Raná semi-empirická metoda CNDO (\textit{Complete Neglect of Differential Overlap}) využívá teorii SCF pro popis elektronových interakcí a je založena na ZDO aproximaci (\textit{Zero Differential Overlap}). Ta zamítá interakce atomových orbitalů lokalizovaných na různých atomech molekuly a pracuje pouze s interakcemi atomových orbitalů stejného typu lokalizovaných na stejném atomu. 
+%Ta dává všechny překryvové integrály popisující čtyři atomové orbitaly lokalizované na různých atomech rovny nule, čímž vyjadřuje, že interakcí těchto orbitalů nevzniká molekulový orbital. 
+Tyto hrubé aproximace nahradila metoda INDO  (\textit{Intermediate Neglect of Differential Overlap}) zahrnutím interakcí odlišných typů atomových orbitalů. Dalšími semi-empirickými metodami jsou např. NDDO, MNDO, PM3 nebo SAM1, založené na MNDO. 
+
+%část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
+% Atkins
+% integral set to zero = překryvem atomových orbitalů nevzniká molekulový orbital (Atkins český, s. 403)
+%- QM ve své době limitovány nedostatečnými výpočetními zdroji, aplikace pouze pro malé molekuly -> SE metody: ve větší míře využití aproximací nebo části výpočtů parametrizují na základě exerimentálních dat, snaží se přiblížit své výsedky QM výpočtům
+%- příklady metod: EHT rozšířená Hückelova metoda
+%- modernější metody: CNDO (využití SCF teorie pro popis elektronových interakcí), založená na ZDO aproximaci (Zero Differential Overlap) - nejsou brány v potaz překryvy orbitalů odlišného typu, jejich překryv roven nule
+%- Atk: CNDO - všechny překryvové integrály popisující čtyři atomové orbitaly lokalizované na různých atomech jsou rovny nule = překryvem daných AO nevzniká MO
+%- INDO nahradila CNDO - nahrazení hrubých ZDO aproximací, zahrnutí vzájemných interakcí elektronů přislušících stejnému atomu
+%- Další vyvinuté metody: NDDO a z ní odvozená MNDO; dále AM1 nebo PM3
 \section{Empirické metody}
 Empirické metody výpočtu parciálních atomových nábojů byly vyvinuty v reakci na velkou výpočetní náročnost QM metod. V porovnání s QM metodami dosahují velmi přesných výsledků, a to ve výrazně kratším čase. Empirické metody se dělí na dvě hlavní skupiny, a to metody pracující s topologií molekuly (jinak řečeno s její 2D strukturou) a metody pracující s prostorovým uspořádáním molekuly. Metody zastupující obě uvedené skupiny, jmenovitě metoda PEOE a metoda EEM, jsou popsány v odstavcích níže.
 \subsection{PEOE}
@@ -196,12 +207,9 @@ Pro každou hodnotu parametru $\kappa$ ze zvoleného intervalu jsou hledány vho
 %dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
 
 \subsection{Atomové typy}
-%Empirické metody výpočtu parciálních atomových nábojů aplikují atomové typy v rámci parametrizace.
-Atomové typy jsou do empirických metod výpočtu parciálních atomových nábojů aplikovány v rámci parametrizace. Přiřazením atomů molekuly k definovaným atomovým typům je problém výpočtu parametrů pro každý atom molekuly zjednodušen na výpočet parametrů atomových typů. 
+Atomové typy jsou nástrojem parametrizace empirických metod výpočtu parciálních atomových nábojů. Definice atomových typů souvisí s charakteristickými chemickými vlastnostmi atomů (hybridizace, vazebný partner, nejvyšší řád vazby), které tyto atomové typy popisují. Každý atomový typ je definován takovou charakteristikou atomu, na základě které atom vykazuje odlišné chemické vlastnosti od jiných atomů, a je tedy vhodné pro něj definovat samostatný atomový typ. Názorným příkladem může být separace atomu uhlíku do tří atomových typů na základě jeho hybridizace. Prostorové uspořádání orbitalů uhlíku je v hybridizacích sp$^3$, sp$^2$, sp diametrálně odlišné a předurčuje tak tvorbu odlišných typů vazeb s vazebnými partnery. 
 
-Napříč parametrizacemi empirických metod zaznamenáváme různé úrovně návrhu atomových typů, od triviálních klasifikací definujících atomové typy na základě protonových čísel až po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatické systémy, postranní řetězce aminokyselin). Detailní dělení atomových typů nalézáme zejména v publikacích orientujících se na parametrizaci molekulových sad polypeptidů. (Co víc?)
-
-Jedním z cílů této bakalářské práce je otestovat, jak jemná či hrubá klasifikace atomových typů je postačující pro parametrizaci výpočetních metod poskytujících ve srovnání s QM metodami kvalitní výsledky. V souvislosti s parametrizací je též testováno, zda jsou některé charakteristiky atomu (např. hybridizace, nejvyšší řád vazby, vazebný partner) pro definici atomových typů vhodnější než charakteristiky jiné. 
+Napříč parametrizacemi empirických metod zaznamenáváme různé úrovně návrhu atomových typů, od triviálních klasifikací definujících atomové typy na základě protonových čísel až po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatické systémy, postranní řetězce aminokyselin). Detailní dělení atomových typů nalézáme zejména v publikacích orientujících se na parametrizaci metod pro výpočet parciálních nábojů komplexních celků, např. polypeptidů.
 %- silná souvislost s parametrizací empirických metod výpočtu parciálních at. nábojů; přiřazení atomu ke zvolenému atomovému typu, pro který jsou vypočteny empirické parametry
 %- otázky/úkoly bp: Jak jemná či hrubá může být kategorizace atomů, aby následná parametrizace poskytovala co nejpřesnější výsledky? + otestovat
 %Jsou v rámci parametrizace některé charakteristiky atomu vhodnější pro volbu atomových typů než charakteristiky jiné? - chrakteristika = klasifikátor. Navrhnuté klasifikátory: hybridizace, nejvyšší řád vazby, atomová skupina (blízké chemické okolí)
