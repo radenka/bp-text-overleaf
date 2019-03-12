@@ -191,21 +191,58 @@ Cílem EEM je na základě znalosti parciálních nábojů odvozených z QM urč
 \end{equation}
 Pro každou hodnotu parametru $\kappa$ ze zvoleného intervalu jsou hledány vhodné hodnoty parametrů $A_i$a $B_i$. Každému atomovému typu je pak přiřazena trojice hodnot $A_i$, $B_i$ a $\kappa$, která nejlépe reprodukuje náboje získané QM výpočty.
 
-
 %- !!! pozn. parciální atomové náboje klíčovým aparátem pro výpočet silových polí v molekulových simulacích (prvni clanek)
 %Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; 
 %dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
 
 \subsection{Atomové typy}
-- silná souvislost s parametrizací empirických metod výpočtu parciálních at. nábojů; přiřazení atomu ke zvolenému atomovému typu, pro který jsou vypočteny empirické parametry
-- otázky/úkoly bp: Jak jemná či hrubá může být kategorizace atomů, aby následná parametrizace poskytovala co nejpřesnější výsledky? + otestovat
-Jsou v rámci parametrizace některé charakteristiky atomu vhodnější pro volbu atomových typů než charakteristiky jiné? - chrakteristika = klasifikátor. Navrhnuté klasifikátory: hybridizace, nejvyšší řád vazby, atomová skupina (blízké chemické okolí)
-- různé úrovně návrhu atomových typů napříč empirickými metodami: od triviálních atomových typů klasifikujících atom podle jejich protonového čísla po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatická jádra, postranní řetězce aminokyselin)
-- souvislost návrhu atomových typů s typem zkoumaných molekul (pro výpočet nábojů polypeptidů definováno více atomových typů)
+%Empirické metody výpočtu parciálních atomových nábojů aplikují atomové typy v rámci parametrizace.
+Atomové typy jsou do empirických metod výpočtu parciálních atomových nábojů aplikovány v rámci parametrizace. Přiřazením atomů molekuly k definovaným atomovým typům je problém výpočtu parametrů pro každý atom molekuly zjednodušen na výpočet parametrů atomových typů. 
+
+Napříč parametrizacemi empirických metod zaznamenáváme různé úrovně návrhu atomových typů, od triviálních klasifikací definujících atomové typy na základě protonových čísel až po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatické systémy, postranní řetězce aminokyselin). Detailní dělení atomových typů nalézáme zejména v publikacích orientujících se na parametrizaci molekulových sad polypeptidů. (Co víc?)
+
+Jedním z cílů této bakalářské práce je otestovat, jak jemná či hrubá klasifikace atomových typů je postačující pro parametrizaci výpočetních metod poskytujících ve srovnání s QM metodami kvalitní výsledky. V souvislosti s parametrizací je též testováno, zda jsou některé charakteristiky atomu (např. hybridizace, nejvyšší řád vazby, vazebný partner) pro definici atomových typů vhodnější než charakteristiky jiné. 
+%- silná souvislost s parametrizací empirických metod výpočtu parciálních at. nábojů; přiřazení atomu ke zvolenému atomovému typu, pro který jsou vypočteny empirické parametry
+%- otázky/úkoly bp: Jak jemná či hrubá může být kategorizace atomů, aby následná parametrizace poskytovala co nejpřesnější výsledky? + otestovat
+%Jsou v rámci parametrizace některé charakteristiky atomu vhodnější pro volbu atomových typů než charakteristiky jiné? - chrakteristika = klasifikátor. Navrhnuté klasifikátory: hybridizace, nejvyšší řád vazby, atomová skupina (blízké chemické okolí)
+%- různé úrovně návrhu atomových typů napříč empirickými metodami: od triviálních atomových typů klasifikujících atom podle jejich protonového čísla po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatická jádra, postranní řetězce aminokyselin)
+%- souvislost návrhu atomových typů s typem zkoumaných molekul (pro výpočet nábojů polypeptidů definováno více atomových typů)
+
 \section{Statistické pojmy}
 \subsection{Průměrná a maximální absolutní odchylka}
+Průměrná absolutní odchylka (ang. \textit{Mean Absolute Error}, MAE) je dána aritmetickým průměrem absolutních hodnot rozdílů hodnot $x_i$ a $y_i$ příslušných náhodných veličin. Po odstranění absolutních hodnot by vzorec popisoval tzv. \textit{Mean Bias Error} (MBE). 
+\begin{equation}
+\label{}
+    MAE(X,Y) = \frac{1}{n} \sum_{i=1}^n \lvert x_i - y_i \rvert
+\end{equation}
+
+Maximální absolutní odchylka popisuje největší rozdíl nalezený mezi hodnotami $x_i$ a $y_i$ náhodných veličin X a Y.
+\begin{equation}
+    ABSMAX(X,Y) = max \lvert x_i - y_i \rvert
+\end{equation}
+
 \subsection{RMSD}
+Veličina RMSD (z anglického \textit{Root Mean Square Deviation}, někdy uváděná též jako \textit{Root Mean Square Error}) popisuje míru odlišnosti dvojic odpovídajících hodnot ($x_i$,$y_i$) náhodných veličin \textit{X} a \textit{Y} napříč datovým souborem. Je definována jako odmocnina ze střední kvadratické chyby (\textit{Mean Square Deviation}, MSD). Stejně jako rozptyl je tato veličina kvůli kvadrátu rozdílu hodnot $x_i$ a $y_i$ citlivá na odlehlé a chybné hodnoty, které se promítají do vyšších výsledných hodnot RMSD srovnávaných datových sad. 
+\begin{equation}
+    RMSD(X,Y) = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - y_i)^2} 
+\end{equation}
 \subsection{Pearsonův korelační koeficient}
+Pro kvantifikaci funkčního vztahu dvou sledovaných veličin užíváme tzv. Pearsonův korelační koeficient (\textit{Pearson Correlation Coefficient}, PCC). PCC popisuje míru linearity závislosti veličiny \textit{Y} na veličině \textit{X} (lineární korelaci), pro popis jiných typů závislostí (např. kvadratických) není vhodný. Je definován jako
+\begin{equation}
+\label{pearson}
+    r(X,Y) = \frac
+    {\sum_{i=1}^n ((x_i - \overline{x})(y_i - \overline{y}))}
+    {\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}
+\end{equation}
+kde hodnoty $x_i$, ..., $x_n$, $y_i$, ...,$y_n$ jsou \textit{i}-té prvky dvourozměrného náhodného vektoru o velikosti \textit{n} realizovaného dvěma náhodnými veličinami \textit{X} a \textit{Y}, a kde $\overline{x}$, $\overline{y}$ jsou aritmetické průměry naměřených hodnot veličin \textit{X} a \textit{Y}. 
 
+PCC nabývá hodnot z intervalu $\langle-1, 1 \rangle$, přičemž hodnoty koeficientu blízké číslu -1 nebo 1 indikují silnou lineární korelaci mezi pozorovanými veličinami. Linearita vztahu je dobře pozorovatelná v grafu (viz obr x.x.x), kde jsou dvojice hodnot ($x_i$,$y_i$) znázorněny jako body v dvourozměrné soustavě souřadnic. Interpretace hodnoty \textit{k} Pearsonova korelačního koeficientu je následující: 
+\begin{itemize}
+    \item pokud je \textit{k} kladné, pak veličiny \textit{X} a \textit{Y} vykazují kladnou korelaci (pokud se hodnota veličiny \textit{Y} zvětšuje, pak hodnota\textit{ X} roste)
+    \item pokud je \textit{k} záporné, pak veličiny \textit{X} a \textit{Y} vykazují zápornou korelaci (v závislosti na zvětšující se hodnotě veličiny \textit{Y} hodnota \textit{X} klesá)
+    \item pokud je \textit{k} rovno 0, pak veličiny \textit{X} a \textit{Y} nejsou lineárně korelované
+\end{itemize}
 
+%- značen r, nabývá hodnot z intervalu $\langle-1, 1 \rangle$; čím více se hodnota koeficientu blíží číslu -1 nebo 1, tím je korelace mezi pozorovanými veličinami silnější
+%  Statistické metody / Jiří Anděl volné na kotlářské
 
