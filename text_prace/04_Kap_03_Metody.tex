@@ -1,8 +1,26 @@
 \chapter{Metody}
-\section{Vstupní data (Formát souborů)}
-\section{(SMILES/SMARTS - jestli je použiju)}
+V následující sekci popisuji formát vstupních souborů vytvořeného programu a kni\-hov\-ny použité v rámci implementace. Zmiňuji též externí nástroj MACH, kterým byla pro klasifikované molekulové sady provedena a vyhodnocena parametrizace vybraných empirických metod. 
+\section{Structure-Data file (SDF)}
+Formát SDF patří společně s formáty Molfile, RGfile, rxnfile, RDfile a XDfile mezi CTfile formáty (\textit{Chemical Table file}) vyvinuté pro reprezentaci chemických dat. SDF je rozšířením formátu Molfile (zkratka MOL). Narozdíl od formátu Molfile umožňuje zápis více záznamů do jednoho souboru. Každý záznam ukončený řádkem se sekvencí \verb|'$$$$'| reprezentuje jednu molekulu. 
+
+Záznamy v SDF souboru mají pevně danou strukturu, odvozenou od struktury MOL souborů. Základními částmi záznamu jsou \textit{header block} a tzv. \textit{connection table} (viz obr. x). % K vlozenemu obrazku dat komentar, ze to je struktura spolecna pro SDF a MOL ze vlastnosti v properties block v SDF nejsou
+Narozdíl od formátu MOL mohou být v~SDF záznamu za řádek \verb|'M END'| připojeny specifikace biologických či fyzikálně-che\-mic\-kých vlastností dané molekuly. 
+% Základní pravidla pro tvorbu SDF záznamů jsou následující
+
+Struktura SDF záznamů je následující:
+\begin{itemize}
+    \item \textit{Header block} se skládá ze tří řádků. První řádek obsahuje název molekuly, na druhém řádku jsou vyhrazeny indexy pro datum vytvoření záznamu, program použitý pro generování záznamu, dimenzi souřadnic atomů atd. Třetí řádek obsahuje komentář. Všechny tři řádky mohou být prázdné.
+    \item \textit{Counts line} obsahuje na definovaných indexech počet atomů a vazeb  popsaných v sekcích \textit{Atom block} a \textit{Bond block}, informaci o chiralitě molekuly a verzi molekulového záznamu (V2000 nebo V3000). 
+    \item \textit{Atom block} obsahuje souřadnice atomů  $x, y, z$ a zkratku prvku. Na základě pořadí atomů jsou v sekci \textit{Bond block} specifikováni vazební partneři a typ vytvořené vazby.
+\end{itemize}
+
+
+
+% https://pubs-acs-org.ezproxy.muni.cz/doi/abs/10.1021%2Fci00007a012 - clanek popisujici CTfiles ze kterych se vyvinuly SDF
+% http://c4.cabrillo.edu/404/ctfile.pdf take popis SDF apod.
+\section{SMILES/SMARTS}
+SMILES je 
 \section{RDKit}
-\section{NumPy}
 \section{MatPlotLib? Co mi Ondra ukazoval jeho program, tak ten grafy taky tvoří}
-\section{Ondrův program}
+\section{MACH}
 
