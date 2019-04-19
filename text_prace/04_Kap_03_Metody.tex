@@ -1,26 +1,40 @@
 \chapter{Metody}
-V následující sekci popisuji formát vstupních souborů vytvořeného programu a kni\-hov\-ny použité v rámci implementace. Zmiňuji též externí nástroj MACH, kterým byla pro klasifikované molekulové sady provedena a vyhodnocena parametrizace vybraných empirických metod. 
-\section{Structure-Data file (SDF)}
-Formát SDF patří společně s formáty Molfile, RGfile, rxnfile, RDfile a XDfile mezi CTfile formáty (\textit{Chemical Table file}) vyvinuté pro reprezentaci chemických dat. SDF je rozšířením formátu Molfile (zkratka MOL). Narozdíl od formátu Molfile umožňuje zápis více záznamů do jednoho souboru. Každý záznam ukončený řádkem se sekvencí \verb|'$$$$'| reprezentuje jednu molekulu. 
+V následující sekci je popsán formát vstupních souborů vytvořeného programu a kni\-hov\-ny použité v rámci implementace. Zmíněn je  též externí nástroj MACH, kterým byla pro klasifikované molekulové sady provedena a vyhodnocena parametrizace vybraných empirických metod. 
 
-Záznamy v SDF souboru mají pevně danou strukturu, odvozenou od struktury MOL souborů. Základními částmi záznamu jsou \textit{header block} a tzv. \textit{connection table} (viz obr. x). % K vlozenemu obrazku dat komentar, ze to je struktura spolecna pro SDF a MOL ze vlastnosti v properties block v SDF nejsou
-Narozdíl od formátu MOL mohou být v~SDF záznamu za řádek \verb|'M END'| připojeny specifikace biologických či fyzikálně-che\-mic\-kých vlastností dané molekuly. 
+\section{Structure-Data file (SDF)}
+Formát SDF \cite{sdf_pdf, sdf_clanek} patří s formáty Molfile, RGfile, rxnfile, RDfile a XDfile mezi CTfile formáty (\textit{Chemical Table file})  vyvinuté pro reprezentaci chemických dat. SDF je rozšířením formátu Molfile (zkr. MOL). 
+%Narozdíl od formátu MOL umožňuje SDF zápis více záznamů do jednoho souboru. 
+Umožňuje zápis více záznamů do jednoho souboru, přičemž každý záznam ukončený sekvencí \verb|'$$$$'| reprezentuje jednu molekulu. 
+
+Záznamy v SDF souboru mají pevně danou strukturu, odvozenou od struktury MOL souborů. Společnými  částmi záznamu obou formátů jsou tzv. \textit{header block} a tzv. \textit{connection table} (viz obr. x). % K vlozenemu obrazku dat komentar, ze to je struktura spolecna pro SDF a MOL ze vlastnosti v properties block v SDF nejsou
+V~SDF záznamu mohou být narozdíl od formátu MOL za řádek \verb|'M END'| připojeny specifikace biologických či fyzikálně-che\-mic\-kých vlastností dané molekuly. 
 % Základní pravidla pro tvorbu SDF záznamů jsou následující
 
 Struktura SDF záznamů je následující:
 \begin{itemize}
     \item \textit{Header block} se skládá ze tří řádků. První řádek obsahuje název molekuly, na druhém řádku jsou vyhrazeny indexy pro datum vytvoření záznamu, program použitý pro generování záznamu, dimenzi souřadnic atomů atd. Třetí řádek obsahuje komentář. Všechny tři řádky mohou být prázdné.
-    \item \textit{Counts line} obsahuje na definovaných indexech počet atomů a vazeb  popsaných v sekcích \textit{Atom block} a \textit{Bond block}, informaci o chiralitě molekuly a verzi molekulového záznamu (V2000 nebo V3000). 
-    \item \textit{Atom block} obsahuje souřadnice atomů  $x, y, z$ a zkratku prvku. Na základě pořadí atomů jsou v sekci \textit{Bond block} specifikováni vazební partneři a typ vytvořené vazby.
+    \item \textit{Counts line} obsahuje na definovaných indexech řádku počet atomů a vazeb  popsaných v sekcích \textit{Atom block} a \textit{Bond block}, informaci o chiralitě molekuly a verzi molekulového záznamu (V2000 nebo V3000).
+    \item \textit{Atom block} obsahuje souřadnice atomů  $x, y, z$ a zkratku prvku. Další indexy řádků slouží pro bližší specifikaci vlastností atomů. Na základě pořadí atomů jsou v sekci \textit{Bond block} specifikováni vazební partneři a typ vytvořené vazby. 
+    \item \textit{Data items} slouží pro doplňující záznamy vlastností molekuly. Řádek \textit{Data header}, začínající znakem \verb|'>'|, obsahuje název dané vlastnosti nebo identifikační číslo molekuly v databázi MACCS-II. Následují řádky s příslušnými hodnotami.
+    %(např. \verb|'<melting.point>'|)
 \end{itemize}
 
-
-
-% https://pubs-acs-org.ezproxy.muni.cz/doi/abs/10.1021%2Fci00007a012 - clanek popisujici CTfiles ze kterych se vyvinuly SDF
-% http://c4.cabrillo.edu/404/ctfile.pdf take popis SDF apod.
 \section{SMILES/SMARTS}
-SMILES je 
-\section{RDKit}
-\section{MatPlotLib? Co mi Ondra ukazoval jeho program, tak ten grafy taky tvoří}
-\section{MACH}
+% zdroje: http://www.daylight.com/smiles/index.html; Leach - Chemoinformatics; Bunin- Chemoinformatics
+SMILES (angl. \textit{Simplified Molecular Input Line Entry System}) je počítačová notace molekul či molekulových reakcí definovaná pomocí ASCII symbolů. SMILES reprezentace byla vyvinuta v 80. letech pro usnadnění práce s chemickými daty  a zvýšení efektivity jejich zpracování (např. prohledávání molekulových databází, vyhledávání podstruktur v molekulách). Zápis SMILES vychází z teorie grafů. Molekula je chápána jako graf, tzn. uspořádaná množina vrcholů a hran $G(V,E)$, kde je každý vrchol (atom) a každá hrana (vazba) navštívena pouze jednou. Průchodem molekulového grafu vzniká jednoznačná SMILES reprezentace molekuly.
+% strukturni veci - vnorene vetveni, aromaticita
 
+Základními prvky SMILES notace jsou symboly atomů a vazeb. Atomy jsou reprezentovány symbolem příslušného prvku. Pokud se jedná o atom aromatický, je pro jeho specifikaci použito malé písmeno (SMILES notace benzenu je \verb|'c1ccccc1'|, cyklohexanu \verb|'C1CCCCC1'|.
+%benzen je pomocí SMILES notace zapsán jako \verb|'c1ccccc1'|, cyklohexan jako \verb|'C1CCCCC1'|
+). Atomy vodíku jsou implicitně doplněny na základě valence základního stavu atomu, na který jsou navázány, a nemusí být  zadány explicitně. Pro specifikaci počtu navázaných vodíků je třeba použít zápisu \verb|'[AHX]'|, kde \verb|A| je symbol prvku a \verb|X| počet navázaných vodíků. Vazba jednoduchá, dvojná, trojná a aromatická jsou reprezentovány symboly \verb|-|, \verb|=|, \verb|#| a \verb|:|. Vazby jednoduché a aromatické nejsou ve většině případů zadány explicitně.
+ % navázané na atomy ve SMILES zápisu 
+
+SMILES notace definuje zápis strukturních prvků sloučenin jako jsou cykly, větvení řetězců, chiralita a geometrická izomerie (E/Z a cis/trans izomerie). Přítomnost cyklu ve sloučenině indikují atomy označené stejným číslem, viz např. výše uvedený SMILES pro benzen. Tyto atomy tvoří vazebný pár a cyklus tak uzavírají. Řetězce symbolů uzavřené v kulatých závorkách značí větvení hlavního řetězce. SMILES notace  umožňuje také zápis chemických reakcí. 
+
+% pod SMILES dat obrazek z Leache, pokud SMARTS budou dostatecne dlouhe, copokra
+
+\section{RDKit}
+\section{MACH}
+MACH je software pro parametrizaci empirických metod výpočtu parciálních atomových nábojů (viz kap. Parametrizace x.x.x) vyvinutý v rámci diplomové práce Bc. Ondřeje Schindlera v Národním centru pro výzkum biomolekul v Brně. 
+
+Software MACH byl vyvinut s cílem optimalizovat parametrizaci empirických metod výpočtu parciálních nábojů za použití optimalizační metody Guided Minimization. Software je vyvinut v jazyce Python za využití specializovaných knihoven pro práci s vědeckými daty (NumPy, SciPy, NLopt). V softwaru MACH byla úspešně implementována parametrizace empirických metod EEM, PEOE, SFKEEM, QEq, ACKS2 a MGC. Pro potřeby této práce byly využity parametrizace prvních dvou jmenovaných metod. Kromě parametrizace MACH umožňuje též výpočet parciálních nábojů molekul pomocí vybrané empirické metody, extrakci informací o vstupním SDF souboru či srovnání dvou nábojových sad.
