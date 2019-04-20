@@ -1,26 +1,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Styl pro sablony Bc+Mgr+RNDr (CZ) pro PriF MU                                                     %%%
 % Autor: Petr Zemanek (zemanekp@math.muni.cz)                                                       %%%
+% Licence: CC-BY-NC-ND 4.0, viz https://creativecommons.org/licenses/by-nc-nd/4.0/deed.cs           %%%
 % Pripominky, dotazy, namety smerujte na diskusni forum: https://is.muni.cz/auth/df/sablona-prif    %%%
 % Urceno pro LaTeX-2e                                                                               %%%
-% Verze: 1.8 (20. listopadu 2015)                                                                      %%%
+% Verze: 2.0 (22. unora 2019)                                                                        %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\filename{sci.muni.thesis.sty}
-\def\filedate{2015/11/20}
-\def\fileversion{1.8}
+\def\filedate{2019/02/22}
+\def\fileversion{2.0}
 
 \@ifundefined{NeedsTeXFormat}{
 \typeout{*******************************************************************************}
 \ProvidesClass{sci.muni.thesis}[\filedate\space v\fileversion]
 \typeout{This package provides the basic style for bachelor, master, and rigorous theses written by students of 
-the Faculty of Science (Masaryk University) with repect to the Provision of Dean No. 5/2014}
+the Faculty of Science (Masaryk University) with repect to the Provision of Dean No. 12/2018}
 \typeout{Author: Petr Zemanek (zemanekp@math.muni.cz)}
 \typeout{For bachelor and master theses see http://www.sci.muni.cz/en/BcMgrStudium/}
 \typeout{For rigorous theses see http://www.sci.muni.cz/en/RigRiz/}
 \typeout{}
 \typeout{Tento balik poskytuje zakladni styl potrebny pro bakalarske, diplomove a rigorozni prace psane studenty
-Prirodovedecke fakulty Masarykovy univerzity dle Opatreni dekana c. 5/2014}
+Prirodovedecke fakulty Masarykovy univerzity dle Opatreni dekana c. 12/2018}
 \typeout{Autor: Petr Zemanek (zemanekp@math.muni.cz)}
 \typeout{Pro bakalarske a diplomove prace viz http://www.sci.muni.cz/cz/BcMgrStudium/}
 \typeout{Pro rigorozni prace viz http://www.sci.muni.cz/cz/RigRiz/}
@@ -30,13 +31,13 @@ Prirodovedecke fakulty Masarykovy univerzity dle Opatreni dekana c. 5/2014}
 \typeout{*******************************************************************************}
 \ProvidesClass{sci.muni.thesis}[\filedate\space v\fileversion]
 \typeout{This package provides the basic style for bachelor, master, and rigorous theses written by students of 
-the Faculty of Science (Masaryk University) with repect to the Provision of Dean No. 5/2014}
+the Faculty of Science (Masaryk University) with repect to the Provision of Dean No. 12/2018}
 \typeout{Author: Petr Zemanek (zemanekp@math.muni.cz)}
 \typeout{For bachelor and master theses see http://www.sci.muni.cz/en/BcMgrStudium/}
 \typeout{For rigorous theses see http://www.sci.muni.cz/en/RigRiz/}
 \typeout{}
 \typeout{Tento balik poskytuje zakladni styl potrebny pro bakalarske, diplomove a rigorozni prace psane studenty
-Prirodovedecke fakulty Masarykovy univerzity dle Opatreni dekana c. 5/2014}
+Prirodovedecke fakulty Masarykovy univerzity dle Opatreni dekana c. 12/2018}
 \typeout{Autor: Petr Zemanek (zemanekp@math.muni.cz)}
 \typeout{Pro bakalarske a diplomove prace viz http://www.sci.muni.cz/cz/BcMgrStudium/}
 \typeout{Pro rigorozni prace viz http://www.sci.muni.cz/cz/RigRiz/}
@@ -70,6 +71,7 @@ urlcolor=black,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEFINICE POVINNYCH CASTI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\NazevUstavu}[2]{\newcommand{\Ustav}{#1} \newcommand{\Department}{#2}}
 \newcommand{\RokOdevzdaniPrace}[1]{\newcommand{\RokOdevzdani}{#1}}
@@ -89,18 +91,14 @@ urlcolor=black,
 
 \newcommand{\NazevPraceSLOVENSKY}[1]{\newcommand{\TitulPraceSVK}{#1}}
 \newcommand{\NazevUstavuSLOVENSKY}[1]{\newcommand{\UstavSVK}{#1}}
-
 \newcommand{\StudijniProgramSLOVENSKY}[1]{\newcommand{\StudProgSVK}{#1}}
-
 \newcommand{\StudijniOborSLOVENSKY}[1]{\newcommand{\StudObSVK}{#1}}
-
 \newcommand{\KlicovaSlovaSLOVENSKY}[1]{\newcommand{\KlSlovaSVK}{#1}}
-
 \newcommand{\AbstraktSLOVENSKY}[1]{\newcommand{\AbstraktSVK}{#1}}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ROZMERY STRANKY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
 \newcommand{\VelikostHlavicky}{12 pt+\@ptsize pt}
@@ -121,6 +119,7 @@ prosince\fi \space\number\year}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%% PREDEFINOVANI CLEARDOUBLEPAGE - NA PRAZDNYCH STRANACH PRI OBOUSTRANNEM TISKU NEBUDE HLAVICKA %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \let\origcleardoublepage\cleardoublepage %%zachovani puvodniho prikazu
 
@@ -134,6 +133,7 @@ prosince\fi \space\number\year}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HALVICKY POVINNYCH CASTI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
 \newcommand{\NazevPovinneCasti}[1]{%
@@ -157,42 +157,39 @@ prosince\fi \space\number\year}
 \pagenumbering{Alph}
 
 \newlength{\sirkaustavorig} %% urci puvodni sirku textu s nazvem ustavu
-\settowidth{\sirkaustavorig}{\fontsize{16pt}{28pt}\selectfont{\textbf{\textsc{\Ustav}}}}
+\settowidth{\sirkaustavorig}{\fontfamily{qhv}\fontseries{b}\fontsize{16pt}{26pt}\selectfont{\textsc{\Ustav}}}
 
 \newlength{\sirkafakultaorig} %% urci sirku textu s nazvem fakulty
-\settowidth{\sirkafakultaorig}{\fontsize{21pt}{28pt}\selectfont{\textbf{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}}
-fakulta}}}}
-
+\settowidth{\sirkafakultaorig}{\fontfamily{qhv}\fontseries{b}\fontsize{21pt}{24pt}\selectfont{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}}
 
   \begin{center}
-    {\fontsize{22pt}{28pt}\selectfont{\textbf{MASARYKOVA UNIVERZITA}}}\\[2mm]
-    {\fontsize{21pt}{28pt}\selectfont{\textbf{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}}}\\
+    \fontfamily{qhv}\fontseries{b}\fontsize{22pt}{22pt}\selectfont{MASARYKOVA UNIVERZITA}\\
+    \fontfamily{qhv}\fontseries{b}\fontsize{21pt}{25pt}\selectfont{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}\\[-3.3mm]
     \ifthenelse{\lengthtest{\sirkaustavorig > 0.95\sirkafakultaorig}}%
-        {\textbf{\textsc{\scaletowidth{0.95\sirkafakultaorig}{\Ustav}}}}%
-        {\vspace*{-3mm}\fontsize{16pt}{28pt}\selectfont{\textbf{\textsc{\Ustav}}}}
+        {\fontfamily{qhv}\fontseries{b}\selectfont{\textsc{\scaletowidth{0.95\sirkafakultaorig}{\Ustav}}}}%
+        {\vspace*{1.2mm}\fontfamily{qhv}\fontseries{b}\fontsize{16pt}{26pt}\selectfont{\textbf{\textsc{\Ustav}}}}
   \end{center}
 
 \vfill
 
   \begin{center}
-    {\fontsize{34pt}{20pt}\selectfont{\bf \TypPrace}}
+    \fontfamily{qhv}\fontseries{b}\fontsize{34pt}{20pt}\selectfont{\TypPrace}
   \end{center}
 
 \vfill
 
-
-\setbox2=\hbox{\textbf{\textsc{\JmenoAutora}}}
-\setbox1=\hbox{textbf{\textsc{Z}}}
+\setbox2=\hbox{\fontfamily{qhv}\fontseries{b}\selectfont{\textsc{\JmenoAutora}}}
+\setbox1=\hbox{\fontfamily{qhv}\fontseries{b}\selectfont{\textsc{Z}}}
 \ht2=\the\ht1
 \setbox0=\hbox{\resizebox{0.68\textwidth}{!}{\box2}}
 
 \newlength{\sirkadeskyorig} %% urci puvodni sirku textu se jmenem autora
-\settowidth{\sirkadeskyorig}{\fontsize{22pt}{28pt}\selectfont{\textbf{\textsc{\JmenoAutora}}}}
+\settowidth{\sirkadeskyorig}{\fontfamily{qhv}\fontseries{b}\fontsize{22pt}{28pt}\selectfont{\textsc{\JmenoAutora}}}
 
 \begin{raggedright}
  \ifthenelse{\lengthtest{\sirkadeskyorig > 0.65\textwidth}}%
-       {\noindent \resizebox{!}{\the\ht0}{{\textbf{\textsc{Brno \RokOdevzdani}}}} \hfill \copy0}
-       {{\fontsize{22pt}{28pt}\selectfont{\textbf{\textsc{Brno \RokOdevzdani \hfill \JmenoAutora}}}}}
+       {\noindent \resizebox{!}{\the\ht0}{{\fontfamily{qhv}\fontseries{b}\selectfont{\textsc{Brno \RokOdevzdani}}}} \hfill \copy0}
+       {{\fontfamily{qhv}\fontseries{b}\fontsize{22pt}{28pt}\selectfont{\textbf{\textsc{Brno \RokOdevzdani \hfill \JmenoAutora}}}}}
 \end{raggedright}
 
 \end{titlepage}
@@ -204,81 +201,60 @@ fakulta}}}}
 %%%%% TITULNI STRANA %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \newcommand{\zvetsi}[2]{\begingroup\scalefont{#1}{#2}\endgroup}
-
 \newcommand{\TitulniStrana}{
 \pagenumbering{roman}
 \pagestyle{empty}
 \pdfbookmark{Tituln{\'{i}} strana}{Titulni strana}
 
 %%
-%% loga jsou umistena ve slozce ``loga''
-%% a jsou dostupna na http://www.muni.cz/general/mu_presentation/logos?lang=cs
+%% logo je umisteno ve slozce ``loga''
+%% a je dostupne (spolecne s dalsimi logy) na webu https://sablony.muni.cz/
 %%
 
-\changetext{}{11.6mm}{}{}{}
-\begin{adjustwidth}{-12mm}{}
-\vspace*{-5mm}
-% \hspace{-17mm}
-\begin{minipage}{28mm}
-  \includegraphics[width=28mm]{loga/MU_black}
-\end{minipage}\hspace{2mm}
-\begin{minipage}{113mm}
+\vspace*{-25mm}
   \begin{center}\vspace*{3mm}
-    {\fontsize{22pt}{28pt}\selectfont{\textbf{MASARYKOVA UNIVERZITA}}}\\[2mm]
-    {\fontsize{21pt}{28pt}\selectfont{\textbf{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}}}\\[1mm]
-%
-    \settowidth{\sirkaustavorig}{\fontsize{16pt}{28pt}\selectfont{\textbf{\textsc{\Ustav}}}}
-   
-\settowidth{\sirkafakultaorig}{\fontsize{21pt}{28pt}\selectfont{\textbf{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}}
-fakulta}}}}
-%    
-    \ifthenelse{\lengthtest{\sirkaustavorig > 0.95\sirkafakultaorig}}%
-        {\vspace*{-0.5mm}\textbf{\textsc{\scaletowidth{0.95\sirkafakultaorig}{\Ustav}}}\\[-1mm]}%
-        {\vspace*{-4mm}\fontsize{16pt}{28pt}\selectfont{\textbf{\textsc{\Ustav}}}\\[-6mm]}
+    \includegraphics[width=0.5\textwidth]{loga/MUNI_(black)}\\[-1.5mm]
+    \fontfamily{qhv}\fontsize{20pt}{12pt}\selectfont{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}\\[2mm]%
+    \settowidth{\sirkaustavorig}{\fontfamily{qhv}\fontsize{17pt}{12pt}\selectfont{\textsc{\Ustav}}}
+    \settowidth{\sirkafakultaorig}{\fontfamily{qhv}\fontsize{20pt}{12pt}\selectfont{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} 
+fakulta}}}%    
+      \ifthenelse{\lengthtest{\sirkaustavorig > 0.98\sirkafakultaorig}}%
+        {\vspace*{-0.8mm}\fontfamily{qhv}\selectfont{\textsc{\scaletowidth{0.98\sirkafakultaorig}{\Ustav}}}\\  [-1mm]}%
+        {\vspace*{0.5mm}\fontfamily{qhv}\fontsize{17pt}{12pt}\selectfont{\textsc{\Ustav}}\\[-2mm]}
     \noindent \rule{\textwidth}{2pt}\vspace*{2mm}
   \end{center}
-\end{minipage}\hspace{2mm}
-\begin{minipage}{28mm}
-  \includegraphics[width=28mm]{loga/SCI_black}
-\end{minipage}
-\end{adjustwidth}
-\changetext{}{-11.6mm}{}{}{}
 
  \vfill
 
 \newlength{\autororig} %% urci puvodni sirku textu se jmenem autora
-\settowidth{\autororig}{\fontsize{26pt}{28pt}\selectfont{\bf \JmenoAutora}}
+\settowidth{\autororig}{\fontfamily{qhv}\fontseries{b}\fontsize{26pt}{28pt}\selectfont{\JmenoAutora}}
 
   \begin{raggedright}
     \begin{spacing}{2.8}
-      {\fontsize{35pt}{28pt}\selectfont{\bf \TitulPraceNaTitulnimListu}}\\[-2mm]
+      \fontfamily{qhv}\fontseries{b}\fontsize{33pt}{15pt}\selectfont{\TitulPraceNaTitulnimListu}\\[-2mm]
     \end{spacing}
-      {\fontsize{20pt}{28pt}\selectfont{\TypPrace}}\\[5mm]
+    \fontfamily{qhv}\fontsize{20pt}{22pt}\selectfont{\TypPrace}\\[5mm]
     \ifthenelse{\lengthtest{\autororig > 0.98\textwidth}}%
-        {\hspace*{-1mm}\textbf{\scaletowidth{0.98\textwidth}{\JmenoAutora}}}%
-        {\fontsize{26pt}{28pt}\selectfont{\bf \JmenoAutora}}
+      {\hspace*{-1mm}\fontfamily{qhv}\fontseries{b}\selectfont{\scaletowidth{0.98\textwidth}{\JmenoAutora}}}%
+      {\fontfamily{qhv}\fontseries{b}\fontsize{26pt}{28pt}\selectfont{\JmenoAutora}}
   \end{raggedright}
 
-\vspace*{5mm}
+\vspace*{28mm}{}
 \vfill
 
 \newlength{\sirkatitulkaorig} %% urci puvodni sirku textu se jmenem vedouciho
-\settowidth{\sirkatitulkaorig}{\fontsize{18.5pt}{20pt}\selectfont{\textbf{Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace}}}
+\settowidth{\sirkatitulkaorig}{\fontfamily{qhv}\fontseries{b}\fontsize{18.5pt}{20pt}\selectfont{Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace}}
 
-% \newlength{\vyskatitulka} %% urci novou vysku textu se jmenem vedouciho
-% \settoheight{\vyskatitulka}{\textbf{\scaletowidth{0.72\textwidth}{Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace}}}
-
-\setbox2=\hbox{\bf Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace}
-\setbox1=\hbox{\bf A}
+\setbox2=\hbox{\fontfamily{qhv}\fontseries{b}\selectfont{Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace}}
+\setbox1=\hbox{\fontfamily{qhv}\fontseries{b}\selectfont{A}}
 \ht2=\the\ht1
 \setbox0=\hbox{\resizebox{0.75\textwidth}{!}{\box2}}
 
 \begin{raggedright}
- \ifthenelse{\lengthtest{\sirkatitulkaorig > 0.72\textwidth}}%
-       {\noindent\copy0 \hfill \resizebox{!}{\the\ht0}{\bf Brno \RokOdevzdani}}
-       {{\fontsize{18.5pt}{20pt}\selectfont{\textbf{Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace \hfill Brno
-\RokOdevzdani}}}}
+  \ifthenelse{\lengthtest{\sirkatitulkaorig > 0.72\textwidth}}%
+    {\noindent\copy0 \hfill \resizebox{!}{\the\ht0}{\fontfamily{qhv}\fontseries{b}\selectfont{Brno \RokOdevzdani}}}
+    {\fontfamily{qhv}\fontseries{b}{\fontsize{18.5pt}{20pt}\selectfont{Vedouc{\'{i}} pr{\'{a}}ce: \VedouciPrace \hfill Brno
+\RokOdevzdani}}}
 \end{raggedright}
 
 \normalsize
@@ -290,69 +266,51 @@ fakulta}}}}
 %%%%% TITULNI STRANA RIGOROZNI PRACE %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \newcommand{\zvetsi}[2]{\begingroup\scalefont{#1}{#2}\endgroup}
-
 \newcommand{\TitulniStranaRP}{
 \pagenumbering{roman}
 \pagestyle{empty}
 \pdfbookmark{Tituln{\'{i}} strana}{Titulni strana}
 
 %%
-%% loga jsou umistena ve slozce ``loga''
-%% a jsou dostupna na http://www.muni.cz/general/mu_presentation/logos?lang=cs
+%% logo je umisteno ve slozce ``loga''
+%% a je dostupne (spolecne s dalsimi logy) na webu https://sablony.muni.cz/
 %%
 
-\changetext{}{11.6mm}{}{}{}
-\begin{adjustwidth}{-12mm}{}
-\vspace*{-5mm}
-% \hspace{-17mm}
-\begin{minipage}{28mm}
-  \includegraphics[width=28mm]{loga/MU_black}
-\end{minipage}\hspace{2mm}
-\begin{minipage}{113mm}
+\vspace*{-25mm}
   \begin{center}\vspace*{3mm}
-    {\fontsize{22pt}{28pt}\selectfont{\textbf{MASARYKOVA UNIVERZITA}}}\\[2mm]
-    {\fontsize{21pt}{28pt}\selectfont{\textbf{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}}}\\[1mm]
-%
-    \settowidth{\sirkaustavorig}{\fontsize{16pt}{28pt}\selectfont{\textbf{\textsc{\Ustav}}}}
-   
-\settowidth{\sirkafakultaorig}{\fontsize{21pt}{28pt}\selectfont{\textbf{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}}
-fakulta}}}}
-%    
-    \ifthenelse{\lengthtest{\sirkaustavorig > 0.95\sirkafakultaorig}}%
-        {\vspace*{-0.5mm}\textbf{\textsc{\scaletowidth{0.95\sirkafakultaorig}{\Ustav}}}\\[-1mm]}%
-        {\vspace*{-4mm}\fontsize{16pt}{28pt}\selectfont{\textbf{\textsc{\Ustav}}}\\[-6mm]}
+    \includegraphics[width=0.5\textwidth]{loga/MUNI_(black)}\\[-1.5mm]
+    \fontfamily{qhv}\fontsize{20pt}{12pt}\selectfont{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} fakulta}}\\[2mm]%
+    \settowidth{\sirkaustavorig}{\fontfamily{qhv}\fontsize{17pt}{12pt}\selectfont{\textsc{\Ustav}}}
+    
+\settowidth{\sirkafakultaorig}{\fontfamily{qhv}\fontsize{20pt}{12pt}\selectfont{\textsc{P{\v{r}}{\'{i}}rodov{\v{e}}deck{\'{a}} 
+fakulta}}}%    
+      \ifthenelse{\lengthtest{\sirkaustavorig > 0.98\sirkafakultaorig}}%
+        {\vspace*{-0.8mm}\fontfamily{qhv}\selectfont{\textsc{\scaletowidth{0.98\sirkafakultaorig}{\Ustav}}}\\  [-1mm]}%
+        {\vspace*{0.5mm}\fontfamily{qhv}\fontsize{17pt}{12pt}\selectfont{\textsc{\Ustav}}\\[-2mm]}
     \noindent \rule{\textwidth}{2pt}\vspace*{2mm}
   \end{center}
-\end{minipage}\hspace{2mm}
-\begin{minipage}{28mm}
-  \includegraphics[width=28mm]{loga/SCI_black}
-\end{minipage}
-\end{adjustwidth}
-\changetext{}{-11.6mm}{}{}{}
 
  \vfill
 
 \newlength{\autororig} %% urci puvodni sirku textu se jmenem autora
-\settowidth{\autororig}{\fontsize{26pt}{28pt}\selectfont{\bf \JmenoAutora}}
+\settowidth{\autororig}{\fontfamily{qhv}\fontseries{b}\fontsize{26pt}{28pt}\selectfont{\JmenoAutora}}
 
   \begin{raggedright}
     \begin{spacing}{2.8}
-      {\fontsize{35pt}{28pt}\selectfont{\bf \TitulPraceNaTitulnimListu}}\\[-2mm]
+      \fontfamily{qhv}\fontseries{b}\fontsize{33pt}{15pt}\selectfont{\TitulPraceNaTitulnimListu}\\[-2mm]
     \end{spacing}
-      {\fontsize{20pt}{28pt}\selectfont{\TypPrace}}\\[5mm]
+    \fontfamily{qhv}\fontsize{20pt}{22pt}\selectfont{\TypPrace}\\[5mm]
     \ifthenelse{\lengthtest{\autororig > 0.98\textwidth}}%
-        {\hspace*{-1mm}\textbf{\scaletowidth{0.98\textwidth}{\JmenoAutora}}}%
-        {\fontsize{26pt}{28pt}\selectfont{\bf \JmenoAutora}}
+      {\hspace*{-1mm}\fontfamily{qhv}\fontseries{b}\selectfont{\scaletowidth{0.98\textwidth}{\JmenoAutora}}}%
+      {\fontfamily{qhv}\fontseries{b}\fontsize{26pt}{28pt}\selectfont{\JmenoAutora}}
   \end{raggedright}
 
-\vspace*{5mm}
+\vspace*{28mm}{}
 \vfill
 
 \begin{raggedright}
-   {{\fontsize{18.5pt}{20pt}\selectfont{\textbf{\hfill Brno \RokOdevzdani}}}}
+ \fontfamily{qhv}\fontseries{b}\fontsize{18.5pt}{20pt}\selectfont{\textbf{\hfill Brno \RokOdevzdani}}
 \end{raggedright}
-
 
 \normalsize
 
@@ -679,10 +637,10 @@ zad{\'{a}}n{\'{i}} pr{\'{a}}ce.}}
 }
 
 \newcommand{\VlozZadani}[1]{
-\begin{center}
-\includepdf[pages={-},pagecommand={\thispagestyle{empty}\pdfbookmark{Ofici{\'{a}}ln{\'{i}}
-zad{\'{a}}n{\'{i}}}{Oficialni zadani}}]{#1}
-\end{center}
+\phantomsection\cleardoublepage
+% \chapter*{}
+\pdfbookmark{Ofici{\'{a}}ln{\'{i}} zad{\'{a}}n{\'{i}}}{Oficialni zadani}
+\includepdf[pages={-},pagecommand={\thispagestyle{empty}}]{#1}
 \cleardoublepage
 }
 
@@ -755,6 +713,7 @@ zad{\'{a}}n{\'{i}}}{Oficialni zadani}}]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NASTAVENI ZAKLADNIHO ZAHLAVI A ZAPATI V SABLONE %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\headrulewidth{0pt}%
 \def\footrulewidth{0pt}%
@@ -851,11 +810,13 @@ zad{\'{a}}n{\'{i}}}{Oficialni zadani}}]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%% VLOZ=INPUT %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\vloz}{\input}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% REJSTRIK %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
 \renewenvironment{theindex}
@@ -881,6 +842,7 @@ zad{\'{a}}n{\'{i}}}{Oficialni zadani}}]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%  INFORMACE PRO PDF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AtEndPreamble{
 \hypersetup{
@@ -893,6 +855,7 @@ linktoc=all,
 breaklinks=true,
 colorlinks=true,
 pdfencoding=auto,
+pdfcreator={Vytvořeno s pomocí šablony ``sci.muni.thesis.sty'', viz http://www.sci.muni.cz/cz/BcMgrStudium/Legislativa/sablony},
 %% pro dalsi mozna nastaveni viz http://www.tug.org/applications/hyperref/manual.html
 }}
 
@@ -909,7 +872,7 @@ pdfencoding=auto,
 \renewcommand{\cftchappagefont}{\bfseries}    %%% font pro cislo stranky u kapitoly
 \renewcommand{\cftchappresnum}{Kapitola }     %%% pred cislem kapitoly se vypisuje text ``Kapitola''
 \renewcommand{\cftchapaftersnum}{.}           %%% za cislem kapitoly je ``.''
-\renewcommand{\cftchapnumwidth}{22mm}         %%% mezera za cislem kapitoly - v pripade potreby zmente
+\setlength{\cftchapnumwidth}{22mm}            %%% mezera za cislem kapitoly - v pripade potreby zmente
 \renewcommand{\cftchapleader}{ \bf\dotfill\ } %%% oddelovac mezi nazvem kapitoly a cislem strany
 
 \setlength{\cftsecindent}{6mm}                %%% sirka odsazeni urovne podkapitoly
