@@ -1,35 +1,57 @@
 \chapter{Implementace}
-Tato sekce popisuje implementaci knihovny ATTYC (\textit{ATom TYpe Classification}) pro klasifikaci atomů do atomových typů na základě vybraného  klasifikátoru. Knihovna je implementována v jazyce Python 3.7 a obsahuje následující soubory a složky:
-\newline
-\newline
-\noindent\_\_init\_\_.py
+Tato sekce popisuje implementaci knihovny ATTYC (\textit{ATom TYpe Classification}), která přiřazuje atomům molekulové sady atomové typy na základě vybraného  klasifikátoru. Knihovna je implementována v jazyce Python 3.7 a obsahuje následující soubory:
 
-\noindent arguments.py 
-
-\noindent classifier.py
-
-\noindent exceptions.py
-
-\noindent io.py
-
-\noindent SMARTS\_atom\_types.txt
-
-\noindent \textbackslash classifiers
-
-hbo.py
-
-hybrid.py
-
-partners.py
-
-protein.py
-
-substruct.py
-
-%pěti navržených klasifikátorů, na základě kterých je atomům v molekulovém souboru přiřazen příslušný atomový typ. 
+\bigskip
+\noindent \textbf{\_\_init\_\_.py}\hspace{0.5cm} obsahuje klíčovou funkci \verb|classify_atoms(input_sdf, classifier)| spouštějící klasifikaci atomů molekulové sady za užití zvoleného klasifikátoru
 
 
-\section{Třída Classifier}
- \section{Vyhledávání podstruktur}
- 
+\noindent \textbf{classifier.py} definuje rozhraní pro klasifikátory implementované ve složce \textbf{\textbackslash classifiers}
+
+
+\noindent \textbf{exceptions.py} definuje výjimky (potomky třídy Exception) pro řízení běhu programu
+
+
+\noindent \textbf{io.py} zpracovává vstupy a výstupy jednotlivých částí programu včetně kontroly vstupních argumentů 
+
+
+\noindent \textbf{SMARTS\_atom\_types.txt}\hspace{0.5cm} obsahuje SMARTS výrazy a odpovídající atomové typy pro vyhledání specifických strukturních motivů a funkčních skupin (viz sekci \ref{substruct})
+
+\noindent\textbf{\textbackslash classifiers} obsahuje klasifikátory, které rozdělují atomy do atomových typů na základě:
+
+\textbf{\_\_init\_\_.py}\hspace{0.5cm}
+
+\textbf{hbo.py}\hspace{0.5cm} nejvyššího řádu vazby (angl. \textit{highest bond orded})
+
+\textbf{hybrid.py}\hspace{0.5cm} hybridizace
+
+\textbf{partners.py}\ vazebných partnerů
+
+\textbf{protein.py} pozice atomu v rámci aminokyseliny
+
+\textbf{substruct.py} příslušnosti ke specifickému strukturnímu motivu nebo funkční skupině
+
+\section{Hledání strukturních motivů užitím SMARTS notace}
+\label{substruct}
+- přiřazení atomových typů klasifikátorem substruct na základě příslušnosti ke strukturním celkům, snaha o reprodukci atomových typů, které byly použity pro úspěšnou parametrizaci empirických metod \cite{attyp1, attyp2}. 
+příklady atomových typů určených klasifikátorem substruct: "kyslík nitrososkupiny" nebo "uhlík karbonylové skupiny" 
+- strukturní motivy vyhledány pomocí SMARTS notace metodou GetSubstructMatches(SMARTS\_pattern) třídy Mol, která je implementovaná v knihovně RDKit
+- příkaz molecule.GetSubstructMatch(SMARTS\_pattern), kde molecule je instance třídy Mol
+- vrací n-tici n-tic (tuple) obsahující prvky typu integer. Tato čísla odpovídají pořadí, ve kterém jsou atomy definovány v rámci molekuly. Každá z n-tic obsahuje takové indexy, které odpovídají atomům molekuly vyhovujícím danému SMARTS dotazu. Názorný příklad lze vidět na obr. X níže.
+% kus kodu TODO, ukazat GetSubstructMatches na nejakem patternu + vysledne ntice ntic, komentar pod kodem
+- validace volně dostupných SMARTS výrazů užitím online nástroje LiteMol a jejich úprava -> zpřesnění dotazů, odstranění redundantních výstupů 
+- strukturní motivy hledány v pořadí, v jakém jsou definovány SMARTS vstupy v souboru SMARTS\_atom\_types.txt - pořadí SMARTS vstupů ovlivňuje výsledný atomový typ, který je atomu přiřazen
+- SMARTS vstupy definovány od nejzvláštnjších k nejvíce obecným 
+- atomům, které nebyly vyhledáváním strukturních motivů označeny, je přiřazen atomový typ 'plain'
+
+
+
+\section{Rozšíření pro proteiny}
+%- zpracování PDB souborů, mmCIF formát není knihovnou RDKit podporován
+%- PDB de facto zastaralý, jako standard jej nahradil formát mmCIF
+%- pro účely bakalářské práce není omezením; cíl: otestovat, zda je navržená klasifikace použitelná (pozdější integrace openbabelu pro konverzi souborů?)
+navržené atomové typy vychází z notace atomů aminokyselin dle IUPAC \cite{AA_nomenclature}, která je použita pro specifikaci atomů v PDB souborech. 
+- IUPAC nomenklatura označuje atomy vedlejšího řetězce aminokyseliny dle vzdálenosti od uhlíku s navázanou karboxylovou skupinou a aminoskupinou. Řecká písmena v označení atomů (C$^\alpha$, C$^\beta$, C$^\gamma$, C$^\delta$, C$^\varepsilon$, C$^\zeta$, C$^\eta$) jsou v této nomenklatuře nahrazena velkými písmeny latinské abecedy (CA, CB, CG, CD, CE, CZ, CH). Navržená klasifikace přiřazuje atomové typy obdobně jako výše uvedený klasifikátor substruct.py, tedy na základě příslušnosti atomů ke strukturním celkům.
+
+Po analýze atomových typů aminokyselin dle IUPAC Soubor \verb|AA_atom_types.txt| 
+
 

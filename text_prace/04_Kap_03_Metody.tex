@@ -16,10 +16,13 @@ Struktura SDF záznamů je následující:
     %První řádek obsahuje název molekuly, na druhém řádku jsou vyhrazeny indexy pro datum vytvoření záznamu, program použitý pro generování záznamu, dimenzi souřadnic atomů atd. Třetí řádek obsahuje komentář. 
     Všechny tři řádky mohou být prázdné.
     \item \textit{Counts line} obsahuje na definovaných indexech řádku počet atomů a vazeb  popsaných v sekcích \textit{Atom block} a \textit{Bond block}, informaci o chiralitě molekuly a verzi molekulového záznamu (V2000 nebo V3000).
-    \item \textit{Atom block} obsahuje souřadnice atomů  $x, y, z$ a symbol prvku. Další indexy řád\-ků, ve většině případů obsazené symbolem '\verb|0|', slouží pro bližší specifikaci vlastností atomů. Na základě pořadí atomů v \textit{Atom block} jsou v sekci \textit{Bond block} specifikováni vazební partneři a typ vytvořené vazby. 
+    \item \textit{Atom block} obsahuje souřadnice atomů  $x, y, z$ a symbol prvku. Další indexy řád\-ků, ve většině případů obsazené symbolem '\verb|0|', slouží pro bližší specifikaci vlastností atomů. Na základě pořadí atomů v \textit{Atom block}u jsou v sekci \textit{Bond block} specifikováni vazební partneři a typ vytvořené vazby. 
     \item \textit{Data items} slouží pro doplňující záznamy vlastností molekuly. Řádek \textit{Data header}, začínající znakem \verb|'>'|, obsahuje název dané vlastnosti nebo identifikační číslo molekuly v databázi MACCS-II. Následují řádky s příslušnými hodnotami.
     %(např. \verb|'<melting.point>'|)
 \end{itemize}
+
+\section{PDB formát}
+\subsection{Nomenklatura atomových typů aminokyselin}
 
 \section{SMILES}
 % zdroje: http://www.daylight.com/smiles/index.html; Leach - Chemoinformatics; Bunin- Chemoinformatics
