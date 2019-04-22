@@ -1,43 +1,83 @@
 \chapter{Implementace}
-Tato sekce popisuje implementaci knihovny ATTYC (\textit{ATom TYpe Classification}), která přiřazuje atomům molekulové sady atomové typy na základě vybraného  klasifikátoru. Knihovna je implementována v jazyce Python 3.7 a obsahuje následující soubory:
+Tato sekce popisuje implementaci knihovny ATTYC (\textit{ATom TYpe Classification}), která přiřazuje atomům molekulového souboru atomové typy na základě vybraného  klasifikátoru. Pro formát PDB je určen klasifikátor \verb|protein|, ostatní klasifikátory se vztahují k formátu  SDF. Knihovna je implementována v jazyce Python 3.7 a obsahuje následující soubory:
 
-\bigskip
-\noindent \textbf{\_\_init\_\_.py}\hspace{0.5cm} obsahuje klíčovou funkci \verb|classify_atoms(input_sdf, classifier)| spouštějící klasifikaci atomů molekulové sady za užití zvoleného klasifikátoru
+\vspace{0.7cm}
+\noindent \hangpara{1.5cm}{1} \textbf{\_\_init\_\_.py} obsahuje funkci \verb|classify_atoms(input_sdf, classifier)| spouštějící klasifikaci atomů molekulové sady za užití zvoleného klasifikátoru
 
-
+\medskip
 \noindent \textbf{classifier.py} definuje rozhraní pro klasifikátory implementované ve složce \textbf{\textbackslash classifiers}
 
-
+\medskip
 \noindent \textbf{exceptions.py} definuje výjimky (potomky třídy Exception) pro řízení běhu programu
 
+\medskip
+\noindent \hangpara{1.5cm}{1}\textbf{io.py} zpracovává I/O všech částí programu včetně kontroly vstupních argumentů 
 
-\noindent \textbf{io.py} zpracovává vstupy a výstupy jednotlivých částí programu včetně kontroly vstupních argumentů 
+\medskip
+\noindent \hangpara{1.5cm}{1}\textbf{SMARTS\_atom\_types.txt} obsahuje SMARTS výrazy a odpovídající atomové typy pro vyhledání specifických strukturních motivů a funkčních skupin (viz sekci \ref{substruct})
 
-
-\noindent \textbf{SMARTS\_atom\_types.txt}\hspace{0.5cm} obsahuje SMARTS výrazy a odpovídající atomové typy pro vyhledání specifických strukturních motivů a funkčních skupin (viz sekci \ref{substruct})
-
+\medskip
 \noindent\textbf{\textbackslash classifiers} obsahuje klasifikátory, které rozdělují atomy do atomových typů na základě:
 
-\textbf{\_\_init\_\_.py}\hspace{0.5cm}
+\medskip
+\textbf{\_\_init\_\_.py}
 
-\textbf{hbo.py}\hspace{0.5cm} nejvyššího řádu vazby (angl. \textit{highest bond orded})
+\medskip
+\textbf{hbo.py} nejvyššího řádu vazby (angl. \textit{highest bond orded})
 
-\textbf{hybrid.py}\hspace{0.5cm} hybridizace
+\medskip
+\textbf{hybrid.py} hybridizace
 
+\medskip
 \textbf{partners.py}\ vazebných partnerů
 
+\medskip
 \textbf{protein.py} pozice atomu v rámci aminokyseliny
 
-\textbf{substruct.py} příslušnosti ke specifickému strukturnímu motivu nebo funkční skupině
+\medskip
+\textbf{substruct.py} příslušnosti ke strukturnímu motivu nebo funkční skupině
+
+% \vspace{1mm}
+% \begin{minipage}{14cm}
+% \hangpara{8.7mm}{1}\textbf{substruct.py} příslušnosti ke specifickému strukturnímu motivu nebo funkční skupině \\
+%\end{minipage}
+
 
 \section{Hledání strukturních motivů užitím SMARTS notace}
 \label{substruct}
-- přiřazení atomových typů klasifikátorem substruct na základě příslušnosti ke strukturním celkům, snaha o reprodukci atomových typů, které byly použity pro úspěšnou parametrizaci empirických metod \cite{attyp1, attyp2}. 
-příklady atomových typů určených klasifikátorem substruct: "kyslík nitrososkupiny" nebo "uhlík karbonylové skupiny" 
-- strukturní motivy vyhledány pomocí SMARTS notace metodou GetSubstructMatches(SMARTS\_pattern) třídy Mol, která je implementovaná v knihovně RDKit
-- příkaz molecule.GetSubstructMatch(SMARTS\_pattern), kde molecule je instance třídy Mol
-- vrací n-tici n-tic (tuple) obsahující prvky typu integer. Tato čísla odpovídají pořadí, ve kterém jsou atomy definovány v rámci molekuly. Každá z n-tic obsahuje takové indexy, které odpovídají atomům molekuly vyhovujícím danému SMARTS dotazu. Názorný příklad lze vidět na obr. X níže.
-% kus kodu TODO, ukazat GetSubstructMatches na nejakem patternu + vysledne ntice ntic, komentar pod kodem
+Klasifikátor \verb|substruct| rozděluje atomy do atomových typů na základě příslušnosti k charakteristickým strukturním celkům. Byl implementován s cílem reprodukovat atomové typy, které byly úspěšně použity pro parametrizaci empirických metod výpočtu parciálních atomových nábojů \cite{attyp1, attyp2}. 
+
+Strukturní motivy a funkční skupiny jsou v molekulách detekovány pomocí výrazů SMARTS, a to metodou třídy Mol \verb|GetSubstructMatches(SMARTS_pattern)| implementovanou v knihovně RDKit. 
+Příkaz \verb|molecule.GetSubstructMatches(SMARTS_pa|\\\verb|ttern)|, kde \verb|molecule| je instance třídy Mol, 
+vrací n-tici (datový typ \textit{tuple}) n-tic, které  obsahují prvky typu integer. Tato čísla označují atomy molekuly vyhovující danému SMARTS dotazu. Čísla atomů vycházejí z pořadí, ve kterém jsou atomy definovány v SDF souboru. 
+%a odpovídají pořadí definice atomů v SDF souboru.
+Příklad lze vidět na obr. \ref{smarts_tuples}.
+
+\lstset{language=Python, keywordstyle=\color{blue}, basicstyle=\small\ttfamily, commentstyle=\color{orange}, label={smarts_exm}}
+
+% pridat do obrazku vice SMARTSu pro nazornost?
+\begin{figure}[h]
+\label{smarts_tuples}
+\begin{lstlisting}
+# molecule je instance tridy Mol
+SMARTS_pattern = "[SX4](=[OX1])(=[OX1])[OX2,OX1-]"
+pattern_atoms = molecule.GetSubstructMatches(SMARTS_pattern)
+for atom_tuple in pattern_atoms:
+    print(atom_tuple, get_elements(atom_tuple))
+print(pattern_atoms)
+
+Python 3.7.0 (default, Apr 9 2019, 10:31:47)
+>>> (5, 7, 8, 11) ('S', 'O', 'O', 'O')
+>>> (21, 22, 26, 29) ('S', 'O', 'O', 'O')
+>>> ((5, 7, 8, 11), (21, 22, 26, 29))
+\end{lstlisting}
+\cprotect\caption{Ukázka funkce \verb|GetSubstructMatches(SMARTS_pattern)|. Pomo\-cí SMARTS výrazu jsou v molekule vyhledány sulfonové skupiny S(=O)$_2$OH nebo její anionty. Indexy atomů jsou v n-ticích zapsány v pořadí odpovídajícímu prvkům ve SMARTS výrazu. Reálná implementace metody pro získání uvedeného výstupu, \verb|molecule.GetSubstructMatches(Chem.MolFromSmarts(SMARTS_pattern))|, je v textu i v obrázku pro názornost syntakticky zjednodušena.}
+\end{figure}
+
+Klíčovým prvkem klasifikace je 
+- na základě znalosti výstupů funkce \verb|GetSubstructMatches(SMARTS_pattern)| pro jsou v souboru SMARTS\_atom\_types.txt definovány atomové typy 
+
+
 - validace volně dostupných SMARTS výrazů užitím online nástroje LiteMol a jejich úprava -> zpřesnění dotazů, odstranění redundantních výstupů 
 - strukturní motivy hledány v pořadí, v jakém jsou definovány SMARTS vstupy v souboru SMARTS\_atom\_types.txt - pořadí SMARTS vstupů ovlivňuje výsledný atomový typ, který je atomu přiřazen
 - SMARTS vstupy definovány od nejzvláštnjších k nejvíce obecným 
@@ -53,5 +93,8 @@ navržené atomové typy vychází z notace atomů aminokyselin dle IUPAC \cite{
 - IUPAC nomenklatura označuje atomy vedlejšího řetězce aminokyseliny dle vzdálenosti od uhlíku s navázanou karboxylovou skupinou a aminoskupinou. Řecká písmena v označení atomů (C$^\alpha$, C$^\beta$, C$^\gamma$, C$^\delta$, C$^\varepsilon$, C$^\zeta$, C$^\eta$) jsou v této nomenklatuře nahrazena velkými písmeny latinské abecedy (CA, CB, CG, CD, CE, CZ, CH). Navržená klasifikace přiřazuje atomové typy obdobně jako výše uvedený klasifikátor substruct.py, tedy na základě příslušnosti atomů ke strukturním celkům.
 
 Po analýze atomových typů aminokyselin dle IUPAC Soubor \verb|AA_atom_types.txt| 
+
+\section{Výstup programu}
+ - spíše do přílohy?
 
 

@@ -39,10 +39,29 @@ SMILES notace definuje zápis strukturních prvků sloučenin jako jsou cykly, v
 \section{SMARTS}
 SMARTS notace \cite{SMARTS_intro, SMARTS_exm} (angl. \textit{SMiles ARbitrary Target Specification}) je odvozena z notace SMILES, kterou rozšiřuje o další funkční prvky. Každý SMILES výraz je validním SMARTS výrazem, opačný přístup však vždy neplatí. Příčinou toho je fakt, že SMARTS je narozdíl od  notace SMILES, která slouží pro popis celých molekul, zaměřena na vyhledávání podstruktur. Validní SMARTS výraz '\verb|cOc|', popisující kyslík navázaný na dva aromatické uhlíky (můžeme najít např. v molekule difenyletheru), neodpovídá žádné reálné molekule, a není proto platným SMILES výrazem. 
 
-SMARTS rozšiřuje SMILES notaci o užití logických operátorů. Symboly '\verb|&|' a '\verb|;|' značí logické \verb|AND|, přičemž symbol '\verb|&|' má vyšší prioritu v kombinaci s ostatními logickými operátory. Symbol '\verb|,|' značí logické \verb|OR|. Pro negaci výrazů je použit symbol '\verb|!|'. Užití jmenovaných logických operátorů je ilustrováno v tabulce X níže.
+SMARTS rozšiřuje SMILES notaci o užití logických operátorů. Symboly '\verb|&|' a '\verb|;|' značí logické \verb|AND|, přičemž symbol '\verb|&|' má vyšší prioritu v kombinaci s ostatními logickými operátory. Symbol '\verb|,|' značí logické \verb|OR|. Pro negaci výrazů je použit symbol '\verb|!|'. Užití jmenovaných logických operátorů je ilustrováno v tabulce \ref{logops} níže.
 
-Dalším specifickým prvkem SMARTS výrazů je konstrukce  '\verb|$(XY)|' , kde \verb|XY| reprezentuje platný SMARTS výraz. Touto konstrukcí lze snadno specifikovat atom v závislosti na jeho chemickém okolí. Příkladem je výraz '\verb|[O-;!$([O-]C(=O))]|', který definuje kyslíkový anion, jenž zároveň není součástí aniontu karboxylové skupiny COO$^-$.  
-
+Dalším specifickým prvkem SMARTS výrazů je konstrukce  '\verb|$(XY)|' , kde \verb|XY| reprezentuje platný SMARTS výraz. Touto konstrukcí lze snadno specifikovat atom v závislosti na jeho chemickém okolí. Příkladem je výraz '\verb|[O-;!$([O-]C(=O))]|', který definuje kyslíkový anion, jenž zároveň není součástí aniontu karboxylové skupiny COO$^-$. 
+\begin{table}[h]
+\label{logops}
+\renewcommand{\arraystretch}{1.3}
+    \begin{small}
+    \hspace{7mm}\begin{tabular}{c|l}
+        % \hline
+        \verb|[c,n&H1]| & aromatický uhlík nebo (aromatický dusík s jedním vodíkem) \\
+        \hline
+        \verb|[c,n;H1]| & (aromatický uhlík nebo aromatický dusík) s jedním vodíkem \\
+        \hline
+        \verb|[!#6][O][H]| & hydroxylová skupina navázaná na jakýkoli atom kromě dusíku \\
+        \hline
+        \verb|[CX4,c][O][H]| & alkoholová skupina navázaná na alifatický či aromatický uhlík \\
+        \hline
+        \verb|[NX3;!$(NC=O)]| & trojvazný dusík, který není součástí amidové skupiny\\
+        % \hline
+    \end{tabular}
+    \end{small}
+    \caption{Příklad užití logických operátorů v notaci SMARTS. V pravém sloupci jsou popsány vyhledané strukturní motivy.}
+\end{table}
 \section{RDKit}
 RDKit \cite{rdk_info} je volně dostupná open-source knihovna pro práci s chemickými daty, určena pro jazyky Java a Python. RDKit poskytuje standardní funkce pro zpracování chemických dat jako je načítání široké škály molekulových formátů, práce s 2D a 3D reprezentací molekul, zápis molekulových reakcí, hledání strukturních motivů molekul a vizualizace výstupů. Kromě jmenovaných funkcí umožňuje propojení s PostgreSQL databází. Základní datové struktury a algoritmy RDKitu jsou implementovány v jazyce C++, což v porovnání s interpretovaným jazykem Python zvyšuje jejich výkonnost.
 
