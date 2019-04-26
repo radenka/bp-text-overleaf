@@ -38,12 +38,12 @@ Aplikaci parciálních atomových nábojů lze nalézt ve výpočetní chemii a 
 
 %%%%%%%%%%%%%%% QC METODY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kvantově-chemické metody}
-V této podkapitole je popsán teoretický aparát kvantové mechaniky, na který dále navazuje popis kvantově-chemických metod pro výpočet parciálních atomových nábojů. 
+V této podkapitole je popsán teoretický aparát kvantové mechaniky, na kterém jsou založeny kvantově-chemické metody, které lze použít pro výpočet parciálních atomových nábojů. Tyto metody jsou dále popsány. 
 
 \subsection{Základy kvantové mechaniky}
 %Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. 
 Kvantová mechanika se rozvinula ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát již nepostačoval pro popis mikrosvěta.  Základním principem QM je vlnově-korpuskulární dualismus, který mikročástici připisuje jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem.
-Vlna, popisující částici, je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí. Tato funkce popisuje dynamický stav částice a nese informaci o výskytu částice v prostoru. Vlnová funkce elektronu tak přispívá k popisu rozložení elektronů v molekule \cite{Cely}. 
+Vlna, popisující částici, je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí. Tato funkce popisuje dynamický stav částice a nese informaci o výskytu částice v prostoru \cite{Cely}. Vlnová funkce elektronu tak přispívá k popisu rozložení elektronové hustoty v molekule. 
 
 Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému, z níž lze odvodit elektrostatický potenciál \cite{elstat_pot} nebo termodynamické vlastnosti molekuly \cite{td}. Vlnová funkce je řešením Schrödingerovy rovnice
 \begin{equation}
@@ -52,61 +52,40 @@ Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému, z 
 kde $H$ je operátor hamiltonián a $E$ je energie systému. Hamiltonián působí vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru \cite{Volatron}. 
  %Řešení Schrödingerovy rovnice pro daný systém tedy odpovídá hledání dvojic vlastních funkcí a vlastních hodnot operátoru $H$ vyhovujících rovnici xx.
  
- Schrödingerova rovnice je exaktně řešitelná pouze pro vybrané problémy, např. pro atom vodíku. Pro víceelektronové systémy je nutno do výpočtu zavádět velké množství aproximací, z nichž nejznámější je Born-Oppenheimerova aproximace \cite{BO_approx_Pilar}. % Elementary quantum chemistry, Frank L. Pilar
- Jejím základním konceptem je oddělení řešení SE pro jádra od řešení rovnice elektronů. Tento postup vychází z předpokladu, že jádra atomů, mnohonásobně těžší než elektrony,
- %složená z protonů a neutronů, které jsou oproti elektronům více než 1800krát těžší, 
- se pohybují výrazně pomaleji než elektrony samotné, a lze je tedy pro řešení SE elektronů pokládat za fixní. %Řešení Schrödingerovy rovnice se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů.
+ Schrödingerova rovnice je exaktně řešitelná pouze pro vybrané problémy, např. pro atom vodíku. Pro víceelektronové systémy je nutno do výpočtu zavádět velké množství aproximací, z nichž nejznámější je Born-Oppenheimerova aproximace \cite{BO_approx_Pilar}.
+ Jejím základním konceptem je oddělení řešení SE pro jádra od řešení rovnice elektronů. Tento postup vychází z předpokladu, že jádra atomů, mnohonásobně těžší než elektrony, se pohybují výrazně pomaleji než elektrony samotné, a jejich polohu lze tedy pro řešení SE elektronů pokládat za fixní. %Řešení Schrödingerovy rovnice se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů.
  
-\subsection{nevím kam to dát}
-Kvantově-mechanické metody pro výpočet parciálních atomových nábojů jsou založeny na poznatcích kvantové mechaniky. Dělí se na tři hlavní skupiny, a to metody semi-empirické, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}. \textit{Ab initio} metody (lat. \textit{ab initio} - od počátku) staví výpočty na teoretickém aparátu a k řešení Schrödingerovy rovnice přistupují numericky%využívají minimum aproximací
-, z čehož vyplývá jejich velká výpočetní náročnost. Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE, pro zjednodušení výpočtů ale využívají kromě značné míry aproximací také data z experimentu. 
-%část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
+\subsection{Úvod do kvantově-chemických metod}
+Cílem kvantově-chemických (QC) metod je exaktní popis chemických vlastností systému. Jednou ze zkoumaných vlastností je rozložení elektronové hustoty, které je odvozeno z~vlnové funkce molekuly. Znalost rozložení elektronové hustoty v molekule je klíčovým faktorem pro odvození parciálních atomových nábojů.
 
-Limitujícím faktorem pro použití QM metod je jejich složitost, konkrétně pro \textit{ab initio} metody až $O(B^4)$, kde B je číslo rovno počtu elektronů v molekule nebo větší. 
-% !!! U ab-inito metod (sprazene klastry, perturbation theory) slozitost az n^7!! Viz Hugova DP, str 25 https://is.muni.cz/auth/th/otfyl/DP_Semrad_H.pdf
- 
- %%%%%%%%%%%%%%%%% PREHLED QC METOD %%%%%%%%%%%%%%%%%%
-\subsection{Přehled kvantově-mechanických metod}
-Důležitým krokem \textit{ab initio} a semi-empirických metod je výběr bázové sady. Bázová sada je soubor vlnových funkcí reprezentující atomové orbitaly, jejichž vhodnou lineární kombinací (LCAO) lze následně vyjádřit vlnovou funkci molekuly. %Bázová sada obsahující nejmenší možný počet atomových orbitalů potřebných pro konstrukci molekulových orbitalů se označuje jako \textit{minimální báze}. 
-Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly Gaussova typu (GTO). Kombinace několika Gaussových orbitalů přibližuje tzv. Slaterův orbital (STO), který je pro výpočet vlnové funkce molekuly méně vhodný z důvodu složitosti výpočtů. Bázových sad existuje nepřeberné množství, např. bázové sady STO-3G, STO-4G či obecně STO-\textit{n}G, kde \textit{n} je počet orbitalů Gaussova typu reprezentujících jeden atomový orbital.
-%sady 6-31G* či 6-311G.
+Kvantově-chemické metody se dělí na tři hlavní skupiny, a to metody semi-empiric\-ké, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}. \textit{Ab initio} metody (lat. \textit{ab initio} - od počátku) staví výpočty na teoretickém aparátu a Schrödingerovu rovnici řeší exaktně, pouze za použití fyzikálních konstant, z čehož vyplývá jejich velká výpočetní náročnost (výpočty těchto metod škálují až s $n^7$, kde \textit{n} je počet elektronů systému \cite{qc_complexity}). Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE a pro urychlení výpočtů využívají kromě aproximací také data z experimentu. Metody odvozené z DFT nevycházejí z řešení vlnové fukce, ale své poznatky staví na elektronové hustotě v molekule \cite{Leach, Gasteiger:Textbook, Cramer}. %část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
 
-Krokem vedoucím k výpočtu hodnot parciálních nábojů je provedení populační analýzy, která popisuje rozložení elektronové hustoty v molekule. Příkladem je Mullikenova populační analýza (\textit{Mulliken Population Analysis}, MPA), % R. S. Mulliken, “Electronic population analysis on LCAO–MO molecularwave functions. I,”The Journal of Chemical Physics, vol. 23, no. 10, pp. 1833–1840, 1955.
-která elektronovou hustotu určuje dle obsazenosti atomových orbitalů  elektrony. V rámci chemické vazby je elektronová hustota rovnoměrně rozdělena mezi vazebné partnery, není tedy brána v potaz možná rozdílnost elektronegativit. Výsledky MPA jsou také silně závislé na použitém kvantově-mechanickém přístupu a na velikosti bázové sady.
-Nevýhody MPA, zejména nepřesnost výsledků související s rozšiřováním bázové sady, řeší přirozená populační analýza (\textit{Natural Population Analysis}, NPA), pracující s přirozenými atomovými orbitaly. 
-Přirozené atomové orbitaly jsou nejprve vypočteny z bázové sady a jsou následně použity pro výpočet ortonormálních přirozených vazebných orbitalů (\textit{Natural bonding orbitals}, NBO). Na základě NBO se poté provadí populační analýza. %  A. E. Reed, R. B. Weinstock and F. Weinhold. Natural population analysis.J. Chem.Phys. 83(2):735-746, 198
+Postup kvantově-chemické výpočtů pro popis rozložení elektronové hustoty se typicky skládá z následujících kroků: výběr metody, výběr bázové sady a provedení populační analýzy.
 
-Odlišný přístup finálního výpočtu parciálních atomových nábojů představuje metoda \textit{Atoms-in-Molecules} (AIM), která přiřazuje náboje atomům na základě integrace elektronové hustoty přes prostor příslušící danému atomu. Dalším možným přístupem je výpočet parciálních atomových nábojů na základě elektrostatických potenciálů molekuly (metody založené na \textit{Molecular Electrostatic Potential-derived charges}, MEP). 
+\subsubsection{Příklady kvantově-chemických metod}
+Následující příklady popisují Hartree-Fockovu metodu, metody odvozených z teorie funkcionálu hustoty a metody semi-empirické.
 
-
-\subsubsection{Hartree-Fockova metoda}
-Problém řešení víceelektronových systémů nastává při zahrnutí elektronových interakcí do výpočtu. Hartree-Fockova metoda rozkládá původní problém \textit{n}-elektronové Schrödingerovy rovnice na řešení \textit{n} jednoelektronových rovnic. Využívá přiblížení pomocí metody nezávislých částic (\textit{Self-Consistent Field}, SCF), která pracuje s modelem elektronu pohybujícím se v průměrném poli ostatních elektronů. HF metoda tedy nezahrnuje korelaci pohybu elektronů.
+\begin{itemize}
+    \item \textbf{Hartree-Fockova metoda}
+    
+    Tato raná \textit{ab initio} metoda řeší SE rozložením původní \textit{n}-elektronové vlnové fun\-kce na~řešení \textit{n} jednoelektronových rovnic. Tyto rovnice jsou určeny předpisem $\hat{F} \chi_i = \varepsilon_i \chi_i$, kde $\hat{F}$ je Fockův operátor (Hartreeho-Fockův hamiltonián) aplikovaný na jednoelektronový orbital $\chi_i$. Metoda pracuje iterativním způsobem, a to až do ustálení výsledných hodnot vlnových funkcí. Tento přístup se označuje termínem selfkonzistentní pole (angl. \textit{self-consistent field}, SCF) \cite{Levine}. 
 % ver2 
 %Interakce elektronu s ostatními elektrony je tedy aproximována na působení vnějšího elektronového pole na danou částici.
 % ver1 
 %Jednotlivé jednoelektronové rovnice tedy zahrnují působení vnějšího elektronového pole. 
-Jednoelektronové rovnice jsou určeny předpisem
-\begin{equation}
-    \hat{F} \chi_i = \varepsilon_i \chi_i
-\end{equation}
-kde Fockův operátor $\hat{F}$ je Hamiltonián aplikovaný na jednoelektronový (atomový nebo molekulový) orbital a $\varepsilon_i$ je odpovídající Langrangeův multiplikátor. Metoda pracuje iterativně a konečné řešení rovnic určuje na základě ustálení výsledků jednotlivých iterací výpočtu.
-
 % PŮVODNÍ TEXT K SCF: Problém řešení víceelektronových systémů nastává při zahrnutí elektronových interakcí do výpočtu. Interakce elektronů molekuly lze řešit pomocí přiblížení metody nezávislých částic (SCF, Self-Consistent Field), která pracuje s modelem elektronu pohybujícím se v průměrném poli ostatních elektronů. Původní problém se tak rozkládá na řešení jednoelektronových rovnic, zahrnující působení vnějšího elektronového pole. Teorii SCF využívá Hartree-Fockova metoda, označována jako HF-SCF. 
 
-% Jako zdroj uvest Quantum Chemistry, Ira N. Levine, Chapter 11 Many-electron atom;, Computattonal Chemistry, Errol Lewards
-
-\subsubsection{DFT}
-Metody založené na teorii funkcionálu hustoty (\textit{Density Functional Theory}, DFT) nevycházejí z řešení vlnové funkce, ale  poznatky staví na rozložení elektronové hustoty v molekule, ze které následně odvozují energii systému a další vlastnosti molekuly. Do výpočtů DFT metod je narozdíl od Hartee-Fockovy metody zahrnuta i korelační energie elektronů. Ve výpočtech figurují pouze tři neznámé (souřadnice \textit{x}, \textit{y}, \textit{z}), zatímco řešení Schrödingerovy rovnice obsahuje 4\textit{n} neznámých, kde \textit{n} představuje počet elektronů systému. Metody odvozené od DFT jsou tak výpočetně méně náročné a poskytují přesnější výsledky.
-
-Jedním z cílů DFT metod je výpočet celkové energie elektronů na základě elektronové hustoty.\textit{ Funkcionál} je v rámci DFT metod chápán jako zobrazení, které zobrazuje funkci, představující elektronovu hustotu, do množiny reálných čísel popisujících energii elektronů. Říkáme, že energie elektronů je funkcionálem elektronové hustoty. %slozitost elektronu SE: Lewards; Gasteiger; Leach; Levine; citovat články od Peti a Bichiho
+    \item \textbf{DFT - Density Functional Theory}
+    
+    Metody založené na teorii funkcionálu hustoty  nenásledují schéma kvan\-tově-chemických metod, ale své výpočty staví na rozložení elektronové hustoty, ze kterého odvozují energii systému a další vlastnosti molekuly \cite{dft_nmr}. Elektronová hustota je funkcí souřadnic \textit{x}, \textit{y}, \textit{z}. V porovnání s řešením Schrödingerovy rovnice, která pro systém s \textit{n} elektrony obsahuje 4\textit{n} neznámých, je její výpočet výrazně jednodušší. Termín 'funkcionál' je v kontextu DFT chápán jako zobrazení, které zobrazuje funkci, představující elektronovu hustotu, do množiny reálných čísel popisujících energii elektronů \cite{dft}.
+ %slozitost elektronu SE: Lewards; Gasteiger; Leach; Levine; citovat články od Peti a Bichiho
 % Myšlenka DFT: všecky elektronové vlastnosti se získají z elektronové hustoty (např. energie systému/energie základního stavu - Leach) (Peťa BP). Jednodušší v porovnání s výpočtem vlnové funkce, kde je zahrnut ještě popis elektronu. Leach: Cílem DFT je výpočet elektronové hustoty systému a zní získání celkové energie elektronů (electronic energy).
 % Typy používaných funkcionálů: Local Density Aproximation (LDA), Generalized Gradient Aproximation (GGA) a Hybrid Functionals (hybridní funkcionály).
-\subsubsection{Semiempirické metody}
-QM metody byly v době svého vzniku limitovány nedostatečnými výpočetními zdroji. Problém vyřešil rozvoj semi-empirických metod, které část výpočtů parametrizují nebo aproximují na základě experimentálních dat, přičemž se snaží přiblížit QM výpočtům. 
 
-Raná semi-empirická metoda CNDO (\textit{Complete Neglect of Differential Overlap}) využívá teorii SCF pro popis elektronových interakcí a je založena na ZDO aproximaci (\textit{Zero Differential Overlap}). Ta zamítá interakce atomových orbitalů lokalizovaných na různých atomech molekuly a pracuje pouze s interakcemi atomových orbitalů stejného typu lokalizovaných na stejném atomu. 
-%Ta dává všechny překryvové integrály popisující čtyři atomové orbitaly lokalizované na různých atomech rovny nule, čímž vyjadřuje, že interakcí těchto orbitalů nevzniká molekulový orbital. 
-Tyto hrubé aproximace nahradila metoda INDO  (\textit{Intermediate Neglect of Differential Overlap}) zahrnutím interakcí odlišných typů atomových orbitalů. Dalšími semi-empirickými metodami jsou např. NDDO, MNDO, PM3 nebo SAM1, založené na MNDO. 
+    \item \textbf{Semi-empirické metody}
+    
+    Semi-empirické metody část výpočtů aproximují a při řešení rovnic aplikují parametry odvozené z experimentálních dat, a to s cílem reprodukovat výsledky \textit{ab intio} výpočtů. Příkladem semi-empirické metody je metoda CNDO (\textit{Complete Neglect of Differential Overlap}) \cite{CNDO}. Metoda zamítá interakce atomových orbitalů lokalizovaných na různých atomech molekuly a pracuje pouze s interakcemi atomových orbitalů stejného typu lokalizovaných na stejném atomu. Tato aproximace byla v metodách navazujících na CNDO (INDO \cite{INDO}, MNDO \cite{MNDO}) rozšířena o interakci orbitalů lokalizovaných na jiných jádrech a interakci volných elektronových párů.
+\end{itemize}
 
 %část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
 % Atkins
@@ -117,6 +96,20 @@ Tyto hrubé aproximace nahradila metoda INDO  (\textit{Intermediate Neglect of D
 %- Atk: CNDO - všechny překryvové integrály popisující čtyři atomové orbitaly lokalizované na různých atomech jsou rovny nule = překryvem daných AO nevzniká MO
 %- INDO nahradila CNDO - nahrazení hrubých ZDO aproximací, zahrnutí vzájemných interakcí elektronů přislušících stejnému atomu
 %- Další vyvinuté metody: NDDO a z ní odvozená MNDO; dále AM1 nebo PM3
+
+\subsubsection{Bázová sada}
+Bázová sada je soubor vlnových funkcí reprezentující atomové orbitaly, jejichž vhodnou lineární kombinací (LCAO) lze následně vyjádřit vlnovou funkci molekuly. %Bázová sada obsahující nejmenší možný počet atomových orbitalů potřebných pro konstrukci molekulových orbitalů se označuje jako \textit{minimální báze}. 
+ % STO, GTO: handbook of chemoinf, Gasteiger
+Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly Gaussova typu (GTO). Kombinace několika Gaussových orbitalů přibližuje tzv. Slaterův orbital (STO), který je pro výpočet vlnové funkce molekuly méně vhodný z důvodu složitosti výpočtů. Příkladem bázových sad jsou sady STO-3G, STO-4G či obecně STO-\textit{n}G, kde \textit{n} je počet orbitalů Gaussova typu reprezentujících jeden atomový orbital. Dalšími bázovými sadami jsou např. 6-31G nebo 6-21*G \cite{basis_set}.
+%sady 6-31G* či 6-311G.
+
+\subsubsection{Populační analýza}
+Pomocí populační analýzy je získáno zastoupení elektronů v molekulových orbitalech (rozložení elektronové hustoty), ze kterého lze odvodit parciální atomové náboje. 
+
+V rámci Mullikenovy populační analýzy (\textit{Mulliken Population Analysis}, MPA) \cite{MPA} není brána v potaz rozdílnost elektronegativit vazebných partnerů a elektronová hustota na vytvořené chemické vazbě je tedy rovnoměrně rozdělena mezi příslušné atomy. Výsledky MPA jsou silně závislé na zvolené kvantově-chemické metodě a na velikosti bázové sady. Nevýhody MPA, zejména nepřesnost výsledků související s rozšiřováním bázové sady, řeší přirozená populační analýza (\textit{Natural Population Analysis}, NPA) \cite{NPA}, pracující s přirozenými atomovými orbitaly. Přirozené atomové orbitaly jsou odvozeny z bázové sady a jsou následně použity pro výpočet ortonormálních přirozených vazebných orbitalů (\textit{Natural bonding orbitals}, NBO). Na základě NBO se poté provadí populační analýza.
+
+Odlišný přístup finálního výpočtu parciálních atomových nábojů představuje metoda \textit{Atoms-in-Molecules} (AIM) \cite{AIM}, která přiřazuje náboje atomům na základě integrace elektronové hustoty přes prostor příslušící danému atomu. 
+
 \section{Empirické metody}
 Empirické metody výpočtu parciálních atomových nábojů byly vyvinuty v reakci na velkou výpočetní náročnost QM metod. V porovnání s QM metodami dosahují velmi přesných výsledků, a to ve výrazně kratším čase. Empirické metody se dělí na dvě hlavní skupiny, a to metody pracující s topologií molekuly (jinak řečeno s její 2D strukturou) a metody pracující s prostorovým uspořádáním molekuly. Metody zastupující obě uvedené skupiny, jmenovitě metoda PEOE a metoda EEM, jsou popsány v odstavcích níže.
 \subsection{PEOE}
