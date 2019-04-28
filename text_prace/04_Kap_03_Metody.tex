@@ -22,8 +22,14 @@ Struktura SDF záznamů je následující:
 \end{itemize}
 
 \section{PDB formát}
+- vznikl v 70. letech 20. století, velké množství struktur je zapsáno v tomto formátu x standardním formátem pro zápis molekul je v dnešní době mmCIF formát.
+- počítačová reprezentace makromolekul, biologicky aktivních  komplexů apod., 
+- struktury určené pomocí experimentu - rentgenová krystalografie, NMR
+- 
+- 
 \subsection{Nomenklatura atomových typů aminokyselin}
-
+navržené atomové typy vychází z notace atomů aminokyselin dle IUPAC \cite{AA_nomenclature}, která je použita pro specifikaci atomů v PDB souborech. 
+- IUPAC nomenklatura označuje atomy vedlejšího řetězce aminokyseliny dle vzdálenosti od uhlíku s navázanou karboxylovou skupinou a aminoskupinou. Řecká písmena v označení atomů (C$^\alpha$, C$^\beta$, C$^\gamma$, C$^\delta$, C$^\varepsilon$, C$^\zeta$, C$^\eta$) jsou v této nomenklatuře nahrazena velkými písmeny latinské abecedy (CA, CB, CG, CD, CE, CZ, CH). Navržená klasifikace přiřazuje atomové typy obdobně jako výše uvedený klasifikátor substruct.py, tedy na základě příslušnosti atomů ke strukturním celkům.
 \section{SMILES}
 % zdroje: http://www.daylight.com/smiles/index.html; Leach - Chemoinformatics; Bunin- Chemoinformatics
 SMILES \cite{Weininger, Bunin, Leach_chemo} (angl. \textit{Simplified Molecular Input Line Entry System}) je počítačová notace molekul či molekulových reakcí definovaná pomocí ASCII symbolů. SMILES reprezentace byla vyvinuta v 80. letech pro usnadnění práce s chemickými daty  a zvýšení efektivity jejich zpracování (např. prohledávání molekulových databází, vyhledávání podstruktur v molekulách). Zápis SMILES vychází z teorie grafů. Molekula je v tomto kontextu chápána jako graf, tzn. uspořádaná dvojice množiny vrcholů a množiny hran $G(V,E)$. Průchodem molekulového grafu vzniká jednoznačná SMILES reprezentace molekuly, kde je každý vrchol (atom) a každá hrana (vazba) navštívena pouze jednou.
@@ -32,7 +38,7 @@ Základními prvky SMILES notace jsou symboly atomů a vazeb. Atomy jsou repreze
 %benzen je pomocí SMILES notace zapsán jako \verb|'c1ccccc1'|, cyklohexan jako \verb|'C1CCCCC1'|
 ). Atomy vodíku jsou implicitně doplněny na základě valence základního stavu atomu, na který jsou navázány, a nemusí být  zadány explicitně. Pro~specifikaci počtu navázaných vodíků je třeba použít zápisu '\verb|[AHX]|', kde \verb|A| je symbol prvku a \verb|X| počet navázaných vodíků. Vazba jednoduchá, dvojná, trojná a aromatická jsou reprezentovány symboly '\verb|-|', '\verb|=|', '\verb|#|' a '\verb|:|'. Vazby jednoduché a aromatické nejsou ve většině SMILES výrazů explicitně zadány.
 
-SMILES notace definuje zápis strukturních prvků sloučenin jako jsou cykly, větvení řetězců, chiralita a geometrická izomerie (E/Z a cis/trans izomerie). Přítomnost cyklu ve sloučenině indikují symboly atomů následované stejným číslem, viz např. výše uvedený SMILES pro benzen. Tyto atomy tvoří vazebný pár a cyklus tak uzavírají. Symboly atomů a vazeb uzavřené v kulatých závorkách značí vedlejší větve hlavního řetězce \cite{SMILES_exm}. 
+SMILES notace definuje zápis strukturních prvků sloučenin jako jsou cykly, větvení řetězců, chiralita a izomerie (E/Z a cis/trans izomerie). Přítomnost cyklu ve sloučenině indikují symboly atomů následované stejným číslem, viz např. výše uvedený SMILES pro benzen. Tyto atomy tvoří vazebný pár a cyklus tak uzavírají. Symboly atomů a vazeb uzavřené v kulatých závorkách značí vedlejší větve hlavního řetězce \cite{SMILES_exm}. 
 %SMILES notace umožňuje také zápis chemických reakcí. 
 % pod SMILES dat obrazek z Leache, pokud SMARTS budou dostatecne dlouhe, pokracovat s nimi pod obrazkem
 
