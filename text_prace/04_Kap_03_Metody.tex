@@ -22,14 +22,22 @@ Struktura SDF záznamů je následující:
 \end{itemize}
 
 \section{PDB formát}
-- vznikl v 70. letech 20. století, velké množství struktur je zapsáno v tomto formátu x standardním formátem pro zápis molekul je v dnešní době mmCIF formát.
-- počítačová reprezentace makromolekul, biologicky aktivních  komplexů apod., 
-- struktury určené pomocí experimentu - rentgenová krystalografie, NMR
-- 
-- 
+Formát PDB (\textit{Protein Data Bank}) je molekulový formát vyvinutý pro počítačovou reprezentaci biologicky aktivních makromolekul. Existuje ve dvou verzích, v původní verzi 2.0 a v novější verzi 3.0. V PDB souboru jsou obsaženy informace o prostorovém uspořádání molekuly, strukturní faktory pro rentgenovou krystalografii a data z NMR experimentu. PDB formát je v současnosti nahrazován standardizovaným formátem mmCIF, jelikož je ale značná část struktur stále reprezentována formátem PDB, je tento formát doposud používán.
+
+PDB formát nese kromě dat o prostorovém uspořádání struktury informace o primární a sekundární struktuře nukleových kyselin a proteinů. Informace ohledně 3D struktury nesou záznamy (tj. řádky PDB souboru) začínající sekvencí 'ATOM'. Tyto záznamy obsahují na definovaných pozicích sériové číslo atomu, zkratku residua, jemuž atom přísluší, \textit{x}, \textit{y} a \textit{z} souřadnice, symbol prvku apod. Záznamy 'HETATM' označují nestandardní residua (např. ligandy nebo kofaktory enzymů) a mají stejnou strukturu jako záznamy 'ATOM'. Záznamy 'HELIX' a 'SHEET' popisují sekundární strukturu proteinů. 'SSBOND' je záznam vyhrazený pro specifikaci disulfidických můstků mezi cysteinovými residui \cite{PDB1, PDB2}. 
+
 \subsection{Nomenklatura atomových typů aminokyselin}
-navržené atomové typy vychází z notace atomů aminokyselin dle IUPAC \cite{AA_nomenclature}, která je použita pro specifikaci atomů v PDB souborech. 
-- IUPAC nomenklatura označuje atomy vedlejšího řetězce aminokyseliny dle vzdálenosti od uhlíku s navázanou karboxylovou skupinou a aminoskupinou. Řecká písmena v označení atomů (C$^\alpha$, C$^\beta$, C$^\gamma$, C$^\delta$, C$^\varepsilon$, C$^\zeta$, C$^\eta$) jsou v této nomenklatuře nahrazena velkými písmeny latinské abecedy (CA, CB, CG, CD, CE, CZ, CH). Navržená klasifikace přiřazuje atomové typy obdobně jako výše uvedený klasifikátor substruct.py, tedy na základě příslušnosti atomů ke strukturním celkům.
+PDB soubory používají pro specifikaci atomů proteinogenních aminokyselin atomové typy deklarované nomenklaturou IUPAC \cite{AA_nomenclature}. Tato nomenklatura označuje atomy vedlejšího řetězce aminokyseliny dle vzdálenosti od uhlíku s navázanou karboxylovou skupinou a aminoskupinou. Řecká písmena v označení atomů (C$^\alpha$, C$^\beta$, C$^\gamma$, C$^\delta$, C$^\varepsilon$, C$^\zeta$, C$^\eta$) jsou v nomenklatuře nahrazena velkými písmeny latinské abecedy (CA, CB, CG, CD, CE, CZ, CH). Pro specifické atomy aminokyselin (vodík navázaný na C$^\alpha$, kyslík COO$^-$ skupiny hydrolyzovaný při tvorbě peptidické páteře) jsou definovány speciální atomové typy (HA, OXT), atomy aromatických jader však nejsou odlišeny. Mezi verzemi 2.0 a 3.0 PDB formátu došlo ke změně názvů vybraných atomových typů, popsaná nomenklatura tak není napříč PDB soubory plně konzistentní. 
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6.5cm]{example-image-a}
+\caption{Porovnání názvů atomových typů molekuly prolinu v jednotlivých verzích PDB formátu. Vlevo je zobrazena verze 2.0, vpravo verze 3.0.}
+\end{center}
+\end{figure}
+% https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html
+% ftp://ftp.wwpdb.org/pub/pdb/doc/format_descriptions/Format_v33_Letter.pdf
+
 \section{SMILES}
 % zdroje: http://www.daylight.com/smiles/index.html; Leach - Chemoinformatics; Bunin- Chemoinformatics
 SMILES \cite{Weininger, Bunin, Leach_chemo} (angl. \textit{Simplified Molecular Input Line Entry System}) je počítačová notace molekul či molekulových reakcí definovaná pomocí ASCII symbolů. SMILES reprezentace byla vyvinuta v 80. letech pro usnadnění práce s chemickými daty  a zvýšení efektivity jejich zpracování (např. prohledávání molekulových databází, vyhledávání podstruktur v molekulách). Zápis SMILES vychází z teorie grafů. Molekula je v tomto kontextu chápána jako graf, tzn. uspořádaná dvojice množiny vrcholů a množiny hran $G(V,E)$. Průchodem molekulového grafu vzniká jednoznačná SMILES reprezentace molekuly, kde je každý vrchol (atom) a každá hrana (vazba) navštívena pouze jednou.
@@ -43,6 +51,7 @@ SMILES notace definuje zápis strukturních prvků sloučenin jako jsou cykly, v
 % pod SMILES dat obrazek z Leache, pokud SMARTS budou dostatecne dlouhe, pokracovat s nimi pod obrazkem
 
 \section{SMARTS}
+\label{SMARTS}
 SMARTS notace \cite{SMARTS_intro, SMARTS_exm} (angl. \textit{SMiles ARbitrary Target Specification}) je odvozena z notace SMILES, kterou rozšiřuje o další funkční prvky. Každý SMILES výraz je validním SMARTS výrazem, opačný přístup však vždy neplatí. Příčinou toho je fakt, že SMARTS je narozdíl od  notace SMILES, která slouží pro popis celých molekul, zaměřena na vyhledávání podstruktur. Validní SMARTS výraz '\verb|cOc|', popisující kyslík navázaný na dva aromatické uhlíky (můžeme najít např. v molekule difenyletheru), neodpovídá žádné reálné molekule, a není proto platným SMILES výrazem. 
 
 SMARTS rozšiřuje SMILES notaci o užití logických operátorů. Symboly '\verb|&|' a '\verb|;|' značí logické \verb|AND|, přičemž symbol '\verb|&|' má vyšší prioritu v kombinaci s ostatními logickými operátory. Symbol '\verb|,|' značí logické \verb|OR|. Pro negaci výrazů je použit symbol '\verb|!|'. Užití jmenovaných logických operátorů je ilustrováno v tabulce \ref{logops} níže.

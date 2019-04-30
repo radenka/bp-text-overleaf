@@ -2,8 +2,7 @@
 Tato sekce popisuje implementaci knihovny ATTYC (\textit{ATom TYpe Classification}), která přiřazuje atomům molekulového souboru atomové typy na základě zvolené vlastnosti atomu. Pro formát PDB je určen klasifikátor \verb|peptide|, klasifikátory \verb|hbo|, \verb|hybrid|, \verb|part-|\\\verb|ners| a \verb|substruct| se vztahují k formátu  SDF. Knihovna je implementována v jazyce Python ver. 3.7 a obsahuje následující soubory:
 
 \vspace{0.4cm}
-\noindent \hangpara{1.5cm}{1} \textbf{\_\_init\_\_.py} obsahuje funkci \verb|classify_atoms(input_file, classifier)|
-\footnote{Argumenty \texttt{file\_output} a \texttt{screen\_output} jsou pro větší přehlednost v textu vynechány.}
+\noindent \hangpara{1.5cm}{1} \textbf{\_\_init\_\_.py} obsahuje funkci \verb|classify_atoms(input_file, classifier)|\footnote{Argumenty \texttt{file\_output} a \texttt{screen\_output} jsou pro větší přehlednost v textu vynechány.}
 spouštějící klasifikaci atomů molekulové sady za uži\-tí zvoleného klasifikátoru
 
 \medskip
@@ -50,15 +49,15 @@ Výstup knihovny ATTYC je specifikován argumenty \verb|file_output| a \verb|scr
 %%%%%%%%%%%%%%%% nova verze, zacinam s fci classify_atoms
 \section{Spuštění klasifikace}
 % \texttt{classify\_atoms(input\_file, classifier)}
-Klasifikace atomů do atomových typů ve vstupním souboru je spuštěna voláním fun\-kce \verb|classify_atoms(input_file, classifier, file_output, screen_output)|, která je 
-implementována v modulu \textbf{\_\_init\_\_.py}. Funkce je z modulu \textbf{main.py} volána příkazem \verb|attyc.classify_atoms(input_file, classifier)|. Tento příkaz spouští klasifikaci atomů z libovolného programu v jazyce Python, do kterého byla integrována knihovna ATTYC. Pro spuštění klasifikace je nutné do interpretu Pythonu programu nainstalovat knihovnu RDKit. 
+Klasifikace atomů do atomových typů vstupního molekulového souboru je spuštěna voláním fun\-kce \verb|classify_atoms(input_file, classifier)|, která je 
+implementována v modulu \textbf{\_\_init\_\_.py}. Funkce je z modulu \textbf{main.py} volána příkazem \verb|attyc.class|\\ \verb|ify_atoms(input_file, classifier)|. Tento příkaz spouští klasifikaci atomů z libovolného programu v jazyce Python, do kterého byla integrována knihovna ATTYC. Pro spuštění klasifikace je nutné do interpretu Pythonu daného programu nainstalovat knihovnu RDKit. 
 
 V rámci funkce \verb|classify_atoms(input_file, classifier)| je kontrolována e\-xistence vstupního molekulového souboru a zvoleného klasifikátoru. Pokud je klasifikátor (tzn. podtřída třídy Classifier) implementován ve složce \textbf{\textbackslash classifiers} a je povolen pro daný molekulový formát, je vytvořena jeho instance. Tato instance přiřazuje atomům v molekulové sadě odpovídající atomový typ.
 
 %voláním metody \verb|get_atom_types(molecule)|, která je volána skrze metodu \verb|classify_atoms_by_classifier(moleculeset, is_pdb)| třídy Classifier. Metoda \verb|get_atom_types(molecule)| je abstraktní metodou třídy Classifer a je implementována všemi podtřídami třídy Classifier.
 
 \section{Dědičnost třídy Classifier}
-Třída Classifier definuje rozhraní pro podtřídy definované v modulech ve složce \textbf{\textbackslash classifiers}. Všechny podtřídy třídy Classifier obsahují atribut \verb|assigned_atom_types|, do~kterého ukládají přiřazené atomové typy, a atribut \verb|name|. Kromě getterů uvedených atribu\-tů dědí podtřídy metodu \verb|classify_atoms_by_classifier(moleculeset, is_pdb)|. Ta\-to metoda volá abstraktní metodu \verb|get_atom_types(molecule)|, kterou každá podtřída třídy Classifier implementuje. Podtřídy, které představují klasifikátory \verb|substruct| a \verb|peptide|, obsahují kromě výše uvedených atributů také atributy \verb|SMARTS_atom_types| a~\verb|PDB_atom_types|, do kterých ukládají data z externích souborů potřebná pro klasifikaci atomů.
+Třída Classifier definuje rozhraní pro podtřídy definované v modulech ve složce \textbf{\textbackslash classifiers}. Všechny podtřídy třídy Classifier obsahují atribut \verb|assigned_atom_types|, do~kterého ukládají přiřazené atomové typy, a atribut \verb|name|. Kromě getterů uvedených atribu\-tů dědí podtřídy metodu \verb|classify_atoms_by_classifier(moleculeset, is_pdb)|. Ta\-to metoda volá abstraktní metodu \verb|get_atom_types(molecule)|, kterou každá podtřída třídy Classifier implementuje. Podtřídy, které představují klasifikátory \verb|substruct| a \verb|peptide|, obsahují kromě výše uvedených atributů také atributy, do kterých ukládají data z externích souborů potřebná pro klasifikaci atomů.
 
 Každý modul ve složce \textbf{\textbackslash classifiers} obsahuje právě jednu podtřídu třídy Classifier, tedy právě jeden klasifikátor. Moduly v této složce spolu nijak neinteragují, knihovna je tak snadno rozšiřitelná o další libovolné klasifikátory. 
 
@@ -70,12 +69,13 @@ Každý modul ve složce \textbf{\textbackslash classifiers} obsahuje právě je
     \label{classes_UML}
 \end{figure}
 
-
+    
 \section{Přiřazení atomových typů}
 % \texttt{get\_atom\_types(molecule)}
-Každá podtřída třídy Classifier (dále jen 'klasifikátor') implementuje abstraktní metodu nadtřídy \verb|get_atom_types(molecule)|, která atomům molekuly přiřazuje odpovídající atomové typy. Klasifikátory \verb|hbo|, \verb|hybrid| a \verb|partners| implementují tuto metodu poměrně triviálně, neboť využívají příslušné metody tříd Atom a Bond z knihovny RDKit. Názvy metod použitých pro klasifikaci jsou uvedeny v tabulce níže.
+Každá podtřída třídy Classifier (dále jen 'klasifikátor') implementuje abstraktní metodu nadtřídy \verb|get_atom_types(molecule)|, která atomům molekuly přiřazuje odpovídající atomové typy. Klasifikátory \verb|hbo|, \verb|hybrid| a \verb|partners| implementují tuto metodu triviálně, neboť využívají příslušné metody tříd Atom a Bond z knihovny RDKit (tab.  \ref{atom_rdkit_methods}). 
+%Názvy metod použitých pro klasifikaci jsou uvedeny v tabulce níže.
 
-Pro klasifikátory \verb|substruct| a \verb|peptide| nejsou v třídě Atom v knihovně RDKit implementovány triviální metody, atomy jsou proto těmito klasifikátory klasifikovány pomocí dat z externích souborů. Struktura vytvořených externích souborů a logika těchto klasifikací je popsána v následujících sekcích. 
+Pro klasifikátory \verb|substruct| a \verb|peptide| nejsou v třídě Atom v knihovně RDKit implementovány triviální metody, atomy jsou proto těmito klasifikátory klasifikovány pomocí dat z externích souborů. Struktura vytvořených externích souborů a logika  klasifikací je popsána v následujících sekcích. 
 
 \begin{table}[h]
 \begin{center}
@@ -92,26 +92,24 @@ Pro klasifikátory \verb|substruct| a \verb|peptide| nejsou v třídě Atom v kn
         % \hline
     \end{tabular}
     \end{small}
-    \caption{Klíčové metody z knihovny RDKit použité pro přiřazení atomových typů klasifikátory \texttt{hbo}, \texttt{hybrid} a \texttt{substruct}.}
+    \caption{Klíčové metody z knihovny RDKit použité pro přiřazení atomových typů klasifikátory \texttt{hbo}, \texttt{hybrid} a \texttt{partners}.}
 \end{center}
 \end{table}
-\subsection{Klasifikátor \texttt{substruct}}
+\subsection{Klasifikátor 'substruct'}
+% \texttt{substruct}
 % \label{substruct}
 Klasifikátor \verb|substruct| rozděluje atomy do atomových typů na základě příslušnosti k~charakteristickým strukturním celkům. Byl implementován s cílem reprodukovat atomové typy, které byly úspěšně použity pro parametrizaci empirických metod výpočtu parciálních atomových nábojů \cite{attyp1, attyp2}. 
 
-Strukturní motivy a funkční skupiny jsou v molekulách detekovány pomocí výrazů SMARTS, a to metodou třídy Mol \verb|GetSubstructMatches(SMARTS_pattern)| implementovanou v knihovně RDKit. 
-Příkaz \verb|molecule.GetSubstructMatches(SMARTS_pa|\\\verb|ttern)|, kde \verb|molecule| je instance třídy Mol, 
-vrací n-tici (datový typ \textit{tuple}) n-tic, které  obsahují prvky typu integer. Tato čísla označují atomy molekuly vyhovující danému SMARTS dotazu. Čísla atomů vycházejí z pořadí, ve kterém jsou atomy definovány v SDF souboru. 
-%a odpovídají pořadí definice atomů v SDF souboru.
-Příklad lze vidět na obr. \ref{smarts_tuples}.
+Strukturní motivy jsou v molekulách detekovány pomocí výrazů SMARTS (kap. \ref{SMARTS}) metodou  \verb|GetSubstructMatches(SMARTS_pattern)|\footnote{Metoda  \texttt{GetSubstructMatches(Chem.MolFromSmarts(SMARTS\_pattern))} je v textu pro názornost syntakticky zjednodušena.} třídy Mol z kni\-hovny RDKit. 
+Příkaz \verb|molecule.GetSubstructMatches(SMARTS_pattern)|, kde \verb|molecule| je instance třídy Mol, 
+vrací n-tici (datový typ \textit{tuple}) n-tic, které  obsahují prvky typu integer. Tato čísla označují atomy molekuly vyhovující danému SMARTS dotazu. 
+%Čísla atomů vycházejí z pořadí, ve kterém jsou atomy definovány v SDF souboru.
+Kód níže ukazuje užití SMARTS výrazu k vyhledání sulfonové skupiny S(=O)$_2$OH nebo jejích aniontů.
+
 
 \lstset{language=Python, keywordstyle=\color{blue}, basicstyle=\small\ttfamily, commentstyle=\color{orange}, label={smarts_exm}}
-
 % pridat do obrazku vice SMARTSu pro nazornost?
-\begin{figure}[h]
-\label{smarts_tuples}
 \begin{lstlisting}
-# molecule je instance tridy Mol
 SMARTS_pattern = "[SX4](=[OX1])(=[OX1])[OX2,OX1-]"
 pattern_atoms = molecule.GetSubstructMatches(SMARTS_pattern)
 for atom_tuple in pattern_atoms:
@@ -119,29 +117,41 @@ for atom_tuple in pattern_atoms:
 print(pattern_atoms)
 
 Python 3.7.0 (default, Apr 9 2019, 10:31:47)
->>> (5, 7, 8, 11) ('S', 'O', 'O', 'O')
->>> (21, 22, 26, 29) ('S', 'O', 'O', 'O')
->>> ((5, 7, 8, 11), (21, 22, 26, 29))
+(5, 7, 8, 11) ('S', 'O', 'O', 'O')
+(21, 22, 26, 29) ('S', 'O', 'O', 'O')
+((5, 7, 8, 11), (21, 22, 26, 29))
 \end{lstlisting}
-\cprotect\caption{Ukázka funkce \verb|GetSubstructMatches(SMARTS_pattern)|. Pomo\-cí SMARTS výrazu
-jsou v molekule vyhledány sulfonové skupiny S(=O)$_2$OH nebo její anionty. Indexy atomů jsou v n-ticích zapsány v pořadí odpovídajícímu prvkům ve SMARTS výrazu. Reálná implementace metody pro získání uvedeného výstupu, \verb|molecule.GetSubstructMatches(Chem.MolFromSmarts(SMARTS_pattern))|, je v textu i v obrázku pro názornost syntakticky zjednodušena.}
+
+Pro klasifikaci atomů je klíčovým souborem \textbf{SMARTS\_atom\_types.txt}. Soubor obsahuje SMARTS výrazy, pomocí nichž jsou v molekule hledány strukturní motivy, a atomové typy, které jsou atomům strukturního motivu explicitně přiřazeny.
+Pořadí detekce strukturních motivů odpovídá pořadí SMARTS vstupů v souboru. Některé atomy molekuly mohou příslušet více strukturním motivům, které SMARTS vstupy detekují. Uspořádání SMARTS vstupů v souboru tak ovlivňuje výsledný atomový typ, který je atomu přiřazen. Atomové typy přiřazené jednotlivým atomům lze v souboru předefinovat, stejně jako změnit pořadí SMARTS výrazů, a upravit tak logiku klasifikace a optimalizovat výsledky parametrizace.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=7cm]{example-image-a}
+    \caption{Struktura souboru \textbf{SMARTS\_atom\_types.txt}. Pro každý SMARTS výraz jsou definovány atomové typy atomů dané funkční skupiny.}
+    \label{SMARTS_file}
 \end{figure}
 
-Klíčovým prvkem klasifikace je 
-- na základě znalosti výstupů funkce \verb|GetSubstructMatches(SMARTS_pattern)| pro jsou v souboru SMARTS\_atom\_types.txt definovány atomové typy 
+SMARTS výrazy v souboru \textbf{SMARTS\_atom\_types.txt} byly převzaty ze stránek společnosti Daylight Chemical Information System, Inc. \cite{SMARTS_exm}, pro účely klasifikace atomů však musely být ve většině případů dodatečně upraveny. Vybrané SMARTS výrazy byly rozšířeny o detekci většího počtu atomů nebo byly upraveny tak, aby %se zamezilo redundanci výsledků jednotlivých SMARTS dotazů.
+se výsledky jednotlivých SMARTS dotazů nepřekrývaly. 
 
+Úpravu pro snížení redundance výsledků ilustruje následující příklad. Vyhledání karboxylové skupiny za užití výrazu \verb|[CX3](=O)[OX2][H]| je v externím souboru následováno detekcí alkoholové skupiny pomocí výrazu \verb|[CX4,c][OX2][H]|. Pokud by nebyla specifikována vaznost uhlíku ('\verb|CX4|'), vyhledal by daný SMARTS výraz i OH skupiny, které by byly součástí dříve určených karboxylových skupin. Rozšíření SMARTS dotazů o detekci více atomů se ve většině případů týkalo detekce vodíků. Pro vyhledání primárních aminů je v uvedeném online zdroji specifikován výraz \verb|[NX3;H2!$(NC=O)]|. Tento výraz byl upraven
+na dotaz \verb|[NX3;!\$(NC=O)]([H])[H]|, kterým jsou narozdíl od původního výrazu vodíky již detekovány.
+ 
+\subsection{Klasifikátor 'peptide'}
+% \texttt{peptide}
+Klasikace atomů peptidových řetězců přiřazuje atomové typy obdobně jako výše uvedený klasifikátor \verb|substruct|, tedy na základě příslušnosti atomů ke strukturním celkům. Logika vstupního souboru klasifikátoru \verb|peptide| se od struktury externího souboru klasifikátoru \verb|substruct| liší, neboť nepracuje s vyhledáváním strukturních motivů pomocí SMARTS výrazů. 
 
-- validace volně dostupných SMARTS výrazů užitím online nástroje LiteMol a jejich úprava -> zpřesnění dotazů, odstranění redundantních výstupů 
-- strukturní motivy hledány v pořadí, v jakém jsou definovány SMARTS vstupy v souboru SMARTS\_atom\_types.txt - pořadí SMARTS vstupů ovlivňuje výsledný atomový typ, který je atomu přiřazen
-- SMARTS vstupy definovány od nejzvláštnjších k nejvíce obecným 
-- atomům, které nebyly vyhledáváním strukturních motivů označeny, je přiřazen atomový typ 'plain'
+Symboly atomových typů aminokyselin popsané nomenklaturou IUPAC (CA, CB, HXT, OXT,...) popisují atomy všech proteinogenních residuí. Jednotlivé atomové typy však nijak nereflektují vlastnosti atomů, které popisují, chemická okolí ato\-mů označených stejným atomovým typem se tak často liší (srov. obr. \ref{aa_different_atom_types}). Pro implementaci klasifikátoru \verb|peptide| tak bylo klíčové provést rešerši existujících atomových typů aminokyselin, určit napříč všemi aminokyselinami výskyt těchto atomových typů a každé dvojici 'atomový typ  nomenklatury IUPAC - aminokyselina' přiřadit atomový typ reflektující chemické okolí daného atomu. Navržená klasifikace atomů aminokyselin byla implementována s cílem reprodukovat atomové typy, které byly použity pro úspěšnou parametrizaci empirických metod \cite{GDAC, attyp_peptides}.
 
+\begin{figure}[h]
+\label{aa_different_atom_types}
+\begin{center}
+\includegraphics[width=7cm]{example-image-a}
+\caption{Strukturní vzorce histidinu a kyseliny asparagové s atomovými typy nomenklatury IUPAC. Atomy CG a HD2 jsou v molekulách součástí odlišných strukturních celků, je tedy vhodné každému z nich přiřadit jiný atomový typ.}
+\end{center}
+\end{figure}
 
-\subsection{Klasifikátor \texttt{peptide}}
-%- zpracování PDB souborů, mmCIF formát není knihovnou RDKit podporován
-%- PDB de facto zastaralý, jako standard jej nahradil formát mmCIF
-%- pro účely bakalářské práce není omezením; cíl: otestovat, zda je navržená klasifikace použitelná (pozdější integrace openbabelu pro konverzi souborů?)
-
+% vložit ilustrační obrázek souboru PDB_atom_types.txt? 
 
 
  
