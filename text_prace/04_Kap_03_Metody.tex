@@ -4,10 +4,10 @@ V následující sekci je popsán formát vstupních souborů vytvořeného prog
 \section{Structure-Data file (SDF)}
 Formát SDF \cite{sdf_pdf, sdf_clanek} patří s formáty Molfile, RGfile, rxnfile, RDfile a XDfile mezi CTfile formáty (\textit{Chemical Table file})  vyvinuté pro reprezentaci chemických dat. SDF je rozšířením formátu Molfile (zkr. MOL). 
 %Narozdíl od formátu MOL umožňuje SDF zápis více záznamů do jednoho souboru. 
-Umožňuje zápis více záznamů do jednoho souboru, přičemž každý záznam ukončený sekvencí \verb|'$$$$'| reprezentuje jednu molekulu. 
+Umožňuje zápis více záznamů do jednoho souboru, přičemž každý záznam ukončený sekvencí '\verb|$$$$|' reprezentuje jednu molekulu. 
 
 Záznamy v SDF souboru mají pevně danou strukturu, odvozenou od struktury MOL souborů. Společnými  částmi záznamu obou formátů jsou tzv. \textit{header block} a tzv. \textit{connection table} (viz obr. x). % K vlozenemu obrazku dat komentar, ze to je struktura spolecna pro SDF a MOL ze vlastnosti v properties block v SDF nejsou
-V~SDF záznamu mohou být narozdíl od formátu MOL za řádek \verb|'M END'| připojeny specifikace biologických či fyzikálně-che\-mic\-kých vlastností dané molekuly. 
+V~SDF záznamu mohou být narozdíl od formátu MOL za řádek '\verb|M END|' připojeny specifikace biologických či fyzikálně-che\-mic\-kých vlastností dané molekuly. 
 % Základní pravidla pro tvorbu SDF záznamů jsou následující
 
 Struktura SDF záznamů je následující:
@@ -22,7 +22,7 @@ Struktura SDF záznamů je následující:
 \end{itemize}
 
 \section{PDB formát}
-Formát PDB (\textit{Protein Data Bank}) je molekulový formát vyvinutý pro počítačovou reprezentaci biologicky aktivních makromolekul. Existuje ve dvou verzích, v původní verzi 2.0 a v novější verzi 3.0. V PDB souboru jsou obsaženy informace o prostorovém uspořádání molekuly, strukturní faktory pro rentgenovou krystalografii a data z NMR experimentu. PDB formát je v současnosti nahrazován standardizovaným formátem mmCIF, jelikož je ale značná část struktur stále reprezentována formátem PDB, je tento formát doposud používán.
+Formát PDB (\textit{Protein Data Bank}) je molekulový formát vyvinutý pro počítačovou reprezentaci biologicky aktivních makromolekul. Existuje ve dvou verzích, v původní verzi 2.0 a v novější verzi 3.0. V PDB souboru jsou obsaženy informace o prostorovém uspořádání molekuly, strukturní faktory pro rentgenovou krystalografii a data z NMR experimentu. PDB formát je v současnosti nahrazován standardizovaným formátem mmCIF.
 
 PDB formát nese kromě dat o prostorovém uspořádání struktury informace o primární a sekundární struktuře nukleových kyselin a proteinů. Informace ohledně 3D struktury nesou záznamy (tj. řádky PDB souboru) začínající sekvencí 'ATOM'. Tyto záznamy obsahují na definovaných pozicích sériové číslo atomu, zkratku residua, jemuž atom přísluší, \textit{x}, \textit{y} a \textit{z} souřadnice, symbol prvku apod. Záznamy 'HETATM' označují nestandardní residua (např. ligandy nebo kofaktory enzymů) a mají stejnou strukturu jako záznamy 'ATOM'. Záznamy 'HELIX' a 'SHEET' popisují sekundární strukturu proteinů. 'SSBOND' je záznam vyhrazený pro specifikaci disulfidických můstků mezi cysteinovými residui \cite{PDB1, PDB2}. 
 
@@ -40,7 +40,7 @@ PDB soubory používají pro specifikaci atomů proteinogenních aminokyselin at
 
 \section{SMILES}
 % zdroje: http://www.daylight.com/smiles/index.html; Leach - Chemoinformatics; Bunin- Chemoinformatics
-SMILES \cite{Weininger, Bunin, Leach_chemo} (angl. \textit{Simplified Molecular Input Line Entry System}) je počítačová notace molekul či molekulových reakcí definovaná pomocí ASCII symbolů. SMILES reprezentace byla vyvinuta v 80. letech pro usnadnění práce s chemickými daty  a zvýšení efektivity jejich zpracování (např. prohledávání molekulových databází, vyhledávání podstruktur v molekulách). Zápis SMILES vychází z teorie grafů. Molekula je v tomto kontextu chápána jako graf, tzn. uspořádaná dvojice množiny vrcholů a množiny hran $G(V,E)$. Průchodem molekulového grafu vzniká jednoznačná SMILES reprezentace molekuly, kde je každý vrchol (atom) a každá hrana (vazba) navštívena pouze jednou.
+SMILES \cite{Weininger, Bunin, Leach_chemo} (angl. \textit{Simplified Molecular Input Line Entry System}) je počítačová notace molekul či molekulových reakcí definovaná pomocí ASCII symbolů. SMILES reprezentace byla vyvinuta v 80. letech pro usnadnění práce s chemickými daty  a zvýšení efektivity jejich zpracování (např. prohledávání molekulových databází, vyhledávání podstruktur v molekulách). Zápis SMILES vychází z teorie grafů. Molekula je v~tomto kontextu chápána jako graf, tzn. uspořádaná dvojice množiny vrcholů a množiny hran $G(V,E)$. Průchodem molekulového grafu vzniká jednoznačný SMILES zápis molekuly, kde je každý vrchol (atom) a každá hrana (vazba) navštívena pouze jednou.
 
 Základními prvky SMILES notace jsou symboly atomů a vazeb. Atomy jsou reprezentovány symbolem příslušného prvku. Pokud se jedná o atom aromatický, je pro jeho specifikaci použito malé písmeno (SMILES notace benzenu je '\verb|c1ccccc1|', cyklohexanu '\verb|C1CCCCC1|'
 %benzen je pomocí SMILES notace zapsán jako \verb|'c1ccccc1'|, cyklohexan jako \verb|'C1CCCCC1'|
@@ -78,9 +78,9 @@ Dalším specifickým prvkem SMARTS výrazů je konstrukce  '\verb|$(XY)|' , kde
     \caption{Příklad užití logických operátorů v notaci SMARTS. V pravém sloupci jsou popsány vyhledané strukturní motivy.}
 \end{table}
 \section{RDKit}
-RDKit \cite{rdk_info} je volně dostupná open-source knihovna pro práci s chemickými daty, určena pro jazyky Java a Python. RDKit poskytuje standardní funkce pro zpracování chemických dat jako je načítání široké škály molekulových formátů, práce s 2D a 3D reprezentací molekul, zápis molekulových reakcí, hledání strukturních motivů molekul a vizualizace výstupů. Kromě jmenovaných funkcí umožňuje propojení s PostgreSQL databází. Základní datové struktury a algoritmy RDKitu jsou implementovány v jazyce C++, což v porovnání s interpretovaným jazykem Python zvyšuje jejich výkonnost.
+RDKit \cite{rdk_info} je volně dostupná open-source knihovna pro práci s chemickými daty, určena pro jazyky Java a Python. RDKit poskytuje standardní funkce pro zpracování chemických dat, jako je načítání široké škály molekulových formátů, práce s 2D a 3D reprezentací molekul, zápis molekulových reakcí, hledání strukturních motivů molekul a vizualizace výstupů. Kromě jmenovaných funkcí umožňuje propojení s PostgreSQL databází \cite{Postgre}. Základní datové struktury a algoritmy RDKitu jsou implementovány v jazyce C++, což v porovnání s interpretovaným jazykem Python zvyšuje jejich výkonnost.
 
 \section{MACH}
-MACH je software pro parametrizaci empirických metod výpočtu parciálních atomových nábojů (viz kap. Parametrizace \ref{param}) vyvinutý v rámci diplomové práce Bc. Ondřeje Schindlera v Národním centru pro výzkum biomolekul v Brně. 
+MACH je software pro parametrizaci empirických metod výpočtu parciálních atomových nábojů (viz kap. Parametrizace \ref{param}) vyvinutý v rámci diplomové práce Bc. Ondřeje Schindlera v Národním centru pro výzkum biomolekul v Brně \cite{mach}. 
 
-Software MACH byl vyvinut s cílem optimalizovat parametrizaci empirických metod výpočtu parciálních nábojů za použití optimalizační metody Guided Minimization \cite{guided_m}. Software je vyvinut v jazyce Python za využití specializovaných knihoven pro práci s vědeckými daty (NumPy, SciPy, NLopt). V softwaru byla úspešně implementována parametrizace empirických metod EEM, PEOE, SFKEEM \cite{sfkeem}, QEq \cite{molsimul}, ACKS2 \cite{acsk2} a MGC \cite{mgc}. Pro potřeby této bakalářské práce byly využity parametrizace prvních dvou jmenovaných metod. Kromě parametrizace MACH umožňuje výpočet parciálních nábojů molekul pomocí vybrané empirické metody, extrakci informací o vstupním SDF souboru či srovnání obsahu dvou nábojových sad.
+Software MACH byl vyvinut s cílem optimalizovat parametrizaci empirických metod výpočtu parciálních nábojů za použití optimalizační metody Guided Minimization \cite{guided_m}. Software je vyvinut v jazyce Python za využití specializovaných knihoven pro práci s vědeckými daty (SciPy \cite{scipy}, NLopt \cite{nlopt}). V softwaru byla úspešně implementována parametrizace empirických metod EEM, PEOE, SFKEEM \cite{sfkeem}, QEq \cite{molsimul}, ACKS2 \cite{acsk2} a MGC \cite{mgc}. Pro potřeby této bakalářské práce byly využity parametrizace prvních dvou jmenovaných metod. Kromě parametrizace MACH umožňuje výpočet parciálních nábojů molekul pomocí vybrané empirické metody, extrakci informací o vstupním SDF souboru či srovnání obsahu dvou nábojových sad.

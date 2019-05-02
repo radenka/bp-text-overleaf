@@ -17,7 +17,7 @@
 % 
 % ukázka opakování na řádkovém zlomu ukázka opakování na řádkovém zlomu zl $c\setminus a\setminus b$
 % 
-Teoretická část práce seznamuje čtenáře s konceptem parciálních atomových nábojů a~s metodami jejich výpočtu. Blíže popisuje teoretické základy empirických metod EEM a PEOE, které byly použity v praktické části práce, podobně jako uvedené statistické veličiny.
+Teoretická část práce seznamuje s konceptem parciálních atomových nábojů a~s metodami jejich výpočtu. Blíže popisuje teoretické základy empirických metod EEM a PEOE, které byly použity v praktické části práce, podobně jako uvedené statistické veličiny.
 
 \section{Parciální atomové náboje}
 
@@ -30,7 +30,7 @@ Parciální atomové náboje jsou reálná čísla, která popisují asymetrick�
 \caption{Rozložení elektronové hustoty v molekule ethanolu.}
 \end{center}
 \end{figure}
-Koncept parciálních atomových nábojů je pouze teoretický, hodnoty nábojů proto nelze získat pomocí experimentu \cite{Leach}. Jelikož se parciální atomové náboje uplatňují při predikci fyzikálních, chemických a biologických vlastností molekul, bylo pro jejich stanovení vyvinuto množství výpočetních metod. Tyto se dělí na metody kvantově-chemi\-cké a metody empirické. Kvantově-chemické metody představují standardní přístup výpočtu parciálních atomových nábojů,  avšak použití těchto metod může být limitováno jejich velkou časovou náročností. Empirické metody pro výpočet parciálních atomových nábojů používají v rámci výpočtů parametrizovaná data a představují tak časově méně náročnou alternativu kvantově-chemického přístupu \cite{Gasteiger:Textbook}. 
+Koncept parciálních atomových nábojů je pouze teoretický, hodnoty nábojů proto nelze získat pomocí experimentu \cite{Leach}. Jelikož se parciální atomové náboje uplatňují při predikci fyzikálních, chemických a biologických vlastností molekul, bylo pro jejich stanovení vyvinuto množství výpočetních metod. Tyto se dělí na metody kvantově-chemi\-cké a metody empirické. Kvantově-chemické metody představují standardní přístup výpočtu parciálních atomových nábojů,  avšak použití těchto metod může být limitováno jejich velkou časovou náročností. Empirické metody používají v rámci výpočtů parametrizovaná nebo exprimentálně naměřená data a představují tak časově méně náročnou alternativu kvantově-chemického přístupu \cite{Gasteiger:Textbook}. 
 % Kvantově-chemické metody poskytují přesnější výsledky, ovšem za cenu vysoké časové náročnosti. Empirické metody dosahují v porovnání s QM metodami velmi dobrých výsledků, a to ve výrazně kratším čase. 
 %Žádná z vyvinutých empirických metod však není uznána za všeobecně platnou a jejich použitelnost se hodnotí na základě reprodukovatelnosti výsledků. 
 
@@ -45,11 +45,11 @@ V této podkapitole je popsán teoretický aparát kvantové mechaniky, na kter�
 Kvantová mechanika se rozvinula ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát již nepostačoval pro popis mikrosvěta.  Základním principem QM je vlnově-korpuskulární dualismus, který mikročástici připisuje jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem.
 Vlna, popisující částici, je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí. Tato funkce popisuje dynamický stav částice a nese informaci o výskytu částice v prostoru \cite{Cely}. Vlnová funkce elektronu tak přispívá k popisu rozložení elektronové hustoty v molekule. 
 
-Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému, z níž lze odvodit elektrostatický potenciál \cite{elstat_pot} nebo termodynamické vlastnosti molekuly \cite{td}. Vlnová funkce je řešením Schrödingerovy rovnice
+Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému, z níž lze odvodit elektrostatický potenciál \cite{elstat_pot} nebo termodynamické vlastnosti molekuly \cite{td}. Vlnová funkce je řešením Schrödingerovy rovnice (\textit{Schrödinger's Equation}, SE)
 \begin{equation}
     H\Psi = E\Psi
 \end{equation}
-kde $H$ je operátor hamiltonián a $E$ je energie systému. Hamiltonián působí vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru \cite{Volatron}. 
+kde $H$ je operátor hamiltonián a $E$ je energie systému. Hamiltonián působí na vlnovou funkci $\Psi$ a transformuje ji na funkci jinou. Řešením Schrödingerovy rovnice je soubor funkcí, které lze po aplikaci hamiltoniánu zapsat jako součin původní funkce a~skaláru $E$. Takovéto funkce označujeme jako \textit{vlastní funkce} a odpovídající skaláry jako \textit{vlastní hodnoty} operátoru \cite{Volatron}. 
  %Řešení Schrödingerovy rovnice pro daný systém tedy odpovídá hledání dvojic vlastních funkcí a vlastních hodnot operátoru $H$ vyhovujících rovnici xx.
  
  Schrödingerova rovnice je exaktně řešitelná pouze pro vybrané problémy, např. pro atom vodíku. Pro víceelektronové systémy je nutno do výpočtu zavádět velké množství aproximací, z nichž nejznámější je Born-Oppenheimerova aproximace \cite{BO_approx_Pilar}.
@@ -100,7 +100,7 @@ Následující příklady popisují Hartree-Fockovu metodu, metody odvozených z
 \subsubsection{Bázová sada}
 Bázová sada je soubor vlnových funkcí reprezentující atomové orbitaly, jejichž vhodnou lineární kombinací (LCAO) lze následně vyjádřit vlnovou funkci molekuly. %Bázová sada obsahující nejmenší možný počet atomových orbitalů potřebných pro konstrukci molekulových orbitalů se označuje jako \textit{minimální báze}. 
  % STO, GTO: handbook of chemoinf, Gasteiger
-Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly Gaussova typu (GTO). Kombinace několika Gaussových orbitalů přibližuje tzv. Slaterův orbital (STO), který je pro výpočet vlnové funkce molekuly méně vhodný z důvodu složitosti výpočtů. Příkladem bázových sad jsou sady STO-3G, STO-4G či obecně STO-\textit{n}G, kde \textit{n} je počet orbitalů Gaussova typu reprezentujících jeden atomový orbital. Dalšími bázovými sadami jsou např. 6-31G nebo 6-21*G \cite{basis_set}.
+Pro popis funkcí reprezentujících atomové orbitaly se používají orbitaly Gaussova typu (GTO). Kombinace několika Gaussových orbitalů přibližuje tzv. Slaterův orbital (STO), který je pro výpočet vlnové funkce molekuly méně vhodný z důvodu složitosti výpočtů. Příkladem bázových sad jsou sady STO-3G, STO-4G či obecně STO-\textit{n}G, kde \textit{n} je počet orbitalů Gaussova typu reprezentujících jeden atomový orbital. Dalšími bázovými sadami jsou např. 6-31G nebo 6-21G* \cite{basis_set}.
 %sady 6-31G* či 6-311G.
 
 \subsubsection{Populační analýza}
@@ -111,7 +111,8 @@ V rámci Mullikenovy populační analýzy (\textit{Mulliken Population Analysis}
 Odlišný přístup finálního výpočtu parciálních atomových nábojů představuje metoda \textit{Atoms-in-Molecules} (AIM) \cite{AIM}, která přiřazuje náboje atomům na základě integrace elektronové hustoty přes prostor příslušící danému atomu. 
 
 \section{Empirické metody}
-Empirické metody výpočtu parciálních atomových nábojů nevycházejí z řešení vlnové funkce systému, ale definují vlastní postupy výpočtu. U vybraných empirických metod není cílem reprodukovat hodnoty parciálních atomových nábojů získaných kvanto\-vě-chemickými přístupy, zatímco u jiných je tento cíl prioritou.
+Empirické metody výpočtu parciálních atomových nábojů nevycházejí z řešení vlnové funkce systému, ale definují vlastní postupy výpočtu. Vybrané empirické metody se snaží reprodukovat náboje získané kvantově-chemickými přístupy skrze parametrizaci vůči referenční sadě nábojů, jiné definují parciální atomové náboje vlastním způsobem. Narozdíl od kvantově-chemických metod se metody empirické vyznačují nízkou výpočetní náročností.
+%U vybraných empirických metod není cílem reprodukovat hodnoty parciálních atomových nábojů získaných kvanto\-vě-chemickými přístupy, zatímco u jiných je tento cíl prioritou.
 
 Empirické metody se dělí na dvě hlavní skupiny, a to metody pracující s topologií molekuly (popisuje počet a typ vazebných partnerů, násobnost vazeb apod.) a~metody pracující s prostorovým uspořádáním molekuly. Metody zastupující obě uvedené skupiny, jmenovitě metoda PEOE a metoda EEM, jsou popsány v odstavcích níže.
 
@@ -133,7 +134,7 @@ je ovlivněna náboji ostatních orbitalů a tedy i celkovým nábojem příslu�
 Při vzniku vazby dochází vlivem elektronegativity atomů k přesunu elektronů od elektropozitivnějšího atomu směrem k elektronegativnějšímu. Interagují spolu přísluš\-né atomové orbitaly a dochází k částečné ekvalizaci (vyrovnání) jejich nábojů. Metoda PEOE pracuje iterativním způsobem. Množ\-ství přeneseného náboje mezi atomy \textit{A} a \textit{B}, pokud má atom \textit{B} vyšší elektronegativitu, je definováno jako 
 \begin{equation}
 \label{transfer}
-    Q^{\langle k \rangle} = \frac{\chi_B^{\langle k \rangle} - \chi_A^{\langle k \rangle}}{\chi_A^+} \cdot \alpha^k
+    Q^{\langle k \rangle} = \frac{\chi_B^{\langle k \rangle} - \chi_A^{\langle k \rangle}}{\chi_A^+} \cdot \Bigg(\frac{1}{2}\Bigg)^k
     % \Bigg(\frac{1}{2}\Bigg)
 \end{equation}
 kde $\chi_A^+$ označuje elektronegativitu kationtu atomu \textit{A} a \textit{k} iteraci výpočtu. Iniciální výpočet elektronegativity orbitalu (\ref{PEOE_elneg}) pracuje s formálním nábojem atomu. Po výpočtu příspěvků přenesených nábojů (\ref{transfer}) všech vazebných partnerů atomu je náboj daného atomu přepočítán a použit v další iteraci. Množství přeneseného náboje mezi dvěma atomy se v každé iteraci výpočtu snižuje a vypočtené hodnoty nábojů atomů postupně konvergují. Přibližně po šesté iteraci dochází k ustálení výsledných hodnot. 
@@ -142,7 +143,7 @@ Parciální atomové náboje vypočtené metodou PEOE se prokázaly vhodné pro 
 % Díky přesnosti a rychlosti výpočtů byla PEOE implementována do většiny programů pro molekulové modelování jako základní metoda výpočtu atomových nábojů. Reziduální elektronegativita atomů, získaná na základě PEOE, se prokázala vhodnou pro popis indukčního efektu v molekulách. 
 
 \subsection{EEM}
-Metoda vyrovnání elektronegativity (\textit{Electronegativity Equalization Method}, EEM) \cite{eem} byla publikována v r. 1986. Teoretický základ metody vychází z teorie funkcionálu hustoty, na němž je vystavěn matematický aparát pro výpočet atomových nábojů. Cílem metody je přiblížit vypočtené hodnoty parciálních atomových nábojů hodnotám získaným pomocí kvantově-chemických metod. Metoda škáluje s $n^3$, kde \textit{n} je počet atomů v systému. Na principu EEM byly vyvinuty další empirické metody, např. Selfconstistent Functional Kernel Equalized Electronegativity Method (SFKEEM) \cite{sfkeem} nebo \textit{Atom-Bond Electronegativity Equalization Method} (ABEEM) \cite{abeem1, abeem2}.
+Metoda vyrovnání elektronegativity (\textit{Electronegativity Equalization Method}, EEM) \cite{eem} byla publikována v r. 1986. Teoretický základ metody vychází z teorie funkcionálu hustoty, na němž je vystavěn matematický aparát pro výpočet atomových nábojů. Cílem metody je přiblížit vypočtené hodnoty parciálních atomových nábojů hodnotám získaným pomocí kvantově-chemických metod. Metoda škáluje s $n^3$, kde \textit{n} je počet atomů v~systému. Na principu EEM byly vyvinuty další empirické metody, např. \textit{Selfconstistent Functional Kernel Equalized Electronegativity Method} (SFKEEM) \cite{sfkeem} nebo \textit{Atom-Bond Electronegativity Equalization Method} (ABEEM) \cite{abeem1, abeem2}.
 %EEM využívá referenční náboje získané kvantově-chemickými metodami, pomocí nichž určuje číselné parametry itegrované do vlastních výpočtů. - tohle se týká spíš parametrizace... 
 
 %Díky nízké výpočetní náročnosti ($\Theta(N^3)$, kde \textit{N} je počet atomů systému) a poměrně přesným výsledkům se stala metoda hojně využívanou a byla použita např. pro výpočet parciálních nábojů zeolitů, organických molekul nebo polypeptidů.
@@ -207,12 +208,12 @@ Parametrizace empirických metod pro výpočet parciálních atomových nábojů
 \begin{enumerate}
 \itemsep0em
     \item výběr tréninkové a testovací sady molekul obsahující atomy, které v dostatečné míře reprezentující atomové typy, pro něž hledáme hodnoty empirických parametrů
-    \item výpočet parciálních atomových nábojů tréninkové sady pomocí kvantově-chemi\-cké metody
+    \item výpočet parciálních atomových nábojů tréninkové sady pomocí kvantově-chemi\-cké metody (náboje vypočtené QC metodami se označují jako náboje referenční)
     \item výpočet parametrů empirické metody na základě nábojů získaných v kroku 2
     \item výpočet nábojů testovací sady molekul kvantově-chemickou a parametrizovanou empirickou metodou
 \end{enumerate}
 
-Parametrizace empirických metod je optimalizačním problémem. Nalezení parametrů, pomocí nichž jsou vypočteny náboje korespondující s QC metodami, odpovídá nalezení globálního minima (nějaké funkce, která něco popisuje). Příkladem globální optimalizační metody je Guided Minimization \cite{guided_m}.
+Parametrizace empirických metod je optimalizačním problémem. Nalezení parametrů, pomocí nichž jsou vypočteny náboje korespondující s QC metodami, odpovídá nalezení globálního minima objektivní funkce, která popisuje podobnost mezi referenčními náboji a náboji vypočtenými pomocí empirické metody. Příkladem globální optimalizační metody pro parametrizaci empirických metod je metoda Guided Minimization \cite{guided_m}.
 
 %Cílem EEM je na základě znalosti parciálních nábojů odvozených z QM určit hodnoty parametrů $A_i$, $B_i$ a $\kappa$ (viz \ref{EEM_matrix}) pro každý atom molekuly. Pro zjednodušení výpočtu jsou odpovídající řádky matice (atomy molekuly) sloučeny pod jeden atomový typ, pro který jsou počítány výše zmíněné parametry. Ty jsou na základě znalosti dílčích atomových nábojů ($q_1$, $q_2$, $q_3$, ... , $q_N$) a elektronegativity molekuly $\overline{\chi}$ získány z rovnice \ref{EEM_elneg} upravené na tvar 
 % \begin{equation}
@@ -229,11 +230,15 @@ Parametrizace empirických metod je optimalizačním problémem. Nalezení param
 %dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
 
 \subsection{Atomové typy}
-Pro každý atomový typ jsou v rámci parametrizace empirických metod hledány vhodné hodnoty parametrů vystupujících ve výpočtech parciálních atomových nábojů. Napříč parametrizacemi empirických metod zaznamenáváme různé úrovně návrhu atomových typů, od triviálních klasifikací definujících atomové typy na základě protonových čísel \cite{sfkeem} až po komplexní rozdělení zahrnující funkční skupiny či příslušnost k větším atomovým celkům (aromatické systémy, postranní řetězce aminokyselin \cite{GDAC}). Detailní dělení atomových typů lze nalézt zejména v publikacích orientujících se na parametrizaci metod pro výpočet parciálních nábojů komplexních celků, např. polypeptidů \cite{attyp_peptides}. Tabulka \ref{atom_types_examples} ukazuje atomové typy definované v publikaci „Kirchhoff Atomic Charges Fitted to Multipole Moments: Implementation for a Virtual Screening System“ \cite{attyp2}.
+Pro každý atomový typ jsou v rámci parametrizace hledány vhodné hodnoty parametrů vystupujících ve výpočtech parciálních atomových nábojů. Napříč parametrizacemi empirických metod zaznamenáváme různé úrovně návrhu atomových typů, od triviálních klasifikací definujících atomové typy na základě protonových čísel \cite{sfkeem} až po komplexní rozdělení zahrnující funkční skupiny či příslušnost k větším strukturním celkům (aromatické systémy, postranní řetězce aminokyselin \cite{GDAC}). Detailní dělení atomových typů lze nalézt zejména v publikacích orientujících se na parametrizaci metod pro výpočet parciálních nábojů komplexních celků, např. polypeptidů \cite{attyp_peptides}. Tabulka \ref{atom_types_examples} ukazuje atomové typy definované v publikaci „Kirchhoff Atomic Charges Fitted to Multipole Moments: Implementation for a Virtual Screening System“ \cite{attyp2}.
 
-Hrubé klasifikace atomů do atomových typů, např. na základě protonového čísla, nesou riziko nepřesných výpočtů atomových nábojů, neboť neberou v potaz chemické okolí atomu. Detailní dělení atomových typů naopak nese riziko přetrénování tréninkové sady molekul, což způsobuje chybné přiřazení atomových nábojů v sadě validační. 
+% Hrubé klasifikace atomů do atomových typů, např. na základě protonového čísla, nesou riziko nepřesných výpočtů atomových nábojů, neboť neberou v potaz chemické okolí atomu. Detailní dělení atomových typů naopak nese riziko přetrénování tréninkové sady molekul, což způsobuje chybné přiřazení atomových nábojů v sadě validační. 
 
-\begin{table}[]
+Hrubé klasifikace atomů do atomových typů, např. na základě protonového čísla, nesou riziko nepřesných výpočtů atomových nábojů, neboť neberou v potaz chemické okolí atomu. Detailní dělení atomových typů naopak způsobuje špatnou přenositelnost klasifikace mezi tréninkovou a validační sadou molekul, neboť nese riziko přetrénování tréninkové sady. Parametrizace vybrané empirické metody může být detailním dělením atomů do atomových typů výrazně ztížena, neboť v přímé závislosti na množství atomových typů roste počet hledaných empirických parametrů.
+% což způsobuje, že klasifikace atomů je mezi tréninkovou a validační sadou špatně přenositelná
+%což způsobuje chybné přiřazení atomových nábojů v sadě validační. 
+\medskip
+\begin{table}[h]
     \centering
     \begin{tabular}{c|c}
          &  \\
@@ -268,26 +273,14 @@ Hrubé klasifikace atomů do atomových typů, např. na základě protonového 
          &  \\
          &  \\
          &  \\
-         &  \\
-         &  \\
-         & 
+
     \end{tabular}
     \caption{Atomové typy definované v rámci empirické metody Kirchoff charge model (KCM). Parametry metody jsou elektronegativita a tvrdost atomu.}
     \label{atom_types_examples}
 \end{table}
 
-
-%Atomové typy jsou nástrojem parametrizace empirických metod výpočtu parciálních atomových nábojů. Definice atomových typů souvisí s charakteristickými chemickými vlastnostmi atomů (hybridizace, vazebný partner, nejvyšší řád vazby), které tyto atomové typy popisují. Každý atomový typ je definován takovou charakteristikou atomu, na základě které atom vykazuje odlišné chemické vlastnosti od jiných atomů, a je tedy vhodné pro něj definovat samostatný atomový typ. Názorným příkladem může být separace atomu uhlíku do tří atomových typů na základě jeho hybridizace. Prostorové uspořádání orbitalů uhlíku je v hybridizacích sp$^3$, sp$^2$, sp diametrálně odlišné a předurčuje tak tvorbu odlišných typů vazeb s vazebnými partnery. 
-
-
-%- silná souvislost s parametrizací empirických metod výpočtu parciálních at. nábojů; přiřazení atomu ke zvolenému atomovému typu, pro který jsou vypočteny empirické parametry
-%- otázky/úkoly bp: Jak jemná či hrubá může být kategorizace atomů, aby následná parametrizace poskytovala co nejpřesnější výsledky? + otestovat
-%Jsou v rámci parametrizace některé charakteristiky atomu vhodnější pro volbu atomových typů než charakteristiky jiné? - chrakteristika = klasifikátor. Navrhnuté klasifikátory: hybridizace, nejvyšší řád vazby, atomová skupina (blízké chemické okolí)
-%- různé úrovně návrhu atomových typů napříč empirickými metodami: od triviálních atomových typů klasifikujících atom podle jejich protonového čísla po komplexní rozdělení zahrnující nabité funkční skupiny či příslušnost k větším atomovým celkům (aromatická jádra, postranní řetězce aminokyselin)
-%- souvislost návrhu atomových typů s typem zkoumaných molekul (pro výpočet nábojů polypeptidů definováno více atomových typů)
-
 \section{Statistické pojmy}
-Úspěšnost parametrizace empirických metod se hodnotí na základě porovnání tréninkové a validační sady. K tomuto srovnání slouží uvedené statistické veličiny. Náhodné veličiny \textit{X} a \textit{Y} ve vzorcích reprezentují tréninkovou a testovací sadu.
+Úspěšnost parametrizace empirických metod se hodnotí na základě srovnání hodnot empiricky vypočtených nábojů s referenčními hodnotami, a to na tréninkové nebo validační sadě. K tomuto srovnání slouží uvedené statistické veličiny. Náhodné veličiny \textit{X} a \textit{Y} ve vzorcích reprezentují sadu referenčních a empirických nábojů, proměnné $x_i$ a~$y_i$ označují odpovídající hodnoty nábojů srovnávané dvojice. Proměnná \textit{n} značí velikost datového souboru.
 
 \subsection{Průměrná a maximální absolutní odchylka}
 Průměrná absolutní odchylka (ang. \textit{Mean Absolute Error}, MAE) je dána aritmetickým průměrem absolutních hodnot rozdílů hodnot $x_i$ a $y_i$ příslušných náhodných veličin. Po odstranění absolutních hodnot by vzorec popisoval tzv. \textit{Mean Bias Error} (MBE). 
@@ -297,11 +290,11 @@ Průměrná absolutní odchylka (ang. \textit{Mean Absolute Error}, MAE) je dán
 
 Maximální absolutní odchylka popisuje největší rozdíl nalezený mezi hodnotami $x_i$ a $y_i$ náhodných veličin \textit{X} a \textit{Y} \cite{oxford}.
 \begin{equation}
-    \text{ABSMAX}(X,Y) = max \lvert x_i - y_i \rvert
+    \text{ABSMAX}(X,Y) = \max_{1 \leq i \leq n} \lvert x_i - y_i \rvert
 \end{equation}
 
 \subsection{RMSD}
-Veličina RMSD (\textit{Root Mean Square Deviation}, někdy uváděná též jako \textit{Root Mean Square Error}) \cite{rmsd} popisuje míru odlišnosti dvojic odpovídajících hodnot ($x_i$,$y_i$) náhodných veličin \textit{X} a \textit{Y} napříč datovým souborem. Je definována jako odmocnina ze střední kvadratické chyby (\textit{Mean Square Deviation}, MSD). Stejně jako rozptyl je tato veličina kvůli kvadrátu rozdílu hodnot $x_i$ a $y_i$ citlivá na odlehlé a chybné hodnoty, které se promítají do vyšších výsledných hodnot RMSD srovnávaných datových sad. 
+Veličina RMSD (\textit{Root Mean Square Deviation}, někdy uváděná též jako \textit{Root Mean Square Error}) \cite{rmsd} popisuje míru odlišnosti dvojic hodnot ($x_i$,$y_i$) napříč datovým souborem. Je definována jako odmocnina ze střední kvadratické chyby (\textit{Mean Square Deviation}, MSD). Stejně jako rozptyl je tato veličina kvůli kvadrátu rozdílu hodnot $x_i$ a $y_i$ citlivá na odlehlé a chybné hodnoty, které se promítají do vyšších výsledných hodnot RMSD srovnávaných datových sad. 
 \begin{equation}
     \text{RMSD}(X,Y) = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - y_i)^2} 
 \end{equation}
@@ -313,15 +306,22 @@ Pro kvantifikaci funkčního vztahu dvou sledovaných veličin užíváme tzv. P
     {\sum_{i=1}^n ((x_i - \overline{x})(y_i - \overline{y}))}
     {\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}
 \end{equation}
-kde hodnoty $x_i$, ..., $x_n$, $y_i$, ...,$y_n$ jsou \textit{i}-té prvky dvourozměrného náhodného vektoru o velikosti \textit{n} realizovaného dvěma náhodnými veličinami \textit{X} a \textit{Y}, a kde $\overline{x}$, $\overline{y}$ jsou aritmetické průměry naměřených hodnot veličin \textit{X} a \textit{Y}. 
+%kde hodnoty $x_i$, ..., $x_n$, $y_i$, ...,$y_n$ jsou \textit{i}-té prvky dvourozměrného náhodného vektoru o velikosti \textit{n} realizovaného dvěma náhodnými veličinami \textit{X} a \textit{Y}, a 
+kde $\overline{x}$ a $\overline{y}$ jsou aritmetické průměry naměřených hodnot veličin \textit{X} a \textit{Y}. 
 
-PCC nabývá hodnot z intervalu $\langle-1, 1 \rangle$, přičemž hodnoty koeficientu blízké číslu -1 nebo 1 indikují silnou lineární korelaci mezi pozorovanými veličinami. Linearita vztahu je dobře pozorovatelná v grafu (viz obr x.x.x), kde jsou dvojice hodnot ($x_i$,$y_i$) znázorněny jako body v dvourozměrné soustavě souřadnic. Interpretace hodnoty \textit{k} Pearsonova korelačního koeficientu je následující: 
+PCC nabývá hodnot z intervalu $\langle-1, 1 \rangle$, přičemž hodnoty koeficientu blízké číslu -1 nebo 1 indikují silnou lineární korelaci mezi pozorovanými veličinami. Linearita vztahu je dobře pozorovatelná v grafu (viz obr \ref{PCC_obr}), kde jsou dvojice hodnot ($x_i$,$y_i$) znázorněny jako body v dvourozměrné soustavě souřadnic. Interpretace hodnoty \textit{k} Pearsonova korelačního koeficientu je následující: 
 \begin{itemize}
     \item pokud je \textit{k} kladné, pak veličiny \textit{X} a \textit{Y} vykazují kladnou korelaci (pokud se hodnota veličiny \textit{Y} zvětšuje, pak hodnota\textit{ X} roste)
     \item pokud je \textit{k} záporné, pak veličiny \textit{X} a \textit{Y} vykazují zápornou korelaci (v závislosti na zvětšující se hodnotě veličiny \textit{Y} hodnota \textit{X} klesá)
     \item pokud je \textit{k} rovno 0, pak veličiny \textit{X} a \textit{Y} nejsou lineárně korelované
 \end{itemize}
 
-%- značen r, nabývá hodnot z intervalu $\langle-1, 1 \rangle$; čím více se hodnota koeficientu blíží číslu -1 nebo 1, tím je korelace mezi pozorovanými veličinami silnější
-%  Statistické metody / Jiří Anděl volné na kotlářské
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6cm]{example-image-a}
+\caption{Vizualizace lineární korelace dvou náhodných veličin. Směrem zleva zobrazují grafy lineární závislost veličin s hodnotami Pearsonova korelačního koeficientu 0,9; 0 a -0.8.}
+\label{PCC_obr}
+\end{center}
+\end{figure}
+
 
