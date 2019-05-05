@@ -1,9 +1,18 @@
 \chapter{Úvod}
 \setcounter{page}{1}
 \pagenumbering{arabic}
+Reaktivita molekuly popisuje interakci molekuly s ostatními sloučeninami. Nejběžnější způsob popisu reaktivity molekuly je skrze její elektrostatické vlastnosti, které jsou pří\-mo odvozené z rozložení elektronů v molekule. Užitečným nástrojem popisu rozložení elektronové hustoty jsou parciální atomové náboje, neboť aproximují elektronovou hustotu v molekule na reálné číslo.
+
+Jelikož jsou parciální náboje pouze teoretickým konceptem a nelze je získat pomocí experimentu, jsou jejich hodnoty stanoveny pomocí výpočetních metod. Standardní přístup představují kvantově-chemické metody, které vycházejí z exaktního řešení Schrödingerovy rovnice a pro velké systémy jsou z hlediska náročnosti výpočtů prakticky nepoužitelné. Empirické metody výpočtu parciálních atomových nábojů naopak představují rychlejší a zároveň poměrně přesnou alternativu kvantově-chemické\-ho přístupu, optimalizace těchto metod je proto aktuálním tématem výpočetní chemie. 
+
+Cílem vybraných empirických metod (EEM, PEOE) je reprodukovat hodnoty nábojů získané kvantově-chemickými metodami, a to za použití vhodných empirických parametrů. Parametry empirických výpočtů lze odvodit z experimentálních dat, ve většině případů je však nutno jejich hodnoty určit explicitně. Parametrizace empirických metod je proces, v rámci kterého jsou hledány hodnoty empirických parametrů s cílem reprodukovat referenční náboje vypočtené vybranou kvantově-chemickou metodou. Počet hledaných parametrů se odvíjí od počtu atomových typů definovaných pro popis zvolené molekulové sady. 
+
+Cílem této práce bylo analyzovat výsledky parametrizací metod EEM a PEOE v závislosti na různých děleních atomů do atomových typů na základě vybraných atomových charakteristik. Klasifikace atomů byla implementována jako knihovna jazyka Python s~podporou zpracování molekulových formátů SDF a PDB. S využitím externího nástroje byly pro každou klasifikaci atomů provedeny a vyhodnoceny parametrizace výše uvedených empirických metod.
 
 
-Distribuce elektronů v m
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%% GENERUJ TEXT %%%%%%%%%%%%%
 

@@ -37,6 +37,8 @@
 % \usepackage[english]{babel}
 % \usepackage{czech}
 
+
+
 %%%%%%%%%%%%
 %% Muzete si zkusit zmenit font dokumentu - pak ale musite v souboru zemnit nektera nastaveni (nebot je nastaveno
 %% \overfullrule10pt je preteceni textu ihned vyznaceno cernym obdelnikem)
@@ -118,14 +120,26 @@
 
 \PocetStran{počet stran od druhé stránky dokumentu po poslední stránku obsahu\,$+$\,počet stránek práce od první strany Úvodu}
 
-\KlicovaSlova{parciální atomové náboje, atomový typ, klasifikátor, EEM, PEOE, empirické metody}{partial atomic charges, atom type, EEM, PEOE, empirical methods}
+\KlicovaSlova{parciální atomové náboje, atomový typ, klasifikátor, EEM, PEOE, empirické metody, parametrizace}{partial atomic charges, atom type, EEM, PEOE, empirical methods, parameterization}
 
 \Abstrakty%
-{Parciální atomové náboje}%
-{In this thesis we study}
+{Parciální atomové náboje jsou vhodnou charakteristikou pro popis elektrostatických vlastností molekul. 
+Pro jejich výpočet bylo vyvinuto množství kvantově-chemic\-kých a empirických metod, přičemž ve srovnání s kvantově-chemickými metodami je výpočetní náročnost empirických metod výrazně nižší. Ve výpočtech vybraných empirických metod vystupují neznámé (parametry), které lze získat z experimentálních dat nebo pomocí procesu tzv. parametrizace. 
+
+Parametrizace empirických metod je netriviální výpočetní problém, který je mimo jiné ovlivněn dělením atomů do atomových typů. Bakalářská práce se zaměřuje na optimalizaci parametrizace empirických metod, a to skrze analýzu rozdělení atomů do atomových typů na základě vybraných charakteristik (hybridizace, nejvyšší řád vazby, příslušnost ke strukturnímu celku, vazební partneři atomu). 
+
+Výsledky klasifikací byly užity pro parametrizaci empirických metod EEM a PEOE. Rozdělení atomů do atomových typů atomů dle příslušnosti ke strukturním celkům poskytly relevantní výsledky, ovšem za cenu velké časové náročnosti. S ohledem na efektivitu a přesnost parametrizace se klasifikace atomů dle nejvyššího řádu vazby a hybridizace prokázaly jako nejvhodnější, a to u obou uvedených metod.}
+{Partial atomic charges are fit for describing electrostatic properties of molecules. Several methods have been proposed for their calculation. These divide into methods based on quantum chemistry computations and empirical methods, the latter being less computationally demanding. Empirical calculations depend on unknown variables (parameters) which can be either derived from experimental data or gained through the process of parameterization.
+
+Parameterization of empirical methods is complex computational problem depending on number of factors, atom type classification namely. This bachelor thesis focuses on parameterization of empirical methods optimization through analysis of different atom type classification schemes (based on hybridization, highest bond order, structural motif membership and bonding partners of atom).
+
+Results of proposed classifications were used for parameterization of empirical methods EEM and PEOE. Atom classifications based on structural motif membership resulted relevant, yet being computationally demanding. Regarding the cost-effective solution, atom type classification based on highest bond orded and atom hybridization gave the best results with respect to both of methods mentioned.
+}
 
 \TextPodekovani%
-{Na tomto místě bych chtěla poděkovat stránce LOTR University Memes za zlepšování nálady ve chvílích největší bezradnosti a skupině Dire Straits za příjemnou společnost ve večerních hodinách strávených psaním této práce.}
+{Na tomto místě bych chtěla poděkovat vedoucímu mé bakalářské práce RNDr. Tomáši Račkovi, a to za cenné rady, ochotu a trpělivost. 
+Děkuji Bc. Ondřeji Schindlerovi za~pomoc s technickými záležitostmi spojenými s tvorbou této práce, kterou mi byl ochoten poskytnout i ve chvílích velkého časového vytížení.
+Velké díky patří mé rodině a blízkým, kteří mi jsou oporou nejen při studiu. Na závěr děkuji Daniele Gachové za~sdílení radostí i strastí spojených s psaním této práce a organizaci MetaCentrum za~umožnění potřebných výpočtů.}
 
 \TextProhlaseni%
 {Prohlašuji, že jsem svoji bakalářskou práci vypracovala samostatně s využitím\\informačních zdrojů, které jsou v práci citovány.}
@@ -210,11 +224,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRAKT + ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\AbstraktyNaJedneStrane
+% \AbstraktyNaJedneStrane
 
 %%%%%%%%%%%%%%%%%%%%%% POKUD SE ABSTRAKTY NEVEJDOU NA JEDNU STRANU, POUZIJTE TOTO NASTAVENI %%%%%%%
 
-% \AbstraktyNaDvouStranach
+\AbstraktyNaDvouStranach
 
 
 
@@ -225,9 +239,9 @@
 %%%%%% PAK ''ZAPROCENTUJTE'' RADEK S \SemVlozitZadani A ODPROCENTUJTE RADEK S \VlozZadani %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\SemVlozitZadani
+% \SemVlozitZadani
 
-% \VlozZadani{NazevSouboruSeZadanim}
+\VlozZadani{oficialni_zadani.pdf}
 % \VlozZadani{zadani.pdf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
