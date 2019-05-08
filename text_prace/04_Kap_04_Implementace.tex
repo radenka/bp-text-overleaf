@@ -119,11 +119,11 @@ vrací n-tici (\textit{tuple}) n-tic, jež obsahují prvky typu integer. Tato č
 \lstset{language=Python, keywordstyle=\color{blue}, basicstyle=\small\ttfamily, commentstyle=\color{orange}, label={smarts_exm}}
 % pridat do obrazku vice SMARTSu pro nazornost?
 \begin{lstlisting}
-SMARTS_pattern = "[SX4](=[OX1])(=[OX1])[OX2,OX1-]"
-pattern_atoms = molecule.GetSubstructMatches(SMARTS_pattern)
-for atom_tuple in pattern_atoms:
-    print(atom_tuple, get_elements(atom_tuple))
-print(pattern_atoms)
+>>> SMARTS_pattern = "[SX4](=[OX1])(=[OX1])[OX2,OX1-]"
+>>> pattern_atms = molecule.GetSubstructMatches(SMARTS_pattern)
+>>> for atom_tuple in pattern_atms:
+...    print(atom_tuple, get_elements(atom_tuple))
+>>> print(pattern_atms)
 
 Python 3.7.0 (default, Apr 9 2019, 10:31:47)
 (2, 3, 5, 4) ('S', 'O', 'O', 'O')

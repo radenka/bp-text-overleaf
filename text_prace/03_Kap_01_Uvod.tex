@@ -3,13 +3,22 @@
 \pagenumbering{arabic}
 %Reaktivita molekuly popisuje interakci molekuly s ostatními sloučeninami. 
 Vzájemná interakce molekul úzce souvisí s jejich reaktivitou.
-Nejběžnější způsob popisu reaktivity molekul je skrze  elektrostatické vlastnosti, které jsou pří\-mo odvozené z rozložení elektronů v molekule. Užitečným nástrojem popisu rozložení elektronové hustoty jsou parciální atomové náboje \cite{Atkins}, neboť aproximují elektronovou hustotu v molekule na reálné číslo.
+Nejběžnější způsob popisu reaktivity molekul je skrze  elektrostatické vlastnosti, které jsou pří\-mo odvozené z rozložení elektronů v molekule. Užitečným nástrojem popisu rozložení elektronové hustoty jsou parciální atomové náboje \cite{Atkins}, neboť aproximují elektronovou hustotu v~o\-kolí každého atomu v molekule na reálné číslo.
 
 Jelikož jsou parciální náboje pouze teoretickým konceptem a nelze je získat pomocí experimentu, jsou jejich hodnoty stanoveny pomocí výpočetních metod. Standardní přístup představují kvantově-chemické metody, které vycházejí z exaktního řešení Schrödingerovy rovnice \cite{Volatron} a pro velké systémy jsou z hlediska náročnosti výpočtů prakticky nepoužitelné. Empirické metody výpočtu parciálních atomových nábojů naopak představují rychlejší a zároveň poměrně přesnou alternativu kvantově-chemické\-ho přístupu, optimalizace těchto metod je proto aktuálním tématem výpočetní chemie. 
 
 Cílem vybraných empirických metod (\textit{Electronegativity Equalization Method}, EEM \cite{eem}, \textit{Partial Equalization of Orbital Electronegativity}, PEOE \cite{GM}) je reprodukovat hodnoty nábojů získané kvantově-chemickými metodami, a to za použití vhodných empirických parametrů. Parametry empirických výpočtů lze odvodit z experimentálních dat, v některých případech je však nutno jejich hodnoty určit explicitně. Parametrizace empirických metod je proces, v rámci kterého jsou hledány hodnoty těchto empirických parametrů s cílem reprodukovat za jejich použití referenční náboje vypočtené vybranou kvantově-chemickou metodou. Počet hledaných parametrů se odvíjí od počtu atomových typů definovaných pro popis zvolené molekulové sady. 
 
-Cílem této práce bylo analyzovat výsledky parametrizací metod EEM a PEOE v závislosti na různých děleních atomů do atomových typů na základě vybraných atomových charakteristik. Klasifikace atomů byla implementována jako knihovna jazyka Python s~podporou zpracování molekulových formátů SDF a PDB. S využitím externího nástroje byly pro každou klasifikaci atomů provedeny a vyhodnoceny parametrizace výše uvedených empirických metod.
+Cílem této práce je analyzovat výsledky parametrizací metod EEM a PEOE v závislosti na aplikaci různých děleních atomů do atomových typů.
+%na základě vybraných atomových charakteristik.
+Dílčími úkoly práce jsou:
+\begin{itemize}
+    \item seznámit se s problematikou parciálních atomových nábojů a s metodami jejich výpočtu
+    \item provést rešerši atomových typů objevujících se v literatuře popisující empirické metody
+    \item definovat klasifikátory, které nalezené atomové typy popisují, a implementovat je jako knihovnu jazyka Python
+    \item s využitím externího nástroje provést a vyhodnotit parametrizaci metod EEM a PEOE při zavedení různých klasifikací atomů
+\end{itemize}
+% Klasifikace atomů byla implementována jako knihovna jazyka Python s~podporou zpracování molekulových formátů SDF a PDB. S využitím externího nástroje byly pro každou klasifikaci atomů provedeny a vyhodnoceny parametrizace výše uvedených empirických metod.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
