@@ -1,4 +1,19 @@
 \chapter{Závěr}
 %\addcontentsline{toc}{chapter}{Závěr}
-random paragraph written earlier: 
-Jedním z cílů této bakalářské práce je otestovat, jak jemná či hrubá klasifikace atomových typů je postačující pro parametrizaci výpočetních metod poskytujících ve srovnání s QM metodami kvalitní výsledky. V souvislosti s parametrizací je též testováno, zda jsou některé charakteristiky atomu (např. hybridizace, nejvyšší řád vazby, vazebný partner) pro definici atomových typů vhodnější než charakteristiky jiné. 
+Parametrizace empirických metod pro výpočet parciálních atomových nábojů je netriviální výpočetní proces, který je ovlivněn řadou faktorů, mimo jiné množstvím definovaných atomových typů molekulové sady. S počtem atomových typů roste počet hledaných empirických parametrů, což ovlivňuje výpočetní náročnost a přesnost parametrizace.
+
+Cílem této bakalářské práce bylo otestovat, jak jemné či hrubé klasifikace atomových typů postačují pro parametrizaci empirických metod poskytujících ve srovnání s~kvantově-chemickými metodami kvalitní výsledky. V souvislosti s parametrizací bylo také testováno, zda jsou některé charakteristiky atomu pro definici atomových typů vhodnější než charakteristiky jiné.
+
+%Výstupem implementační části práce je knihovna ATTYC v jazyce Python. Knihovna podporuje klasifikaci atomů molekul ve formátu SDF a PDB. Pro oba uvedené molekulové formáty byly implementovány čtyři klasifikátory, které přiřazují atomům atomové typy dle nejvyššího řádu vazby, hybridizace, příslušnosti ke strukturnímu celku a dle vazebných partnerů atomu. Pro formát PDB byl implementován speciální klasifikátor, který klasifikuje atomy dle pozice v rámci aminokyseliny. 
+
+Výsledky parametrizací za užití implementovaných klasifikátorů byly srovnány s referenční klasifikací, která atomům přiřazuje atomové typy na základě jejich protonového čísla. Kromě klasifikátoru \verb|partners| byly implementované klasifikátory úspěšně použity pro parametrizace empirických metod EEM a PEOE, a to u obou molekulových sad. Statistiky  vykazují pro úspěšně implementované klasifikátory vysokou korelaci empiricky vypočtených a referenčních nábojů s odchylkami v tolerovaných hodnotách, hodnoty těchto statistik jsou napříč klasifikátory pro obě empirické metody velmi podobné. 
+
+Markantní rozdíly byly pro klasifikátory nalezeny v době výpočtu jednotlivých parametrizací. Klasifikace používající jemné dělení atomových typů se ukázaly zhruba 8x více časové náročné než klasifikace triviální, statistiky empirických a referenčních nábojů zůstaly vůči méně detailním klasifikacím téměř nezměněny. Redukce počtu atomových typů detailních klasifikací, následná parametrizace za použití redukovaného počtu atomových typů a porovnání statistik obou přístupů pozorování potvrdily.
+ 
+Klasifikace atomů dle nejvyššího řádu vazby, hybridizace a hodnoty protonového čísla atomu se pro potřeby parametrizace empirických metod EEM a PEOE prokázaly jako plně dostačující. Ve srovnání s detailními klasifikacemi poskytují kvalitní výsledky, a to s menší výpočetní náročností.
+
+
+
+
+
+

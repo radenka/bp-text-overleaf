@@ -54,6 +54,8 @@
 \usepackage{rotating}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{multirow}
+\usepackage{makecell}
+\usepackage{hyperref}
 %\usepackage{bookman}
 %\usepackage{charter}
 \usepackage{fourier}
@@ -122,16 +124,20 @@
 
 \PocetStran{počet stran od druhé stránky dokumentu po poslední stránku obsahu\,$+$\,počet stránek práce od první strany Úvodu}
 
-\KlicovaSlova{parciální atomové náboje, atomový typ, klasifikátor, EEM, PEOE, empirické metody, parametrizace}{partial atomic charges, atom type, EEM, PEOE, empirical methods, parameterization}
+\KlicovaSlova{parciální atomové náboje, empirické metody, EEM, PEOE, parametrizace, atomový typ, klasifikátor}{partial atomic charges, empirical methods, EEM, PEOE, parameterization, atom type}
 
 \Abstrakty%
 {Parciální atomové náboje jsou vhodnou charakteristikou pro popis elektrostatických vlastností molekul. 
-Pro jejich výpočet bylo vyvinuto množství kvantově-chemic\-kých a empirických metod, přičemž ve srovnání s kvantově-chemickými metodami je výpočetní náročnost empirických metod výrazně nižší. Ve výpočtech vybraných empirických metod vystupují neznámé (parametry), které lze získat z experimentálních dat nebo pomocí procesu tzv. parametrizace. 
+Pro jejich výpočet bylo vyvinuto množství kvantově-chemic\-kých a empirických metod. 
+%přičemž ve srovnání s kvantově-chemickými metodami je výpočetní náročnost empirických metod výrazně nižší. 
+Ve výpočtech vybraných empirických metod vystupují neznámé (parametry), které lze získat z experimentálních dat nebo pomocí procesu tzv. parametrizace. 
 
 Parametrizace empirických metod je netriviální výpočetní problém, který je mimo jiné ovlivněn dělením atomů do atomových typů. Bakalářská práce se zaměřuje na optimalizaci parametrizace empirických metod, a to skrze analýzu rozdělení atomů do atomových typů na základě vybraných charakteristik (hybridizace, nejvyšší řád vazby, příslušnost ke strukturnímu celku, vazební partneři atomu). 
 
 Výsledky klasifikací byly užity pro parametrizaci empirických metod EEM a PEOE. Rozdělení atomů do atomových typů atomů dle příslušnosti ke strukturním celkům poskytly relevantní výsledky, ovšem za cenu velké časové náročnosti. S ohledem na efektivitu a přesnost parametrizace se klasifikace atomů dle nejvyššího řádu vazby a hybridizace prokázaly jako nejvhodnější, a to u obou uvedených metod.}
-{Partial atomic charges are fit for describing electrostatic properties of molecules. Several methods have been proposed for their calculation. These divide into methods based on quantum chemistry computations and empirical methods, the latter being less computationally demanding. Empirical calculations depend on unknown variables (parameters) which can be either derived from experimental data or gained through the process of parameterization.
+{Partial atomic charges are fit for describing electrostatic properties of molecules. Several methods have been proposed for their calculation. These divide into methods based on quantum chemistry computations and empirical methods.
+%the latter being less computationally demanding. 
+Empirical calculations depend on unknown variables (parameters) which can be either derived from experimental data or gained through the process of parameterization.
 
 Parameterization of empirical methods is a complex computational problem depending on number of factors, atom type classification namely. This thesis focuses on parameterization of empirical methods optimization through analysis of different atom type classification schemes (based on hybridization, highest bond order, structural motif membership and bonding partners of atom).
 
@@ -300,14 +306,14 @@ Velké díky patří mé rodině a blízkým, kteří mi jsou oporou nejen při 
 \vloz{text_prace/04_Kap_06_Zaver}
 \cleardoublepage
 
-\HlavickaPriloha
-% \pdfbookmark{Příloha}{Priloha}
-\vloz{text_prace/06_Priloha}
-\cleardoublepage
-
 \renewcommand{\bibname}{Seznam použité literatury}
 \HlavickaLiteratura
 \vloz{text_prace/07_Literatura}
+\cleardoublepage
+
+\HlavickaPriloha
+% \pdfbookmark{Příloha}{Priloha}
+\vloz{text_prace/06_Priloha}
 \cleardoublepage
 
 \renewcommand{\indexname}{Rejstřík}
