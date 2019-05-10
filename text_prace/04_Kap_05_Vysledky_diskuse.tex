@@ -34,8 +34,7 @@ Klasifikátory \verb|hbo|, \verb|hybrid|, \verb|substruct| a \verb|peptide| se p
 Pro každý klasifikátor je výsledek dané parametrizace srovnán s parametrizací využívající klasifikaci atomů dle protonového čísla. Referenční klasifikátor je označen jako \verb|plain| a je implementován v softwaru MACH. Klasifikátor \verb|partners| generuje pro obsáhlé molekulové sady extrémní množství atomových typů (pro sadu CCD\_gen konkrétně 235%, tzn. téměř 500 hledaných parametrů pro metodu EEM
 ), jeho použití proto nelze obecně doporučit. 
 
-
-PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9781 pro CCD\_gen/EEM/hybrid parametrizaci, hodnota RMSD je maximálně 0,0623, a to u téže parametrizace. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~\hyperref[proteinstat]{příloze}. 
+PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9781 pro CCD\_gen/EEM/hybrid parametrizaci, hodnota RMSD je maximálně 0,0623, a to u téže parametrizace. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
 \medskip
 \begin{table}[h]
     \small
@@ -63,7 +62,7 @@ PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč pa
 
 Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji (viz obr. \ref{graph_corr_EEM}). Hodnoty RMSD pro vypočtené empirické a~referenční náboje se pohybují nejčastěji v rozmezí 0,040-0,055; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. 
 
-Rozdíl hodnot RMSD tréninkových a validačních sad je nejčastěji v řádu desetitisícin, maximální hodnota tohoto rozdílu je 0,018. Hodnot PCC$^2$ zmíněných sad se liší v~řádu tisícin či desetitisícin, pro MAE a ABSMAX rozdíl proniká až do řádu setin. Na základě těchto údajů lze  parametry získané užitím implementovaných klasifikátorů pokládat za přenositelné. Statistiky tréninkové a validační sady ilustruje tabulka .
+Rozdíl hodnot RMSD tréninkových a validačních sad je nejčastěji v řádu desetitisícin, maximální hodnota tohoto rozdílu je 0,018. Hodnot PCC$^2$ zmíněných sad se liší v~řádu tisícin či desetitisícin, pro MAE a ABSMAX rozdíl proniká až do řádu setin. Na základě těchto údajů lze  parametry získané užitím implementovaných klasifikátorů pokládat za přenositelné. Statistiky tréninkové a validační sady ilustruje tabulka \ref{prenositelnost}.
 
 \begin{table}[t]
     \renewcommand{\arraystretch}{1.4}
@@ -92,7 +91,7 @@ Rozdíl hodnot RMSD tréninkových a validačních sad je nejčastěji v řádu 
 \end{figure}
 \newpage
 
-Z korelačních grafů empirických a referenčních nábojů je patrné, že metoda PEOE přiřazuje v určitých případech atomům náboje o konstatní hodnotě, což v grafu odpovídá vodorovným shlukům bodů. Přiřazení konstaních či velmi podobných hodnot parciálních nábojů vyplývá z iterativního způsobu výpočtu. Atomu je iniciálně přiřazena hodnota jeho formálního náboje. V každé iteraci výpočtu dochází k přesunu elektronové hustoty mezi vazebnými partnery, přičemž se toto množství exponenciálně snižuje, a to až do ustálení výsledné hodnoty parciálního náboje. Metoda PEOE navíc pracuje pouze s~topologií molekuly a atomům, které mají stejné chemické okolí, implicitně přiřazuje stejné náboje (viz obr. \ref{graph_corr_PEOE} nebo příloha [ref]).
+Z korelačních grafů empirických a referenčních nábojů je patrné, že metoda PEOE přiřazuje v určitých případech atomům náboje o konstatní hodnotě, což v grafu odpovídá vodorovným shlukům bodů (viz obr. \ref{graph_corr_PEOE} nebo obr. \ref{graph_peptidesimpl_PEOE} v příloze). Přiřazení konstaních či velmi podobných hodnot parciálních nábojů vyplývá z iterativního způsobu výpočtu. Atomu je iniciálně přiřazena hodnota jeho formálního náboje. V každé iteraci výpočtu dochází k přesunu elektronové hustoty mezi vazebnými partnery, přičemž se toto množství exponenciálně snižuje, a to až do ustálení výsledné hodnoty parciálního náboje. Metoda PEOE navíc pracuje pouze s~topologií molekuly a atomům, které mají stejné chemické okolí, implicitně přiřazuje stejné náboje.
 
 \vspace*{1cm}
 \begin{figure}[H]
@@ -104,7 +103,7 @@ Z korelačních grafů empirických a referenčních nábojů je patrné, že me
 \end{figure}
 
 \subsection{Úprava klasifikátorů 'substruct' a 'peptide'}
-Časová náročnost parametrizací za použití klasifikátorů \verb|substruct| a \verb|peptide| se v porovnání s ostatními klasifikátory ukázala jako netriviální z důvodu velkého množství definovaných atomových typů. Po analýze korelačních grafů byly vybrané atomové typy sloučeny, nejčastěji na základě nejvyššího řádu vazby daného atomu (atomové typy popisující jednovaznou síru navázanou na dusík, fosfor a síru byly sloučeny pod atomový typ 'S*1bond'), v případě vodíků byly sloučeny atomové typy popisující vodíky navázané na atomy o stejném protonovém čísle. Počet atomových typů byl u obou klasifikátorů zredukován přibližně na polovinu. Korelační grafy parametrizací za užití redukovaných klasifikátorů pro sadu Protein jsou zobrazeny v příloze.
+Časová náročnost parametrizací za použití klasifikátorů \verb|substruct| a \verb|peptide| se v porovnání s ostatními klasifikátory ukázala jako netriviální z důvodu velkého množství definovaných atomových typů. Po analýze korelačních grafů byly vybrané atomové typy sloučeny, nejčastěji na základě nejvyššího řádu vazby daného atomu (atomové typy popisující jednovaznou síru navázanou na dusík, fosfor a síru byly sloučeny pod atomový typ 'S*1bond'), v případě vodíků byly sloučeny atomové typy popisující vodíky navázané na atomy o stejném protonovém čísle. Počet atomových typů byl u obou klasifikátorů zredukován přibližně na polovinu. Korelační grafy parametrizací za užití redukovaného klasifikátoru \verb|peptide| jsou zobrazeny v příloze \ref{priloha_peptide}.
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.4}

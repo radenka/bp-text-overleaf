@@ -1,7 +1,5 @@
-\chapter*{Příloha}
+\chapter{Obsah přiloženého archivu}
 \addcontentsline{toc}{chapter}{Příloha}
-
-\section*{Obsah přiloženého archivu}
 \label{prilozeny_archiv}
 K bakalářské práci je přiložen archiv \textbf{attachment.zip}, který obsahuje implementaci kni\-hovny ATTYC a výstupy softwaru MACH jednotlivých parametrizací ve formě HTML souborů. Adresáře  jsou označeny \verb|strojovým písmem|. Struktura přiloženého archivu je následující: 
 \begin{itemize}
@@ -31,9 +29,11 @@ K bakalářské práci je přiložen archiv \textbf{attachment.zip}, který obsa
         % \end{itemize}
     \end{itemize}
 \end{itemize}
-\newpage
 
-\subsection*{Statistiky parametrizací sady Protein}
+% {\bf Sem můžete přidat přílohu. Pokud chcete ``Přílohy'', tak upravte definici záhlaví v~souboru sci.muni.thesis.sty, viz příkaz
+% \verb+\HlavickaPriloha+.}
+
+\chapter{Statistiky parametrizací sady Protein}
 \label{proteinstat}
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.4}
@@ -65,8 +65,37 @@ K bakalářské práci je přiložen archiv \textbf{attachment.zip}, který obsa
     \caption{Výsledky vybraných statistik parametrizace sady Protein. Jsou zaznamenány pouze statistiky tréninkových sad.}
     \label{statistics_PDB}
 \end{table}
-\newpage
-% {\bf Sem můžete přidat přílohu. Pokud chcete ``Přílohy'', tak upravte definici záhlaví v~souboru sci.muni.thesis.sty, viz příkaz
-% \verb+\HlavickaPriloha+.}
-\medskip
 
+\chapter{Klasifikátor 'peptide simplified': Výstupy}
+\label{priloha_peptide}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=13cm]{pictures/graph_peptidesimpl_EEM.png}
+\caption{Korelační graf parametrizace Protein/EEM/substruct\_simplified.  PCC$^2$=0,0.9929; RMSD=0,0389.}
+\label{graph_peptidesimpl_EEM}
+\end{center}
+\end{figure}
+\newpage
+
+\vspace*{0cm}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{pictures/graph_peptidesimpl_PEOE.png}
+\caption{Korelační graf parametrizace Protein/PEOE/substruct\_simplified. PCC$^2$=0,9877; RMSD=0,0512.}
+\label{graph_peptidesimpl_PEOE}
+\end{center}
+\end{figure}
+
+\begin{table}[H]
+    \renewcommand{\arraystretch}{1.35}
+    \centering
+    \begin{tabular}{l|l|l|l|l}
+         \textbf{atomový typ} &  \textbf{RMSD} & \textbf{PCC$^2$} & \textbf{MAE} & \textbf{ABSMAX} \\
+         \hline
+         C\_A & 0,0334 & 0,9948 & 0,0229 & 0,3880 \\
+         N\_plain & 0,0388 & 0,9930 & 0,0265 & 0,3198 \\
+    \end{tabular}
+    \caption{Statistiky vybraných atomových typů užitých v rámci parametrizace Protein/PEOE/substruct\_simplified. Korelační graf zmíněné parametrizace \ref{graph_peptidesimpl_PEOE} je zobrazen výše.}
+    \label{priloha_atom_types_statistics}
+\end{table}
