@@ -34,17 +34,17 @@ Klasifikátory \verb|hbo|, \verb|hybrid|, \verb|substruct| a \verb|peptide| se p
 Pro každý klasifikátor je výsledek dané parametrizace srovnán s parametrizací využívající klasifikaci atomů dle protonového čísla. Referenční klasifikátor je označen jako \verb|plain| a je implementován v softwaru MACH. Klasifikátor \verb|partners| generuje pro obsáhlé molekulové sady extrémní množství atomových typů (pro sadu CCD\_gen konkrétně 235%, tzn. téměř 500 hledaných parametrů pro metodu EEM
 ), jeho použití proto nelze obecně doporučit. 
 
-PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9781 pro CCD\_gen/EEM/hybrid parametrizaci, hodnota RMSD je maximálně 0,0623, a to u téže parametrizace. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
+PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9768 pro CCD\_gen/EEM/plain parametrizaci, hodnota RMSD je maximálně 0,0642, a to u téže parametrizace. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
 \medskip
 \begin{table}[h]
     \small
     \renewcommand{\arraystretch}{1.4}
     \centering
-    \begin{tabular}{c|c|l|l|l|l|l|l}
-         \textbf{klasifikátor} & \textit{n} & \textbf{metoda} & \textbf{RMSD} & \textbf{PCC$^2$} & \textbf{MAE} & \textbf{ABSMAX} & \textbf{doba výpočtu}\\
+    \begin{tabular}{l|l|l|l|l|l|l|l}
+         \textbf{klasifikátor} & \textbf{\textit{n}} & \textbf{metoda} & \textbf{RMSD} & \textbf{PCC$^2$} & \textbf{MAE} & \textbf{ABSMAX} & \textbf{doba výpočtu}\\
          \hline
-         \multirow{2}{6em}{\texttt{plain}} & \multirow{2}{1.5em}{} & EEM & 0,0000 & 0,0000 & 0,0000 & 0,0000 & 0: \\
-         & & PEOE & 0,0000 & 0,0000 & 0,0000 & 0,0000 & 0: \\
+         \multirow{2}{6em}{\texttt{plain}} & \multirow{2}{1.5em}{ 9} & EEM & 0,0641 & 0,9768 & 0,0440 & 0,7455 & 1:01:08 \\
+         & & PEOE & 0,0516 & 0,9849 & 0,0343 & 0,5228 & 0:55:06 \\
          \hline
          \multirow{2}{6em}{\texttt{hbo}} & \multirow{2}{1.5em}{19} & EEM & 0,0582 & 0,9809 & 0,0405 & 0,7133 & 1:59:29  \\
          & & PEOE & 0,0394 & 0,9912 & 0,0259 & 0,7313 & 2:53:04 \\
@@ -60,7 +60,7 @@ PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč pa
 \end{table}
 \medskip
 
-Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji (viz obr. \ref{graph_corr_EEM}). Hodnoty RMSD pro vypočtené empirické a~referenční náboje se pohybují nejčastěji v rozmezí 0,040-0,055; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. 
+Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji (viz obr. \ref{graph_corr_EEM}). Hodnoty RMSD pro vypočtené empirické a~referenční náboje se pohybují nejčastěji v rozmezí 0,040-0,060; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. 
 
 Rozdíl hodnot RMSD tréninkových a validačních sad je nejčastěji v řádu desetitisícin, maximální hodnota tohoto rozdílu je 0,018. Hodnot PCC$^2$ zmíněných sad se liší v~řádu tisícin či desetitisícin, pro MAE a ABSMAX rozdíl proniká až do řádu setin. Na základě těchto údajů lze  parametry získané užitím implementovaných klasifikátorů pokládat za přenositelné. Statistiky tréninkové a validační sady ilustruje tabulka \ref{prenositelnost}.
 
