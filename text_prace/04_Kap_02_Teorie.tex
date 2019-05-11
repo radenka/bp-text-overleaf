@@ -27,7 +27,7 @@ Parciální atomové náboje jsou reálná čísla, která popisují asymetrick�
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=5.5cm]{pictures/partial_atomic_charges_cropped.jpg}
-\caption{Rozložení elektronové hustoty v molekule ethanolu.}
+\caption{Parciální atomové náboje v molekule ethanolu. Červená barva značí zvýšenou elektronovou hustotu v blízkosti atomu kyslíku.}
 \end{center}
 \end{figure}
 Koncept parciálních atomových nábojů je pouze teoretický, hodnoty nábojů proto nelze získat pomocí experimentu \cite{Leach}. Jelikož se parciální atomové náboje uplatňují při predikci fyzikálních, chemických a biologických vlastností molekul, bylo pro jejich stanovení vyvinuto množství výpočetních metod. Tyto se dělí na metody kvantově-chemi\-cké a metody empirické. Kvantově-chemické metody představují standardní přístup výpočtu parciálních atomových nábojů,  avšak použití těchto metod může být limitováno jejich velkou časovou náročností. Empirické metody používají v rámci výpočtů parametrizovaná nebo exprimentálně naměřená data a představují tak časově méně náročnou alternativu kvantově-chemického přístupu \cite{Gasteiger:Textbook}. 
@@ -43,7 +43,7 @@ V této podkapitole je popsán teoretický aparát kvantové mechaniky, na kter�
 \subsection{Základy kvantové mechaniky}
 %Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. 
 Kvantová mechanika se rozvinula ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát již nepostačoval pro popis mikrosvěta.  Základním principem QM je vlnově-korpuskulární dualismus, který mikročástici připisuje jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem.
-Vlna, popisující částici, je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí. Tato funkce popisuje dynamický stav částice a nese informaci o výskytu částice v prostoru \cite{Cely}. Vlnová funkce elektronu tak přispívá k popisu rozložení elektronové hustoty v molekule. 
+Vlna, popisující částici, je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí. Tato funkce popisuje dynamický stav částice a nese informaci o výskytu částice v prostoru \cite{Cely}. Vlnová funkce elektronu tak popisuje rozložení elektronové hustoty v molekule. 
 
 Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému, z níž lze odvodit elektrostatický potenciál \cite{elstat_pot} nebo termodynamické vlastnosti molekuly \cite{td}. Vlnová funkce je řešením Schrödingerovy rovnice (\textit{Schrödinger's Equation}, SE)
 \begin{equation}
@@ -156,7 +156,7 @@ Výchozím konceptem metody je Sandersonův princip ekvalizace elektronegativity
 kde \textit{N} je počet atomů, se elektronegativita každého atomu rovná průměrné elektronegativitě molekuly $\overline{\chi}$. 
 %Sandersonův postulát je potvrzen principy DFT. % možná radši vymazat
 
-Další základním principem metody je princip zachování náboje. Celkový náboj molekuly (\textit{Q}) odpovídá součtu dílčích atomových nábojů $q_i$.
+Další základním principem metody je princip zachování náboje. Celkový náboj molekuly \textit{Q} odpovídá součtu dílčích atomových nábojů $q_i$.
 \begin{equation}
 \label{EEM_chargesum}
     \sum_{i} q_i = Q
@@ -176,7 +176,8 @@ V rovnici \ref{EEM_elneg} kromě nábojů $q_i$, $q_j$ interagujících atomů v
 \end{equation}
 %Cílem metody je empiricky nalézt hodnoty korekcí pro definované atomové typy a zajistit tak znovupoužitelnost uvedených parametrů. 
 
-Řešení systému s \textit{N} atomy vede po kombinaci vztahů  \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} na systém \textit{N}+1 lineárních rovnic o \textit{N}+1 neznámých. Z této matice jsou vypočteny hodnoty nábojů $q_1$, $q_2$, ..., $q_N$ a elektronegativita molekuly $\overline{\chi}$. Pro výpočet nábojů je nutná znalost parametrů $A_i$, $B_i$ a $\kappa$. Tyto jsou získány pomocí parametrizace (\ref{param}) nebo jsou použity hodnoty již vypočtených parametrů. 
+Řešení systému s \textit{N} atomy vede po kombinaci vztahů  \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} na systém \textit{N}+1 lineárních rovnic o \textit{N}+1 neznámých (rov. \ref{EEM_matrix}). Z této matice jsou vypočteny hodnoty nábojů $q_1$, $q_2$, ..., $q_N$ a elektronegativita molekuly $\overline{\chi}$. Pro výpočet nábojů je nutná znalost parametrů $A_i$, $B_i$ a $\kappa$. Tyto jsou získány pomocí parametrizace (\ref{param}) nebo jsou použity hodnoty již vypočtených parametrů. 
+\newpage
 \begin{equation}
 \label{EEM_matrix}
  \begin{pmatrix}
@@ -239,43 +240,33 @@ Hrubé klasifikace atomů do atomových typů, např. na základě protonového 
 %což způsobuje chybné přiřazení atomových nábojů v sadě validační. 
 \medskip
 \begin{table}[h]
+    \renewcommand{\arraystretch}{1.3}
     \centering
-    \begin{tabular}{c|c}
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-         &  \\
-
+    \begin{tabular}{l|c|c}
+         \textbf{atomový typ} & \textbf{elektronegativita} (V) & \textbf{tvrdost} (V/e) \\
+         \hline
+         C sp$^3$ & 26,31 & 9,50\\
+         C sp$^2$ H$_2$C= & 29,43 & 12,54 \\
+         C arom. cycle 6 & 28,98 & 9,49 \\
+         C sp & 31,02 & 9,30 \\
+         N sp$^3$ & 31,44 & 9,48 \\
+         N pyridine & 33,07 & 11,05 \\
+         N cyano & 42,45 & 11,36 \\
+         O sp$^3$ & 33,34 & 15,48 \\
+         O sp$^3$ in carboxyl & 32,85 & 10,97 \\
+         O$^-$ phenol & 29.60 & 49.14 \\
+         O sp$^2$ & 37,56 & 5,17 \\
+         S sp$^3$ & 30,40 & 7,92 \\
+         S sulfoxide & 30,40 & 8,30 \\
+         H (O sp$^3$) & 26,32 & 1,03 \\
+         H (O resonance) & 26,66 & 8,35 \\
+         H (N sp$^3$) & 26,65 & 5,16 \\
+         H (N resonance) & 26,58 & 8,52 \\
+         H (S sp$^3$) & 26,70 & 8,98 \\
+         H (S sp$^2$) & 26,68 & 9,62\\
+    
     \end{tabular}
-    \caption{Atomové typy definované v rámci empirické metody Kirchoff charge model (KCM). Parametry metody jsou elektronegativita a tvrdost atomu.}
+    \caption{Atomové typy definované v rámci empirické metody \textit{Kirchoff charge model} (KCM). Parametry metody jsou elektronegativita a tvrdost atomu. Pro ilustraci jsou uvedeny pouze vybrané atomové typy a vypočtené parametry.}
     \label{atom_types_examples}
 \end{table}
 
@@ -318,7 +309,7 @@ PCC nabývá hodnot z intervalu $\langle-1, 1 \rangle$, přičemž hodnoty koefi
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=6cm]{example-image-a}
+\includegraphics[width=12cm]{pictures/pearson.png}
 \caption{Vizualizace lineární korelace dvou náhodných veličin. Směrem zleva zobrazují grafy lineární závislost veličin s hodnotami Pearsonova korelačního koeficientu 0,9; 0 a -0.8.}
 \label{PCC_obr}
 \end{center}

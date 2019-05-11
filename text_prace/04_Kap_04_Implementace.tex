@@ -65,7 +65,7 @@ Každý modul v adresáři \textbf{\textbackslash classifiers} obsahuje právě 
 \bigskip
 \begin{figure}[h]
     \centering
-    \includegraphics[width=8cm]{example-image-a}
+    \includegraphics[width=15cm]{pictures/diagram.png}
     \caption{UML diagram tříd popisující třídu Classifier a její podtřídy.}
     \label{classes_UML}
 \end{figure}
@@ -133,12 +133,12 @@ Python 3.7.0 (default, Apr 9 2019, 10:31:47)
 \end{figure}
 
 \bigskip
-Pro klasifikaci atomů je klíčovým souborem \textbf{SMARTS\_atom\_types.txt}. Soubor obsahuje SMARTS výrazy, pomocí nichž jsou v molekule hledány strukturní motivy, a atomové typy, které jsou atomům strukturního motivu explicitně přiřazeny.
+Pro klasifikaci atomů je klíčovým souborem \textbf{SMARTS\_atom\_types.txt}. Soubor obsahuje SMARTS výrazy, pomocí nichž jsou v molekule hledány strukturní motivy, a~atomové typy, které jsou atomům strukturního motivu explicitně přiřazeny.
 Pořadí detekce strukturních motivů odpovídá pořadí SMARTS vstupů v souboru. Některé atomy molekuly mohou příslušet více strukturním motivům, které SMARTS vstupy detekují. Uspořádání SMARTS vstupů v souboru tak ovlivňuje výsledný atomový typ, který je atomu přiřazen. Atomové typy přiřazené jednotlivým atomům lze v souboru předefinovat, stejně jako změnit pořadí SMARTS výrazů, a upravit tak logiku klasifikace a optimalizovat výsledky parametrizace.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=7cm]{example-image-a}
-    \caption{Struktura souboru \textbf{SMARTS\_atom\_types.txt}. Pro každý SMARTS výraz jsou definovány atomové typy atomů dané funkční skupiny.}
+    \includegraphics[width=15cm]{pictures/SMARTS_legend_2.png}
+    \caption{Struktura souboru \textbf{SMARTS\_atom\_types.txt}. Pro každý SMARTS výraz jsou v prostředním sloupci definovány atomové typy atomů dané funkční skupiny, sloupec vpravo nese název strukturního motivu.}
     \label{SMARTS_file}
 \end{figure}
 
