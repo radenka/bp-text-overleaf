@@ -31,8 +31,8 @@ PDB soubory používají pro specifikaci atomů proteinogenních aminokyselin at
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=6cm]{pictures/prolin_base_v2.png}
-\caption{Porovnání názvů atomových typů molekuly prolinu v jednotlivých verzích PDB formátu. Vlevo je zobrazena verze 2.0, vpravo verze 3.0.}
+\includegraphics[width=12cm]{pictures/prolin_merged.png}
+\caption{Porovnání názvů atomových typů molekuly prolinu v jednotlivých verzích PDB formátu. Vlevo je zobrazena verze 2.0, vpravo verze 3.0. Změny v názvech atomů se týkají atomů vodíku.}
 \end{center}
 \end{figure}
 % https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html
@@ -56,7 +56,7 @@ SMARTS notace \cite{SMARTS_intro, SMARTS_exm} (angl. \textit{SMiles ARbitrary Ta
 
 SMARTS rozšiřuje SMILES notaci o užití logických operátorů. Symboly '\verb|&|' a '\verb|;|' značí logické \verb|AND|, přičemž symbol '\verb|&|' má vyšší prioritu v kombinaci s ostatními logickými operátory. Symbol '\verb|,|' značí logické \verb|OR|. Pro negaci výrazů je použit symbol '\verb|!|'. Užití jmenovaných logických operátorů je ilustrováno v tabulce \ref{logops} níže.
 
-Dalším specifickým prvkem SMARTS výrazů je konstrukce  '\verb|$(XY)|' , kde \verb|XY| reprezentuje platný SMARTS výraz. Touto konstrukcí lze snadno specifikovat atom v závislosti na jeho chemickém okolí. Příkladem je výraz '\verb|[O-;!$([O-]C(=O))]|', který definuje kyslíkový anion, jenž zároveň není součástí aniontu karboxylové skupiny COO$^-$. 
+Dalším specifickým prvkem SMARTS výrazů je konstrukce  '\verb|$(XY)|', kde \verb|XY| reprezentuje platný SMARTS výraz. Touto konstrukcí lze snadno specifikovat atom v závislosti na jeho chemickém okolí. Příkladem je výraz '\verb|[O-;!$([O-]C(=O))]|', který definuje kyslíkový anion, jenž zároveň není součástí aniontu karboxylové skupiny COO$^-$. 
 \begin{table}[h]
 \label{logops}
 \renewcommand{\arraystretch}{1.3}

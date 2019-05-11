@@ -107,7 +107,7 @@ vrací n-tici (\textit{tuple}) n-tic, jež obsahují prvky typu integer. Tato č
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=5.5cm]{example-image-a}
+    \includegraphics[width=5.5cm]{pictures/sirovka.png}
     \caption{Molekula kyseliny sírové s číselným označením atomů.}
     \label{h2so5}
 \end{figure}
@@ -126,10 +126,11 @@ vrací n-tici (\textit{tuple}) n-tic, jež obsahují prvky typu integer. Tato č
 >>> print(pattern_atms)
 
 Python 3.7.0 (default, Apr 9 2019, 10:31:47)
-(2, 3, 5, 4) ('S', 'O', 'O', 'O')
-((2, 3, 5, 4))
+(1, 2, 3, 4) ('S', 'O', 'O', 'O')
+(1, 2, 3, 5) ('S', 'O', 'O', 'O')
+((1, 2, 3, 4), (1, 2, 3, 5))
 \end{lstlisting}
-\caption{Ukázka kódu klasifikátoru \texttt{substruct}. Čísla v n-tici odpovídají atomům molekuly na obrázku \ref{h2so5}.}
+\caption{Ukázka kódu klasifikátoru \texttt{substruct}. Čísla v n-tici odpovídají atomům molekuly na obrázku \ref{h2so5}.     }
 \end{figure}
 
 \bigskip
@@ -159,8 +160,8 @@ Symboly atomových typů aminokyselin popsané nomenklaturou IUPAC (CA, CB, HXT,
 \begin{figure}[h]
 \label{aa_different_atom_types}
 \begin{center}
-\includegraphics[width=7cm]{example-image-a}
-\caption{Strukturní vzorce histidinu a kyseliny asparagové s atomovými typy nomenklatury IUPAC. Atomy CG a HD2 jsou v molekulách součástí odlišných strukturních celků, je tedy vhodné každému z nich přiřadit jiný atomový typ.}
+\includegraphics[width=13cm]{pictures/asp_his_merged_squares.png}
+\caption{Strukturní vzorce histidinu a kyseliny asparagové s atomovými typy nomenklatury IUPAC verze 3.0. Atomy CG a HD2 jsou v molekulách součástí odlišných strukturních celků, je tedy vhodné každému z nich přiřadit jiný atomový typ.}
 \end{center}
 \end{figure}
 
