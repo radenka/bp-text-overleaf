@@ -65,7 +65,7 @@ Každý modul v adresáři \textbf{\textbackslash classifiers} obsahuje právě 
 \bigskip
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{pictures/diagram.png}
+    \includegraphics[width=15.1cm]{pictures/diagram_triangle.png}
     \caption{UML diagram tříd popisující třídu Classifier a její podtřídy.}
     \label{classes_UML}
 \end{figure}
@@ -76,7 +76,7 @@ Každý modul v adresáři \textbf{\textbackslash classifiers} obsahuje právě 
 Každý klasifikátor v adresáři \textbf{\textbackslash classifiers} implementuje abstraktní metodu nadtřídy \verb|get|\\ \verb|_atom_types(molecule)|, která atomům molekuly přiřazuje odpovídající atomové ty\-py. Klasifikátory \verb|hbo|, \verb|hybrid| a \verb|partners| implementují tuto metodu triviálně, neboť využívají příslušné metody tříd Atom a Bond z knihovny RDKit (tab.  \ref{atom_rdkit_methods}). 
 %Názvy metod použitých pro klasifikaci jsou uvedeny v tabulce níže.
 
-Pro klasifikátory \verb|substruct| a \verb|peptide| nejsou v třídě Atom v knihovně RDKit implementovány triviální metody, atomy jsou proto těmito klasifikátory klasifikovány pomocí dat z externích souborů. Struktura vytvořených externích souborů a logika  klasifikací je popsána v následujících sekcích. 
+Pro klasifikátory \verb|substruct| a \verb|peptide| nejsou v třídě Atom v knihovně RDKit implementovány triviální metody, atomy jsou proto těmito klasifikátory klasifikovány pomocí dat z externích souborů. Struktura vytvořených externích souborů a logika  klasifikací je popsána v sekcích \ref{substruct_section} a \ref{peptide_section}. 
 
 \begin{table}[h]
 \begin{center}
@@ -96,9 +96,19 @@ Pro klasifikátory \verb|substruct| a \verb|peptide| nejsou v třídě Atom v kn
     \caption{Klíčové metody z knihovny RDKit použité pro přiřazení atomových typů klasifikátory \texttt{hbo}, \texttt{hybrid} a \texttt{partners}.}
 \end{center}
 \end{table}
+
+\noindent Následující obrázky ilustrují výstup klasifikace atomů molekulu kyseliny karbamové za~použití klasifikátorů \verb|hbo|, \verb|hybrid| a \verb|substruct|.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{pictures/karbamova_merged_popisky.png}
+    \caption{Výstupy klasifikací atomů dle klasifikátorů \texttt{hbo}, \texttt{hybrid} a \texttt{substruct}.}
+    \label{classfiers_karbamova}
+\end{figure}
+
 \subsection{Klasifikátor 'substruct'}
 % \texttt{substruct}
-% \label{substruct}
+\label{substruct_section}
 Klasifikátor \verb|substruct| klasifikuje atomy na základě příslušnosti k~charakteristickým strukturním celkům. Byl implementován s cílem reprodukovat atomové typy, které byly úspěšně použity pro parametrizaci empirických metod výpočtu parciálních atomových nábojů \cite{attyp2, attyp1}. 
 
 Strukturní motivy jsou v molekulách detekovány pomocí výrazů SMARTS (kap. \ref{SMARTS}) metodou  \verb|GetSubstructMatches(SMARTS_pattern)|\footnote{Metoda  \texttt{GetSubstructMatches(Chem.MolFromSmarts(SMARTS\_pattern))} je v textu pro názornost syntakticky zjednodušena.} třídy Mol z kni\-hovny RDKit. 
@@ -107,7 +117,7 @@ vrací n-tici (\textit{tuple}) n-tic, jež obsahují prvky typu integer. Tato č
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=5.5cm]{pictures/sirovka.png}
+    \includegraphics[width=4cm]{pictures/sirovka.png}
     \caption{Molekula kyseliny sírové s číselným označením atomů.}
     \label{h2so5}
 \end{figure}
@@ -115,7 +125,7 @@ vrací n-tici (\textit{tuple}) n-tic, jež obsahují prvky typu integer. Tato č
 %Čísla atomů vycházejí z pořadí, ve kterém jsou atomy definovány v SDF souboru.
 
 
-\begin{figure}
+\begin{figure}[H]
 \lstset{language=Python, keywordstyle=\color{blue}, basicstyle=\small\ttfamily, commentstyle=\color{orange}, label={smarts_exm}}
 % pridat do obrazku vice SMARTSu pro nazornost?
 \begin{lstlisting}
@@ -138,8 +148,8 @@ Pro klasifikaci atomů je klíčovým souborem \textbf{SMARTS\_atom\_types.txt}.
 Pořadí detekce strukturních motivů odpovídá pořadí SMARTS vstupů v souboru. Některé atomy molekuly mohou příslušet více strukturním motivům, které SMARTS vstupy detekují. Uspořádání SMARTS vstupů v souboru tak ovlivňuje výsledný atomový typ, který je atomu přiřazen. Atomové typy přiřazené jednotlivým atomům lze v souboru předefinovat, stejně jako změnit pořadí SMARTS výrazů, a upravit tak logiku klasifikace a optimalizovat výsledky parametrizace.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{pictures/SMARTS_legend_2.png}
-    \caption{Struktura souboru \textbf{SMARTS\_atom\_types.txt}. Pro každý SMARTS výraz jsou v prostředním sloupci definovány atomové typy atomů dané funkční skupiny, sloupec vpravo nese název strukturního motivu.}
+    \includegraphics[width=14cm]{pictures/SMARTS_legend_2.png}
+    \caption{Struktura souboru \textbf{SMARTS\_atom\_types.txt}. Prostřední sloupec definuje atomové typy atomů dané funkční skupiny.}
     \label{SMARTS_file}
 \end{figure}
 
@@ -153,14 +163,17 @@ na dotaz \verb|[NX3;!\$(NC=O)]([H])[H]|, kterým jsou narozdíl od původního v
  
 \subsection{Klasifikátor 'peptide'}
 % \texttt{peptide}
-Klasikace atomů peptidových řetězců přiřazuje atomové typy obdobně jako výše uvedený klasifikátor \verb|substruct|, tedy na základě příslušnosti atomů ke strukturním celkům. Logika vstupního souboru klasifikátoru \verb|peptide| se od struktury externího souboru klasifikátoru \verb|substruct| liší, neboť nepracuje s vyhledáváním strukturních motivů pomocí SMARTS výrazů. 
+\label{peptide_section}
+Klasikace atomů peptidových řetězců přiřazuje atomové typy obdobně na základě příslušnosti atomů ke strukturním celkům. Logika vstupního souboru klasifikátoru \verb|pepti|\\\verb|de| se od struktury externího souboru klasifikátoru \verb|substruct| liší, neboť nepracuje s vyhledáváním strukturních motivů pomocí SMARTS výrazů. 
 
-Symboly atomových typů aminokyselin popsané nomenklaturou IUPAC (CA, CB, HXT, OXT,...) popisují atomy všech proteinogenních residuí. Jednotlivé atomové typy však nijak nereflektují vlastnosti atomů, které popisují, chemická okolí ato\-mů označených stejným atomovým typem se tak často liší (srov. obr. \ref{aa_different_atom_types}). Pro implementaci klasifikátoru \verb|peptide| tak bylo klíčové provést rešerši existujících atomových typů aminokyselin, určit napříč všemi aminokyselinami výskyt těchto atomových typů a každé dvojici 'atomový typ  nomenklatury IUPAC - aminokyselina' přiřadit atomový typ reflektující chemické okolí daného atomu. Navržená klasifikace atomů aminokyselin byla implementována s cílem reprodukovat atomové typy, které byly použity pro úspěšnou parametrizaci empirických metod \cite{GDAC, attyp_peptides}.
+Symboly atomových typů aminokyselin popsané nomenklaturou IUPAC (CA, CB, HXT, OXT,...) popisují atomy všech proteinogenních residuí. Jednotlivé atomové typy však nijak nereflektují vlastnosti atomů, které popisují, chemická okolí ato\-mů označených stejným atomovým typem se tak často liší (srov. obr. \ref{aa_different_atom_types}). Pro implementaci klasifikátoru \verb|peptide| tak bylo klíčové provést rešerši existujících atomových typů aminokyselin a
+%určit napříč všemi aminokyselinami výskyt těchto atomových typů 
+každé dvojici 'atomový typ  nomenklatury IUPAC - aminokyselina' přiřadit atomový typ reflektující chemické okolí daného atomu. Navržená klasifikace atomů aminokyselin byla implementována s cílem reprodukovat atomové typy, které byly použity pro úspěšnou parametrizaci empirických metod \cite{GDAC, attyp_peptides}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \label{aa_different_atom_types}
 \begin{center}
-\includegraphics[width=13cm]{pictures/asp_his_merged_squares.png}
+\includegraphics[width=13.5cm]{pictures/asp_his_merged_squares.png}
 \caption{Strukturní vzorce histidinu a kyseliny asparagové s atomovými typy nomenklatury IUPAC verze 3.0. Atomy CG a HD2 jsou v molekulách součástí odlišných strukturních celků, je tedy vhodné každému z nich přiřadit jiný atomový typ.}
 \end{center}
 \end{figure}
