@@ -42,7 +42,7 @@ V této podkapitole je popsán teoretický aparát kvantové mechaniky, na kter�
 
 \subsection{Základy kvantové mechaniky}
 %Již na konci 19. století došli vědci k poznání, že klasická newtonovská mechanika není vhodná pro popis pohybu mikročástic (např. elektronů). Z toho důvodu došlo ve 20. letech 20. století k rozvoji kvantové mechaniky. 
-Kvantová mechanika se rozvinula ve 20. letech 20. století v reakci na newtonovskou mechaniku, jejíž aparát již nepostačoval pro popis mikrosvěta.  Základním principem QM je vlnově-korpuskulární dualismus, který mikročástici připisuje jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem.
+Kvantová mechanika (\textit{Quantum Mechanics}, QM) se rozvinula ve 20. letech 20. století v~reakci na newtonovskou mechaniku, jejíž aparát již nepostačoval pro popis mikrosvěta.  Základním principem QM je vlnově-korpuskulární dualismus, který mikročástici připisuje jak charakteristiky hmoty (hybnost), tak charakteristiky elektromagnetické vlny šířící se prostorem.
 Vlna, popisující částici, je v kvantové mechanice reprezentována matematickou funkcí $\Psi$, tzv. vlnovou funkcí. Tato funkce popisuje dynamický stav částice a nese informaci o výskytu částice v prostoru \cite{Cely}. Vlnová funkce elektronu tak popisuje rozložení elektronové hustoty v molekule. 
 
 Základním úkolem kvantové mechaniky je výpočet vlnové funkce systému, z níž lze odvodit elektrostatický potenciál \cite{elstat_pot} nebo termodynamické vlastnosti molekuly \cite{td}. Vlnová funkce je řešením Schrödingerovy rovnice (\textit{Schrödinger's Equation}, SE)
@@ -56,9 +56,9 @@ kde $H$ je operátor hamiltonián a $E$ je energie systému. Hamiltonián působ
  Jejím základním konceptem je oddělení řešení SE pro jádra od řešení rovnice elektronů. Tento postup vychází z předpokladu, že jádra atomů, mnohonásobně těžší než elektrony, se pohybují výrazně pomaleji než elektrony samotné, a jejich polohu lze tedy pro řešení SE elektronů pokládat za fixní. %Řešení Schrödingerovy rovnice se tak rozkládá na řešení popisující elektrony v souboru fixních jader, po němž následuje řešení rovnice zahrnující kinetickou a potenciální energii jader obklopených polem elektronů.
  
 \subsection{Úvod do kvantově-chemických metod}
-Cílem kvantově-chemických (QC) metod je exaktní popis chemických vlastností systému. Jednou ze zkoumaných vlastností je rozložení elektronové hustoty, které je odvozeno z~vlnové funkce molekuly. Znalost rozložení elektronové hustoty v molekule je klíčovým faktorem pro odvození parciálních atomových nábojů.
+Cílem kvantově-chemických (\textit{Quantum Chemistry}, QC) metod je exaktní popis chemických vlastností systému. Jednou ze zkoumaných vlastností je rozložení elektronové hustoty, které je odvozeno z~vlnové funkce molekuly. Znalost rozložení elektronové hustoty v molekule je klíčovým faktorem pro odvození parciálních atomových nábojů.
 
-Kvantově-chemické metody se dělí na tři hlavní skupiny, a to metody semi-empiric\-ké, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}. \textit{Ab initio} metody (lat. \textit{ab initio} - od počátku) staví výpočty na teoretickém aparátu a Schrödingerovu rovnici řeší exaktně, pouze za použití fyzikálních konstant, z čehož vyplývá jejich velká výpočetní náročnost (výpočty těchto metod škálují až s $n^7$, kde \textit{n} je počet elektronů systému \cite{qc_complexity}). Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE a pro urychlení výpočtů využívají kromě aproximací také data z experimentu. Metody odvozené z DFT nevycházejí z řešení vlnové fukce, ale své poznatky staví na elektronové hustotě v molekule \cite{Leach, Gasteiger:Textbook, Cramer}. %část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
+Kvantově-chemické metody se dělí na tři hlavní skupiny, a to metody semi-empiric\-ké, metody odvozené od teorie funkcionálu hustoty a metody \textit{ab initio}. \textit{Ab initio} metody (lat. \textit{ab initio} - od počátku) staví výpočty na teoretickém aparátu a Schrödingerovu rovnici řeší pouze za použití fyzikálních konstant, z čehož vyplývá jejich velká výpočetní náročnost (výpočty těchto metod škálují až s $n^7$, kde \textit{n} je počet elektronů systému \cite{qc_complexity}). Metody semi-empirické jsou stejně jako metody \textit{ab initio} založeny na řešení SE a pro urychlení výpočtů využívají kromě aproximací také data z experimentu. Metody odvozené z DFT nevycházejí z řešení vlnové fukce, ale své poznatky staví na elektronové hustotě v molekule \cite{Leach, Gasteiger:Textbook, Cramer}. %část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
 
 Postup kvantově-chemické výpočtů pro popis rozložení elektronové hustoty se typicky skládá z následujících kroků: výběr metody, výběr bázové sady a provedení populační analýzy.
 
@@ -68,7 +68,7 @@ Následující příklady popisují Hartree-Fockovu metodu, metody odvozených z
 \begin{itemize}
     \item \textbf{Hartree-Fockova metoda}
     
-    Tato raná \textit{ab initio} metoda řeší SE rozložením původní \textit{n}-elektronové vlnové fun\-kce na~řešení \textit{n} jednoelektronových rovnic. Tyto rovnice jsou určeny předpisem $\hat{F} \chi_i = \varepsilon_i \chi_i$, kde $\hat{F}$ je Fockův operátor (Hartreeho-Fockův hamiltonián) aplikovaný na jednoelektronový orbital $\chi_i$. Metoda pracuje iterativním způsobem, a to až do ustálení výsledných hodnot vlnových funkcí. Tento přístup se označuje termínem selfkonzistentní pole (angl. \textit{self-consistent field}, SCF) \cite{Levine}. 
+    Tato raná \textit{ab initio} metoda řeší SE rozložením původní \textit{n}-elektronové vlnové fun\-kce na~řešení \textit{n} jednoelektronových rovnic. Tyto rovnice jsou určeny předpisem $\hat{F} \chi_i = \varepsilon_i \chi_i$, kde $\hat{F}$ je Fockův operátor (Hartree-Fockův hamiltonián) aplikovaný na jednoelektronový orbital $\chi_i$. Metoda pracuje iterativním způsobem, a to až do ustálení výsledných hodnot vlnových funkcí. Tento přístup se označuje termínem selfkonzistentní pole (angl. \textit{self-consistent field}, SCF) \cite{Levine}. 
 % ver2 
 %Interakce elektronu s ostatními elektrony je tedy aproximována na působení vnějšího elektronového pole na danou částici.
 % ver1 
@@ -84,7 +84,7 @@ Následující příklady popisují Hartree-Fockovu metodu, metody odvozených z
 
     \item \textbf{Semi-empirické metody}
     
-    Semi-empirické metody část výpočtů aproximují a při řešení rovnic aplikují parametry odvozené z experimentálních dat, a to s cílem reprodukovat výsledky \textit{ab intio} výpočtů. Příkladem semi-empirické metody je metoda CNDO (\textit{Complete Neglect of Differential Overlap}) \cite{CNDO}. Metoda zamítá interakce atomových orbitalů lokalizovaných na různých atomech molekuly a pracuje pouze s interakcemi atomových orbitalů stejného typu lokalizovaných na stejném atomu. Tato aproximace byla v metodách navazujících na CNDO (INDO \cite{INDO}, MNDO \cite{MNDO}) rozšířena o interakci orbitalů lokalizovaných na jiných jádrech a interakci volných elektronových párů.
+    Semi-empirické metody část výpočtů aproximují a při řešení rovnic aplikují parametry odvozené z experimentálních dat, a to s cílem reprodukovat výsledky \textit{ab initio} výpočtů. Příkladem semi-empirické metody je metoda CNDO (\textit{Complete Neglect of Differential Overlap}) \cite{CNDO}. Metoda zamítá interakce atomových orbitalů lokalizovaných na různých atomech molekuly a pracuje pouze s interakcemi atomových orbitalů stejného typu lokalizovaných na stejném atomu. Tato aproximace byla v metodách navazujících na CNDO (INDO \cite{INDO}, MNDO \cite{MNDO}) rozšířena o interakci orbitalů lokalizovaných na jiných jádrech a interakci volných elektronových párů.
 \end{itemize}
 
 %část výpočtů však parametrizují nebo aproximují na základě experimentálních dat.
@@ -137,7 +137,9 @@ Při vzniku vazby dochází vlivem elektronegativity atomů k přesunu elektron�
     Q^{\langle k \rangle} = \frac{\chi_B^{\langle k \rangle} - \chi_A^{\langle k \rangle}}{\chi_A^+} \cdot \Bigg(\frac{1}{2}\Bigg)^k
     % \Bigg(\frac{1}{2}\Bigg)
 \end{equation}
-kde $\chi_A^+$ označuje elektronegativitu kationtu atomu \textit{A} a \textit{k} iteraci výpočtu. Iniciální výpočet elektronegativity orbitalu (\ref{PEOE_elneg}) pracuje s formálním nábojem atomu. Po výpočtu příspěvků přenesených nábojů (\ref{transfer}) všech vazebných partnerů atomu je náboj daného atomu přepočítán a použit v další iteraci. Množství přeneseného náboje mezi dvěma atomy se v každé iteraci výpočtu snižuje a vypočtené hodnoty nábojů atomů postupně konvergují. Přibližně po šesté iteraci dochází k ustálení výsledných hodnot. 
+kde $\chi_A^+$ označuje elektronegativitu kationtu atomu \textit{A} a \textit{k} iteraci výpočtu. Iniciální výpočet elektronegativity orbitalu (\ref{PEOE_elneg}) pracuje s formálním nábojem atomu. V každé iteraci je přepočítána hodnota elektronegativity (\ref{PEOE_elneg}) a je dále použita pro výpočet přeneseného náboje (\ref{transfer}).
+%Po výpočtu příspěvků přenesených nábojů (\ref{transfer}) všech vazebných partnerů atomu je náboj daného atomu přepočítán a použit v další iteraci.
+Množství přeneseného náboje mezi dvěma atomy se v každé iteraci výpočtu snižuje a vypočtené hodnoty nábojů atomů postupně konvergují. Přibližně po šesté iteraci dochází k ustálení výsledných hodnot. 
 
 Parciální atomové náboje vypočtené metodou PEOE se prokázaly vhodné pro predikci chemických posunů v rámci elektronové spektroskopie (\textit{Electron Spectroscopy for Chemical Analysis}, ESCA) \cite{GM} a ${}^{13}_{}\text{C}$ NMR \cite{PEOE_nmr}. 
 % Díky přesnosti a rychlosti výpočtů byla PEOE implementována do většiny programů pro molekulové modelování jako základní metoda výpočtu atomových nábojů. Reziduální elektronegativita atomů, získaná na základě PEOE, se prokázala vhodnou pro popis indukčního efektu v molekulách. 
@@ -176,15 +178,15 @@ V rovnici \ref{EEM_elneg} kromě nábojů $q_i$, $q_j$ interagujících atomů v
 \end{equation}
 %Cílem metody je empiricky nalézt hodnoty korekcí pro definované atomové typy a zajistit tak znovupoužitelnost uvedených parametrů. 
 
-Řešení systému s \textit{N} atomy vede po kombinaci vztahů  \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} na systém \textit{N}+1 lineárních rovnic o \textit{N}+1 neznámých (rov. \ref{EEM_matrix}). Z této matice jsou vypočteny hodnoty nábojů $q_1$, $q_2$, ..., $q_N$ a elektronegativita molekuly $\overline{\chi}$. Pro výpočet nábojů je nutná znalost parametrů $A_i$, $B_i$ a $\kappa$. Tyto jsou získány pomocí parametrizace (\ref{param}) nebo jsou použity hodnoty již vypočtených parametrů. 
+Řešení systému s \textit{N} atomy vede po kombinaci vztahů  \ref{Sanders}, \ref{EEM_chargesum} a \ref{EEM_elneg} na systém \textit{N}+1 lineárních rovnic o \textit{N}+1 neznámých (rov. \ref{EEM_matrix}). Řešením tohoto systému lineárních rovnic jsou hodnoty nábojů $q_1$, $q_2$, ... , $q_N$ a elektronegativita molekuly $\overline{\chi}$. Pro výpočet nábojů je nutná znalost parametrů $A_i$, $B_i$ a $\kappa$. Tyto jsou získány pomocí parametrizace (kap. \ref{param}) nebo jsou použity hodnoty již vypočtených parametrů. 
 \newpage
 \begin{equation}
 \label{EEM_matrix}
  \begin{pmatrix}
-  B_{1} & \frac{\kappa}{r_{1,2}} & \cdots & \frac{\kappa}{r_{1,n}} & -1\\
-  \frac{\kappa}{r_{1,2}} & B_{2} & \cdots & \frac{\kappa}{r_{2,n}} & -1 \\
+  B_{1} & \frac{\kappa}{R_{1,2}} & \cdots & \frac{\kappa}{R_{1,n}} & -1\\
+  \frac{\kappa}{R_{1,2}} & B_{2} & \cdots & \frac{\kappa}{R_{2,n}} & -1 \\
   \vdots  & \vdots  & \ddots & \vdots & \vdots  \\
-  \frac{\kappa}{r_{1,n}} & \frac{\kappa}{r_{2,n}} & \cdots & B_{n} & -1 \\
+  \frac{\kappa}{R_{1,n}} & \frac{\kappa}{R_{2,n}} & \cdots & B_{n} & -1 \\
   1 & 1 & \cdots & 1 & 0
  \end{pmatrix} .
  \begin{pmatrix}
@@ -201,7 +203,6 @@ Metoda EEM byla úspěšně použita např. pro výpočet parciálních atomový
 
 \subsection{Parametrizace empirických metod}
 \label{param}
-%Parametrizace je základním nástrojem empirických modelů, jejichž cílem je reproduk\-ce experimentálních dat. Parametrizovat lze silová pole pro výpočty molekulové mechaniky nebo také \textit{ab initio} výpočty zahrnující korelační energii elektronů. Cílem parametrizace je nalezení hodnot parametrů, po jejichž integraci do empirického modelu je dosaženo co nejlepší shody experimentálních a empirických výpočtů. 
 Cílem parametrizace empirických metod pro výpočet parciálních atomových nábojů je nalézt hodnoty empirických parametrů (v kontextu EEM mluvíme o parametrech $A_i$, $B_i$ a $\kappa$) užitých v průběhu výpočtu tak, aby hodnoty nábojů získané empirickou metodou co nejlépe reprodukovaly náboje získané kvantově-chemickým přístupem. Hodnoty parametrů jsou hledány pro každý definovaný atomový typ v molekulové sadě.
 
 Parametrizace empirických metod pro výpočet parciálních atomových nábojů se skládá z následujících kroků:
@@ -209,26 +210,13 @@ Parametrizace empirických metod pro výpočet parciálních atomových nábojů
 \begin{enumerate}
 \itemsep0em
     \item výběr tréninkové a testovací sady molekul obsahující atomy, které v dostatečné míře reprezentující atomové typy, pro něž hledáme hodnoty empirických parametrů
-    \item výpočet parciálních atomových nábojů tréninkové sady pomocí kvantově-chemi\-cké metody (náboje vypočtené QC metodami se označují jako náboje referenční)
+    \item výpočet referenčních parciálních atomových nábojů tréninkové sady pomocí vybrané kvantově-chemi\-cké metody 
+    %(náboje vypočtené QC metodami se označují jako náboje referenční)
     \item výpočet parametrů empirické metody na základě nábojů získaných v kroku 2
     \item výpočet nábojů testovací sady molekul kvantově-chemickou a parametrizovanou empirickou metodou
 \end{enumerate}
 
 Parametrizace empirických metod je optimalizačním problémem. Nalezení parametrů, pomocí nichž jsou vypočteny náboje korespondující s QC metodami, odpovídá nalezení globálního minima objektivní funkce, která popisuje podobnost mezi referenčními náboji a náboji vypočtenými pomocí empirické metody. Příkladem globální optimalizační metody pro parametrizaci empirických metod je metoda Guided Minimization \cite{guided_m}.
-
-%Cílem EEM je na základě znalosti parciálních nábojů odvozených z QM určit hodnoty parametrů $A_i$, $B_i$ a $\kappa$ (viz \ref{EEM_matrix}) pro každý atom molekuly. Pro zjednodušení výpočtu jsou odpovídající řádky matice (atomy molekuly) sloučeny pod jeden atomový typ, pro který jsou počítány výše zmíněné parametry. Ty jsou na základě znalosti dílčích atomových nábojů ($q_1$, $q_2$, $q_3$, ... , $q_N$) a elektronegativity molekuly $\overline{\chi}$ získány z rovnice \ref{EEM_elneg} upravené na tvar 
-% \begin{equation}
-%   A_i + B_i\cdot q_i = \overline{\chi} - \kappa \sum_{j \neq i}^{N} \frac{q_j}{R_{ij}}
-% \end{equation}
-%Pro každou hodnotu parametru $\kappa$ ze zvoleného intervalu jsou hledány vhodné hodnoty parametrů $A_i$a $B_i$. Každému atomovému typu je pak přiřazena trojice hodnot $A_i$, $B_i$ a $\kappa$, která nejlépe reprodukuje náboje získané QM výpočty.
-
-
-
-
-
-%- !!! pozn. parciální atomové náboje klíčovým aparátem pro výpočet silových polí v molekulových simulacích (prvni clanek)
-%Gasteiger PEOE: na základě principu ekvalizace elektronegativity byly počítány např. elektronegativity atomových skupin, dipólové momenty nebo disociační energie vazeb; 
-%dle PEOE vede princip úplné ekvalizace elnegativit k chemicky nepřijatelným výsledkům (článek) 
 
 \subsection{Atomové typy}
 Pro každý atomový typ jsou v rámci parametrizace hledány vhodné hodnoty parametrů vystupujících ve výpočtech parciálních atomových nábojů. Napříč parametrizacemi empirických metod zaznamenáváme různé úrovně návrhu atomových typů, od triviálních klasifikací definujících atomové typy na základě protonových čísel \cite{sfkeem} až po komplexní rozdělení zahrnující funkční skupiny či příslušnost k větším strukturním celkům (aromatické systémy, postranní řetězce aminokyselin \cite{GDAC}). Detailní dělení atomových typů lze nalézt zejména v publikacích orientujících se na parametrizaci metod pro výpočet parciálních nábojů komplexních celků, např. polypeptidů \cite{attyp_peptides}. Tabulka \ref{atom_types_examples} ukazuje atomové typy definované v publikaci „Kirchhoff Atomic Charges Fitted to Multipole Moments: Implementation for a Virtual Screening System“ \cite{attyp2}.
@@ -254,7 +242,7 @@ Hrubé klasifikace atomů do atomových typů, např. na základě protonového 
          N cyano & 42,45 & 11,36 \\
          O sp$^3$ & 33,34 & 15,48 \\
          O sp$^3$ in carboxyl & 32,85 & 10,97 \\
-         O$^-$ phenol & 29.60 & 49.14 \\
+         O$^-$ phenol & 29,60 & 49,14 \\
          O sp$^2$ & 37,56 & 5,17 \\
          S sp$^3$ & 30,40 & 7,92 \\
          S sulfoxide & 30,40 & 8,30 \\
@@ -266,7 +254,7 @@ Hrubé klasifikace atomů do atomových typů, např. na základě protonového 
          H (S sp$^2$) & 26,68 & 9,62\\
     
     \end{tabular}
-    \caption{Atomové typy definované v rámci empirické metody \textit{Kirchoff charge model} (KCM). Parametry metody jsou elektronegativita a tvrdost atomu. Pro ilustraci jsou uvedeny pouze vybrané atomové typy a vypočtené parametry.}
+    \caption{Atomové typy definované v rámci empirické metody \textit{Kirchhoff charge model} (KCM). Parametry metody jsou elektronegativita a tvrdost atomu. Pro ilustraci jsou uvedeny pouze vybrané atomové typy a vypočtené parametry.}
     \label{atom_types_examples}
 \end{table}
 
@@ -274,7 +262,7 @@ Hrubé klasifikace atomů do atomových typů, např. na základě protonového 
 Úspěšnost parametrizace empirických metod se hodnotí na základě srovnání hodnot empiricky vypočtených nábojů s referenčními hodnotami, a to na tréninkové nebo validační sadě. K tomuto srovnání slouží uvedené statistické veličiny. Náhodné veličiny \textit{X} a \textit{Y} ve vzorcích reprezentují sadu referenčních a empirických nábojů, proměnné $x_i$ a~$y_i$ označují odpovídající hodnoty nábojů srovnávané dvojice. Proměnná \textit{n} značí velikost datového souboru.
 
 \subsection{Průměrná a maximální absolutní odchylka}
-Průměrná absolutní odchylka (ang. \textit{Mean Absolute Error}, MAE) je dána aritmetickým průměrem absolutních hodnot rozdílů hodnot $x_i$ a $y_i$ příslušných náhodných veličin. Po odstranění absolutních hodnot by vzorec popisoval tzv. \textit{Mean Bias Error} (MBE). 
+Průměrná absolutní odchylka (\textit{Mean Absolute Error}, MAE) je dána aritmetickým průměrem absolutních hodnot rozdílů hodnot $x_i$ a $y_i$ příslušných náhodných veličin. Po odstranění absolutních hodnot by vzorec popisoval tzv. \textit{Mean Bias Error} (MBE). 
 \begin{equation}
     \text{MAE}(X,Y) = \frac{1}{n} \sum_{i=1}^n \lvert x_i - y_i \rvert
 \end{equation}
@@ -290,27 +278,28 @@ Veličina RMSD (\textit{Root Mean Square Deviation}, někdy uváděná též jak
     \text{RMSD}(X,Y) = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - y_i)^2} 
 \end{equation}
 \subsection{Pearsonův korelační koeficient}
-Pro kvantifikaci funkčního vztahu dvou sledovaných veličin užíváme tzv. Pearsonův korelační koeficient (\textit{Pearson Correlation Coefficient}, PCC) \cite{PCC}. PCC popisuje míru linearity závislosti veličiny \textit{Y} na veličině \textit{X} (lineární korelaci), pro popis jiných typů závislostí (např. kvadratických) není vhodný. Je definován jako
+Pro kvantifikaci funkčního vztahu dvou sledovaných veličin užíváme tzv. Pearsonův korelační koeficient (\textit{Pearson Correlation Coefficient}, PCC) \cite{PCC}. PCC popisuje míru linearity závislosti veličiny \textit{Y} na veličině \textit{X} (lineární korelaci), pro popis jiných typů závislostí (např. kvadratických) není vhodný. Proměnné $\overline{x}$ a $\overline{y}$ ve vzorci \ref{pearson} značí aritmetické průměry naměřených hodnot veličin \textit{X} a \textit{Y}.
+%Je definován jako
 \begin{equation}
 \label{pearson}
-    \text{r}(X,Y) = \frac
+    \text{PCC}(X,Y) = \frac
     {\sum_{i=1}^n ((x_i - \overline{x})(y_i - \overline{y}))}
     {\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}
 \end{equation}
-%kde hodnoty $x_i$, ..., $x_n$, $y_i$, ...,$y_n$ jsou \textit{i}-té prvky dvourozměrného náhodného vektoru o velikosti \textit{n} realizovaného dvěma náhodnými veličinami \textit{X} a \textit{Y}, a 
-kde $\overline{x}$ a $\overline{y}$ jsou aritmetické průměry naměřených hodnot veličin \textit{X} a \textit{Y}. 
+%kde hodnoty $x_i$, ..., $x_n$, $y_i$, ...,$y_n$ jsou \textit{i}-té prvky dvourozměrného náhodného vektoru o velikosti \textit{n} realizovaného dvěma náhodnými veličinami \textit{X} a \textit{Y}, 
+%kde $\overline{x}$ a $\overline{y}$ jsou aritmetické průměry naměřených hodnot veličin \textit{X} a \textit{Y}. 
 
-PCC nabývá hodnot z intervalu $\langle-1, 1 \rangle$, přičemž hodnoty koeficientu blízké číslu -1 nebo 1 indikují silnou lineární korelaci mezi pozorovanými veličinami. Linearita vztahu je dobře pozorovatelná v grafu (viz obr \ref{PCC_obr}), kde jsou dvojice hodnot ($x_i$,$y_i$) znázorněny jako body v dvourozměrné soustavě souřadnic. Interpretace hodnoty \textit{k} Pearsonova korelačního koeficientu je následující: 
+PCC nabývá hodnot z intervalu $\langle-1, 1 \rangle$, přičemž hodnoty koeficientu blízké číslu -1 nebo 1 indikují silnou lineární korelaci mezi pozorovanými veličinami. Linearita vztahu je dobře pozorovatelná v grafu (viz obr \ref{PCC_obr}), kde jsou dvojice hodnot ($x_i$,$y_i$) znázorněny jako body v dvourozměrné soustavě souřadnic. Interpretace hodnoty Pearsonova korelačního koeficientu je následující: 
 \begin{itemize}
-    \item pokud je \textit{k} kladné, pak veličiny \textit{X} a \textit{Y} vykazují kladnou korelaci (pokud se hodnota veličiny \textit{Y} zvětšuje, pak hodnota\textit{ X} roste)
-    \item pokud je \textit{k} záporné, pak veličiny \textit{X} a \textit{Y} vykazují zápornou korelaci (v závislosti na zvětšující se hodnotě veličiny \textit{Y} hodnota \textit{X} klesá)
-    \item pokud je \textit{k} rovno 0, pak veličiny \textit{X} a \textit{Y} nejsou lineárně korelované
+    \item pokud je PCC kladný, pak veličiny \textit{X} a \textit{Y} vykazují kladnou korelaci (pokud se hodnota veličiny \textit{Y} zvětšuje, pak hodnota\textit{ X} roste)
+    \item pokud je PCC záporný, pak veličiny \textit{X} a \textit{Y} vykazují zápornou korelaci (v závislosti na zvětšující se hodnotě veličiny \textit{Y} hodnota \textit{X} klesá)
+    \item pokud je PCC roven 0, pak veličiny \textit{X} a \textit{Y} nejsou lineárně korelované
 \end{itemize}
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=12cm]{pictures/pearson_lines.png}
-\caption{Vizualizace lineární korelace dvou náhodných veličin. Směrem zleva zobrazují grafy lineární závislost veličin s hodnotami Pearsonova korelačního koeficientu 0,9; 0 a -0.8.}
+\caption{Vizualizace lineární korelace dvou náhodných veličin. Směrem zleva zobrazují grafy lineární závislost veličin s hodnotami Pearsonova korelačního koeficientu 0,9; 0 a -0.7.}
 \label{PCC_obr}
 \end{center}
 \end{figure}

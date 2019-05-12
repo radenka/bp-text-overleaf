@@ -3,7 +3,7 @@ Tato kapitola popisuje implementaci knihovny ATTYC (\textit{ATom TYpe Classifica
 % Pro formát PDB je určen klasifikátor \verb|peptide|, klasifikátory \verb|hbo|, \verb|hybrid|, \verb|part-|\\\verb|ners| a \verb|substruct| se vztahují k formátu  SDF. Knihovna je implementována v jazyce Python ver. 3.7 a obsahuje následující soubory:
 
 \vspace{0.4cm}
-\noindent \hangpara{1.5cm}{1} \textbf{\_\_init\_\_.py} obsahuje funkci \verb|classify_atoms(input_file, classifier)|\footnote{Argumenty \texttt{file\_output} a \texttt{screen\_output} jsou pro větší přehlednost v textu vynechány.}
+\noindent \hangpara{1.5cm}{1} \textbf{\_\_init\_\_.py} obsahuje funkci \verb|classify_atoms(input_file, classifier)|\footnote{Argumenty \texttt{file\_output} a \texttt{screen\_output} funkce jsou pro větší přehlednost v textu vynechány.}
 spouštějící klasifikaci atomů molekulové sady za uži\-tí zvoleného klasifikátoru
 
 \medskip
@@ -21,6 +21,9 @@ spouštějící klasifikaci atomů molekulové sady za uži\-tí zvoleného klas
 \medskip
 \noindent \hangpara{1.5cm}{1}\textbf{SMARTS\_atom\_types.txt} obsahuje SMARTS výrazy a odpovídající atomové typy pro vyhledání specifických strukturních motivů a funkčních skupin 
 % (viz sekci \ref{substruct})
+
+\medskip
+\noindent \hangpara{1.5cm}{1}\textbf{\textbackslash simplified\_classifiers} obsahuje textové soubory s redukovaným množstvím atomových typů pro klasifikátory \verb|substruct| a \verb|peptide|
 
 \medskip
 \noindent\textbf{\textbackslash classifiers} obsahuje klasifikátory, které rozdělují atomy do atomových typů na základě:
@@ -44,8 +47,9 @@ spouštějící klasifikaci atomů molekulové sady za uži\-tí zvoleného klas
 \textbf{substruct.py} příslušnosti ke strukturnímu motivu nebo funkční skupině
 
 \bigskip
-Výstup knihovny ATTYC je specifikován argumenty \verb|file_output| a \verb|screen_output| funkce \verb|classify_atoms(...)|. Pokud má argument \verb|file_output| hodnotu \verb|True|, jsou přiřazené atomové typy molekul zapsány do textového souboru. V případě použití argumentu \verb|screen_output| je na standardní výstup vypsána statistika přiřazených atomových typů.
-
+Výstup knihovny ATTYC je specifikován argumenty \verb|file_output| a \verb|screen_output| funkce \verb|classify_atoms(input_file, classifier)|. 
+%Pokud je hodnota argumentu \verb|file_output| nastavena jako \verb|True|, jsou přiřazené atomové typy molekul zapsány do textového souboru. V případě použití argumentu \verb|screen_output| je na standardní výstup vypsána statistika přiřazených atomových typů.
+Argumentům je přiřazena odpovídající booleovská hodnota v závislosti na požadovaném výstupu.
 
 \section{Spuštění klasifikace}
 % \texttt{classify\_atoms(input\_file, classifier)}
@@ -135,7 +139,6 @@ vrací n-tici (\textit{tuple}) n-tic, jež obsahují prvky typu integer. Tato č
 ...    print(atom_tuple, get_elements(atom_tuple))
 >>> print(pattern_atms)
 
-Python 3.7.0 (default, Apr 9 2019, 10:31:47)
 (1, 2, 3, 4) ('S', 'O', 'O', 'O')
 (1, 2, 3, 5) ('S', 'O', 'O', 'O')
 ((1, 2, 3, 4), (1, 2, 3, 5))
@@ -156,7 +159,7 @@ Pořadí detekce strukturních motivů odpovídá pořadí SMARTS vstupů v soub
 SMARTS výrazy v souboru \textbf{SMARTS\_atom\_types.txt} byly převzaty ze stránek společnosti Daylight Chemical Information System, Inc. \cite{SMARTS_exm}, pro účely klasifikace atomů však musely být ve většině případů dodatečně upraveny. Vybrané SMARTS výrazy byly rozšířeny o detekci většího počtu atomů nebo byly upraveny tak, aby %se zamezilo redundanci výsledků jednotlivých SMARTS dotazů.
 se výsledky jednotlivých SMARTS dotazů nepřekrývaly. 
 
-Úpravu pro snížení redundance výsledků ilustruje následující příklad. Vyhledání karboxylové skupiny za užití výrazu \verb|[CX3](=O)[OX2][H]| je v externím souboru následováno detekcí alkoholové skupiny pomocí výrazu \verb|[CX4,c][OX2][H]|. Pokud by nebyla specifikována vaznost uhlíku ('\verb|CX4|'), vyhledal by daný SMARTS výraz i OH skupiny, které by byly součástí dříve určených karboxylových skupin. 
+Úpravu pro snížení redundance výsledků ilustruje následující příklad. Vyhledání karboxylové skupiny za užití výrazu \verb|[CX3](=O)[OX2][H]| je v externím souboru následováno detekcí alkoholové skupiny pomocí výrazu \verb|[CX4,c][OX2][H]|. Pokud by nebyla u alkoholové skupiny specifikována vaznost uhlíku ('\verb|CX4|'), vyhledal by daný SMARTS výraz i OH skupiny, které by byly součástí dříve určených karboxylových skupin. 
 
 Rozšíření SMARTS dotazů o detekci více atomů se ve většině případů týkalo detekce vodíků. Pro vyhledání primárních aminů je v uvedeném online zdroji specifikován výraz \verb|[NX3;H2!$(NC=O)]|. Tento výraz byl upraven
 na dotaz \verb|[NX3;!\$(NC=O)]([H])[H]|, kterým jsou narozdíl od původního výrazu vodíky již detekovány.
@@ -164,9 +167,9 @@ na dotaz \verb|[NX3;!\$(NC=O)]([H])[H]|, kterým jsou narozdíl od původního v
 \subsection{Klasifikátor 'peptide'}
 % \texttt{peptide}
 \label{peptide_section}
-Klasikace atomů peptidových řetězců přiřazuje atomové typy obdobně na základě příslušnosti atomů ke strukturním celkům. Logika vstupního souboru klasifikátoru \verb|pepti|\\\verb|de| se od struktury externího souboru klasifikátoru \verb|substruct| liší, neboť nepracuje s vyhledáváním strukturních motivů pomocí SMARTS výrazů. 
+Klasifikace atomů peptidových řetězců přiřazuje atomové typy na základě příslušnosti atomů ke strukturním celkům. Logika vstupního souboru klasifikátoru \verb|peptide| se od struktury externího souboru klasifikátoru \verb|substruct| liší, neboť nepracuje s vyhledáváním strukturních motivů pomocí SMARTS výrazů. 
 
-Symboly atomových typů aminokyselin popsané nomenklaturou IUPAC (CA, CB, HXT, OXT,...) popisují atomy všech proteinogenních residuí. Jednotlivé atomové typy však nijak nereflektují vlastnosti atomů, které popisují, chemická okolí ato\-mů označených stejným atomovým typem se tak často liší (srov. obr. \ref{aa_different_atom_types}). Pro implementaci klasifikátoru \verb|peptide| tak bylo klíčové provést rešerši existujících atomových typů aminokyselin a
+Symboly atomových typů aminokyselin popsané nomenklaturou IUPAC (CA, CB, HXT, OXT, ...) popisují atomy všech proteinogenních residuí. Jednotlivé atomové typy však nijak nereflektují vlastnosti atomů, které popisují, chemická okolí ato\-mů označených stejným atomovým typem se tak často liší (srov. obr. \ref{aa_different_atom_types}). Pro implementaci klasifikátoru \verb|peptide| tak bylo klíčové provést rešerši existujících atomových typů aminokyselin a
 %určit napříč všemi aminokyselinami výskyt těchto atomových typů 
 každé dvojici 'atomový typ  nomenklatury IUPAC - aminokyselina' přiřadit atomový typ reflektující chemické okolí daného atomu. Navržená klasifikace atomů aminokyselin byla implementována s cílem reprodukovat atomové typy, které byly použity pro úspěšnou parametrizaci empirických metod \cite{GDAC, attyp_peptides}.
 

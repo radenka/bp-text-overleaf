@@ -1,5 +1,5 @@
 \chapter{Výsledky a diskuse}
-Kapitola shrnuje a interpretuje výsledky parametrizací metod EEM a PEOE za užití navržených klasifikací atomů s cílem zhodnotit, zda jsou pro parametrizaci vhodné detailní klasifikace atomů či pro tento problém postačují základní hrubá dělení. Veškeré výstupy parametrizací lze nalézt v externí příloze bakalářské práce nebo na webové adrese \url{https://lcc.ncbr.muni.cz/~raduse19/}.  
+Kapitola shrnuje a interpretuje výsledky parametrizací metod EEM a PEOE za užití navržených klasifikací atomů s cílem zhodnotit, zda jsou pro parametrizaci vhodné detailní klasifikace atomů či pro tento problém postačují základní dělení. Veškeré výstupy parametrizací lze nalézt v externí příloze bakalářské práce nebo na webové adrese \url{https://lcc.ncbr.muni.cz/~raduse19/}.  
 
 \section{Vstupní data}
 Pro parametrizaci empirických metod byla použita molekulová sada CCD\_gen a sada Protein (viz tab. \ref{moleculesets}). Pro analýzu přenositelnosti parametrů byly molekuly v molekulových sadách rozděleny na sadu tréninkovou a validační v poměru 9:1. Software MACH zajistil, aby validační sada vždy obsahovala identické atomové typy jako sada tréninková. Empirické metody byly pro obě molekulové sady parametrizovány vůči referenčním nábojům typu B3LYP/6-311G*/NPA.
@@ -27,17 +27,16 @@ Pro parametrizaci empirických metod byla použita molekulová sada CCD\_gen a s
 
 % \makecell[l]{malé proteiny bez ligandů\\a nestandarních residuí}\\
 \section{Výsledky parametrizace}
-Pro popis výsledků parametrizací empirických metod za užití různých klasifikátorů je zavedeno značení 'molekulová sada/empirická metoda/užitý klasifikátor'. Výpočty  parametrizací probíhaly na serverech virtuální organizace MetaCentrum. 
+Pro popis výsledků parametrizací empirických metod za užití různých klasifikátorů je zavedeno značení 'molekulová sada/empirická metoda/užitý klasifikátor'. Výpočty parametrizací probíhaly na serverech virtuální organizace MetaCentrum. Klasifikace molekulových sad na stroji Lenovo IdeaPad U41-70 se trvala nejdéle 28 sekund.
 
 Implementované klasifikátory jsou srovnány s triviální referenční klasifikací \verb|plain|, která rozděluje atomy do atomových typů na základě hodnoty protonového čísla. 
 %markantní rozdíly byly nalezeny zejména v čase výpočtu jednotlivých parametrizací.
 %Výsledky všech parametrizací používajících implementované klasifikátory jsou srovnávány s referenčním klasifikátorem \verb|plain|, který dělí atomy do atomových typů dle  protonového čísla.
 %Pro každý klasifikátor je výsledek dané parametrizace srovnán s parametrizací využívající klasifikaci atomů dle protonového čísla. 
 %Referenční klasifikátor, označen jako \verb|plain|, je implementován v softwaru MACH. 
-Klasifikátor \verb|partners| generuje pro obsáhlé molekulové sady extrémní množství atomových typů (pro sadu CCD\_gen konkrétně 235%, tzn. téměř 500 hledaných parametrů pro metodu EEM
-), jeho použití proto nelze obecně doporučit. 
+Klasifikátor \verb|partners| generuje pro obsáhlé molekulové sady extrémní množství atomových typů (pro sadu CCD\_gen konkrétně 235), jeho použití proto nelze obecně doporučit, v~textu tedy není dále uváděn. 
 
-Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji (viz obr. \ref{graph_corr_EEM}). Hodnoty RMSD  pro vypočtené empirické a~referenční náboje (dále jen 'hodnoty RMSD') se pohybují nejčastěji v rozmezí 0,040-0,060; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
+Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji. Hodnoty RMSD  pro vypočtené empirické a~referenční náboje (dále jen 'hodnoty RMSD') se pohybují nejčastěji v rozmezí 0,040–0,060; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
 \medskip
 \begin{table}[h]
     \small
@@ -63,7 +62,7 @@ Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad nekl
 \end{table}
 \medskip
  
-PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9768 pro CCD\_gen/EEM/plain parametrizaci, hodnota RMSD je maximálně 0,0641, a to u téže parametrizace. Ve srovnání s implementovanými klasifikacemi jsou parametrizace za užití klasifikátoru \verb|plain| méně časově náročné. Hodnoty RMSD pohybující se kolem hodnoty 0,060 patří napříč parametrizacemi k nejvyšším, hodnoty PCC$^2$ empirických a referečních nábojů se jsou u klasifikace \verb|plain| vůči implementovaným klasifikátorům snížené v řádu tisícin, výjimečně setin. 
+PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9768 pro CCD\_gen/EEM/plain parametrizaci, hodnota RMSD je maximálně 0,0641, a to u téže parametrizace. Ve srovnání s implementovanými klasifikacemi jsou parametrizace za užití klasifikátoru \verb|plain| méně časově náročné. Hodnoty RMSD pohybující se kolem hodnoty 0,060 patří napříč parametrizacemi k nejvyšším, hodnoty PCC$^2$ empirických a referečních nábojů se jsou u klasifikace \verb|plain| vůči implementovaným klasifikátorům snížené v řádu tisícin, výjimečně setin. Ukázku korelačního grafu klasifikátoru \verb|plain| (obr. \ref{graph_corr_EEM}) lze vidět na další straně.
 
 Rozdíl hodnot RMSD tréninkových a validačních sad je napříč parametrizacemi nejčastěji v řádu desetitisícin, maximální hodnota tohoto rozdílu je 0,018. Hodnoty PCC$^2$ zmíněných sad se liší v~řádu tisícin či desetitisícin, pro MAE a ABSMAX rozdíl proniká až do řádu setin. Na základě těchto údajů lze  parametry získané užitím implementovaných klasifikátorů pokládat za přenositelné. Hodnoty statistik tréninkové a validační sady klasifikátoru \verb|hbo| ilustruje tabulka \ref{prenositelnost} níže.
 
@@ -73,7 +72,7 @@ Rozdíl hodnot RMSD tréninkových a validačních sad je napříč parametrizac
     \begin{tabular}{c|l|l|l|l|l}
          \textbf{metoda} & \textbf{sada} & \textbf{RMSD} & \textbf{PCC$^2$} & \textbf{MAE} & \textbf{ABSMAX}\\
          \hline
-         \multirow{2}{4em}{EEM} & train & 0,0582 & 0,9809 & 0.0405 & 0,7133  \\
+         \multirow{2}{4em}{EEM} & train & 0,0582 & 0,9809 & 0,0405 & 0,7133  \\
          & test & 0,0566 & 0,9819 & 0,0397 & 0,7045 \\
          \hline
          \multirow{2}{4em}{PEOE} & train & 0,0394 & 0,9912 & 0.0259 & 0,7313  \\
@@ -85,26 +84,26 @@ Rozdíl hodnot RMSD tréninkových a validačních sad je napříč parametrizac
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=13cm]{pictures/graph_correlation_SDF_EEM_substruct.png}
-\caption{Korelační graf parametrizace CCD\_gen/EEM/substruct.  PCC$^2$=0,9870; RMSD=0,0479. Legenda ve skutečnosti obsahuje 64 atomových typů, v obrázku je oříznuta na~velikost grafu.}
+\includegraphics[width=12cm]{pictures/plain_EEM_correlation.png}
+\caption{Korelační graf parametrizace CCD\_gen/EEM/plain.  PCC$^2$=0,9768; RMSD=0,0641 (srov. graf v obr. \ref{graph_corr_PEOE}). Atomový typ 'S', označený fialovou barvou, vykazuje mezi uvedenými atomovými typy největší odchylky v hodnotách empiricky vypočtených a~referenčních nábojů.}
 \label{graph_corr_EEM}
 \end{center}
 \end{figure}
 \newpage
 
-Z korelačních grafů empirických a referenčních nábojů je patrné, že metoda PEOE přiřazuje v určitých případech atomům náboje o konstatní hodnotě, což v grafu odpovídá vodorovným shlukům bodů (viz obr. \ref{graph_corr_PEOE} nebo obr. \ref{graph_peptidesimpl_PEOE} v příloze). Přiřazení konstaních či velmi podobných hodnot parciálních nábojů vyplývá z iterativního způsobu výpočtu. Atomu je iniciálně přiřazena hodnota jeho formálního náboje. V každé iteraci výpočtu dochází k přesunu elektronové hustoty mezi vazebnými partnery, přičemž se toto množství exponenciálně snižuje, a to až do ustálení výsledné hodnoty parciálního náboje. Metoda PEOE navíc pracuje pouze s~topologií molekuly a atomům, které mají stejné chemické okolí, implicitně přiřazuje stejné náboje.
+Z korelačních grafů empirických a referenčních nábojů je patrné, že metoda PEOE přiřazuje v určitých případech atomům stejného atomového typu náboje o konstatní hodnotě, což v grafu odpovídá vodorovným shlukům bodů (viz obr. \ref{graph_corr_PEOE} nebo obr. \ref{graph_peptidesimpl_PEOE} v příloze). Přiřazení konstaních či velmi podobných hodnot vyplývá z iterativního způsobu výpočtu parciálních nábojů. Atomu je iniciálně přiřazena hodnota jeho formálního náboje. V každé iteraci výpočtu dochází k přesunu elektronové hustoty mezi vazebnými partnery, přičemž se toto množství s každou iterací exponenciálně snižuje. Metoda PEOE navíc pracuje pouze s~topologií molekuly a atomům, které mají stejné chemické okolí, implicitně přiřazuje stejné hodnoty nábojů.
 
-\vspace*{1cm}
+\vspace*{0cm}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=14cm]{pictures/graph_PEOE_substruct.png}
-\caption{Korelační graf parametrizace CCD\_gen/PEOE/substruct.  PCC$^2$=0,9878; RMSD=0,0464. Legenda ve skutečnosti obsahuje 64 atomových typů, v obrázku je oříznuta na~velikost grafu.}
+\caption{Korelační graf parametrizace CCD\_gen/PEOE/substruct.  PCC$^2$=0,9878; RMSD=0,0464. Vodorovné shluky bodů odpovídají atomům stejného atomového typu, kterým byla přiřazena stejná hodnota náboje. Legenda ve skutečnosti obsahuje 64 atomových typů, v obrázku je oříznuta na~velikost grafu.}
 \label{graph_corr_PEOE}
 \end{center}
 \end{figure}
 
 \subsection{Úprava klasifikátorů 'substruct' a 'peptide'}
-Časová náročnost parametrizací za použití klasifikátorů \verb|substruct| a \verb|peptide| se v porovnání s ostatními klasifikátory ukázala jako netriviální z důvodu velkého množství definovaných atomových typů. Po analýze korelačních grafů byly vybrané atomové typy sloučeny, nejčastěji na základě nejvyššího řádu vazby daného atomu (atomové typy popisující jednovaznou síru navázanou na dusík, fosfor a síru byly sloučeny pod atomový typ 'S*1bond'), v případě vodíků byly sloučeny atomové typy popisující vodíky navázané na atomy o stejném protonovém čísle. Počet atomových typů byl u obou klasifikátorů zredukován přibližně na polovinu. Korelační grafy parametrizací za užití redukovaného klasifikátoru \verb|peptide| jsou zobrazeny v příloze \ref{priloha_peptide}.
+Časová náročnost parametrizací za použití klasifikátorů \verb|substruct| a \verb|peptide| se v porovnání s ostatními klasifikátory ukázala jako netriviální z důvodu velkého množství definovaných atomových typů. Po analýze korelačních grafů byly vybrané atomové typy sloučeny, nejčastěji na základě nejvyššího řádu vazby daného atomu (atomové typy popisující jednovaznou síru navázanou na dusík, fosfor a síru byly sloučeny pod atomový typ 'S*1bond'), v případě vodíků byly sloučeny atomové typy popisující vodíky navázané na tentýž prvek. Počet atomových typů byl u obou klasifikátorů zredukován přibližně na polovinu, srovnání statistik lze vidět v tab. \ref{statistics_simplified}. Korelační grafy parametrizací za užití  redukovaného klasifikátoru \verb|peptide| jsou zobrazeny v příloze \ref{priloha_peptide}.
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.4}
@@ -132,24 +131,24 @@ Statistiky zjednodušených klasifikací se od statistik původních klasifikát
 
 %Výsledky redukce atomových typů klasifikátorů \verb|substruct| a \verb|peptide| potvrdily hypotézu, že klasifikace atomů s menším množstvím definovaných atomových typů jsou pro účely parametrizace z výpočetního hlediska vhodnější než detailní klasifikace, přičemž statistiky empirických a referenčních nábojů zůstávají při zavedení méně detailních klasifikací oproti podrobným klasifikacím téměř nezměněny.
 
-\subsection{Statistiky vybraných atomových typů}
-Vysoká hodnota PCC$^2$ molekulové sady popisuje míru lineární závislosti hodnot empirických a referenčních nábojů, nevypovídá však o lineární korelaci mezi empirickými a~referenčními náboji pro jednotlivé atomové typy.
+\subsection{Statistiky atomových typů}
+% Vysoká hodnota PCC$^2$ molekulové sady popisuje míru lineární závislosti hodnot empirických a referenčních nábojů, nevypovídá však o lineární korelaci mezi empirickými a~referenčními náboji pro jednotlivé atomové typy.
 
-Pro vybrané atomové typy nabývá PCC$^2$ hodnot blízkých nule, mezi atomy, které jsou daným atomovým typem klasifikované, je tedy detekována nulová lineární závisost mezi empirickými a referenčními náboji. Nízká hodnota kvadrátu Pearsonova korelačního koeficientu vybraného atomového typu může být způsobená přiřazenou konstantní hodnotou empirických nábojů nebo malým počtem atomů, který atomový typ reprezentují. I minimální odchylky nábojů od přímky $y = x$ korelačního grafu se projeví do výsledné hodnoty PCC$^2$ atomového typu, zejména v případě, kdy je rozsah hodnot referenčních nábojů  velmi malý. 
+Pro vybrané atomové typy užité pro parametrizaci nabývá PCC$^2$ hodnot blízkých nule, pro dané atomy je tedy lineární závislost mezi empirickými a referenčními náboji téměř nulová. Nízká hodnota PCC$^2$ vybraného atomového typu může být způsobená konstantní hodnotou empirických nábojů přiřazenou příslušným atomům nebo malým počtem atomů, které atomový typ reprezentují (viz obr. \ref{graph_peptidesimpl_PEOE} a tab. \ref{priloha_atom_types_statistics} v příloze). Minimální odchylky nábojů od přímky $y = x$ korelačního grafu se projeví do výsledné hodnoty PCC$^2$ atomového typu v případě, kdy je rozsah hodnot referenčních nábojů  velmi malý. I když jsou hodnoty PCC$^2$ daného atomového typu nízké, považují se v~případě shody empirických a referenčních nábojů vypočtené parametry za použitelné.
 
-Nízká hodnota PCC$^2$ atomového typu nepředstavuje problém, pokud se hodnoty empirických a referenčních nábojů liší pouze minimálně. Uvedené tvrzení platí pro atomové typy 'H*C', 'O*carbonyl' a 'O*OH' v obr. \ref{graph_pcc_atom_types}. Statistiky vybraných atomových typů lze nalézt v [příloze]. 
+% V případě, že hodnoty empirických nábojů v rámci atomového typu odpovídají nábojům referenčním, však není nízká hodnota PCC$^2$ směrodatná. 
 
-
-\vspace{0,5cm}
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=13cm]{pictures/graph_pcc_atom_types.png}
-\caption{Korelační graf parametrizace CCD\_gen/EEM/substruct\_simplified. PCC$^2$ pro atomové typy 'H*C', 'O*carbonyl' a 'O*OH' nabývá hodnot 0,3702; 0,1501 a 0,3050.}
-\label{graph_pcc_atom_types}
-\end{center}
-\end{figure}
-
-\noindent Ze šesti klasifikátorů implementovaných v knihovně ATTYC se pět klasifikací atomů prokázalo platnými pro parametrizaci empirických metod EEM a PEOE. Nezanedbatelné rozdíly byly napříč klasifikátory nalezeny pouze v době výpočtu jednotlivých parametrizací. Analýza parametrizací za užití implementovaných klasifikátorů ve srovnání s referenční klasifikací prokázala, že základní klasifikace atomů využívající malý počet atomových typů jsou pro potřeby parametrizace plně dostačující.
+% \vspace{0,5cm}
+% \begin{figure}[h]
+% \begin{center}
+% \includegraphics[width=13cm]{pictures/graph_pcc_atom_types.png}
+% \caption{Korelační graf parametrizace CCD\_gen/EEM/substruct\_simplified. PCC$^2$ pro atomové typy 'H*C', 'O*carbonyl' a 'O*OH' nabývá hodnot 0,3702; 0,1501 a 0,3050.}
+% \label{graph_pcc_atom_types}
+% \end{center}
+% \end{figure}
+\newpage
+\vspace*{0.3cm}
+\noindent Ze šesti klasifikátorů implementovaných v knihovně ATTYC se pět klasifikací atomů prokázalo platnými pro parametrizaci empirických metod EEM a PEOE. Nezanedbatelné rozdíly byly mezi jednotlivými klasifikátory nalezeny pouze v době výpočtu jednotlivých parametrizací. Analýza parametrizací za užití implementovaných klasifikátorů ve srovnání s referenční klasifikací prokázala, že základní klasifikace atomů využívající malý počet atomových typů jsou pro potřeby parametrizace plně dostačující.
 % Hodnota PCC$^2$ atomového typu 'C*1bond' je 0,9316.
 
 % \begin{figure}[h]
