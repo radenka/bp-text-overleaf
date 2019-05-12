@@ -1,5 +1,5 @@
 \chapter{Výsledky a diskuse}
-Kapitola shrnuje a interpretuje výsledky parametrizací metod EEM a PEOE za užití navržených klasifikací atomů s cílem zhodnotit, zda jsou pro parametrizaci postačující základní klasifikace atomů nebo je pro tento problém vhodné aplikovat detailnější dělení. Veškeré výsledky parametrizací lze nalézt v externí příloze bakalářské práce nebo na adrese \url{https://lcc.ncbr.muni.cz/~raduse19/}.  
+Kapitola shrnuje a interpretuje výsledky parametrizací metod EEM a PEOE za užití navržených klasifikací atomů s cílem zhodnotit, zda jsou pro parametrizaci vhodné detailní klasifikace atomů či pro tento problém postačují základní hrubá dělení. Veškeré výstupy parametrizací lze nalézt v externí příloze bakalářské práce nebo na webové adrese \url{https://lcc.ncbr.muni.cz/~raduse19/}.  
 
 \section{Vstupní data}
 Pro parametrizaci empirických metod byla použita molekulová sada CCD\_gen a sada Protein (viz tab. \ref{moleculesets}). Pro analýzu přenositelnosti parametrů byly molekuly v molekulových sadách rozděleny na sadu tréninkovou a validační v poměru 9:1. Software MACH zajistil, aby validační sada vždy obsahovala identické atomové typy jako sada tréninková. Empirické metody byly pro obě molekulové sady parametrizovány vůči referenčním nábojům typu B3LYP/6-311G*/NPA.
@@ -13,14 +13,15 @@ Pro parametrizaci empirických metod byla použita molekulová sada CCD\_gen a s
          \hline
          počet molekul & 4 443 & 32\\
          počet atomů & 204 760 & 29 107\\
-         počet atomů v molekule & 3-305 & 166-1 174 \\
+         počet atomů v molekule & 3–305 & 166–1 174 \\
          zdroj struktur & software CORINA & RTG krystalografie \\
          \hline
          \multirow{2}{8em}{molekuly} & 
             ligandy z databáze PDB & malé proteiny\\
          & pouze validní struktury & \makecell[l]{neobsahují ligandy ani \\nestandardní residua}
     \end{tabular}
-    \caption{Souhrn informací o molekulových sadách užitých pro parametrizaci. V~obou sadách byly doplněny atomy vodíku a  byla optimalizována geometrie molekul.}
+    \caption{Souhrn informací o molekulových sadách užitých pro parametrizaci. Molekuly obou sad 
+    byly doplněny o atomy vodíku a byla optimalizována jejich geometrie.}
     \label{moleculesets}
 \end{table}
 
@@ -28,7 +29,7 @@ Pro parametrizaci empirických metod byla použita molekulová sada CCD\_gen a s
 \section{Výsledky parametrizace}
 Pro popis výsledků parametrizací empirických metod za užití různých klasifikátorů je zavedeno značení 'molekulová sada/empirická metoda/užitý klasifikátor'. Výpočty  parametrizací probíhaly na serverech virtuální organizace MetaCentrum. 
 
-Triviální referenční klasifikace \verb|plain|, vůči které jsou implementované klasifikátory porovnávány, rozděluje atomy do atomových typů na základě hodnoty protonového čísla. Klasifikátory \verb|hbo|, \verb|hybrid|, \verb|substruct| a \verb|peptide| se po vyhodnocení statistik a korelačních grafů prokázaly pro parametrizaci metod EEM a PEOE jako platné. 
+Implementované klasifikátory jsou srovnány s triviální referenční klasifikací \verb|plain|, která rozděluje atomy do atomových typů na základě hodnoty protonového čísla. 
 %markantní rozdíly byly nalezeny zejména v čase výpočtu jednotlivých parametrizací.
 %Výsledky všech parametrizací používajících implementované klasifikátory jsou srovnávány s referenčním klasifikátorem \verb|plain|, který dělí atomy do atomových typů dle  protonového čísla.
 %Pro každý klasifikátor je výsledek dané parametrizace srovnán s parametrizací využívající klasifikaci atomů dle protonového čísla. 
@@ -36,7 +37,7 @@ Triviální referenční klasifikace \verb|plain|, vůči které jsou implemento
 Klasifikátor \verb|partners| generuje pro obsáhlé molekulové sady extrémní množství atomových typů (pro sadu CCD\_gen konkrétně 235%, tzn. téměř 500 hledaných parametrů pro metodu EEM
 ), jeho použití proto nelze obecně doporučit. 
 
-PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9768 pro CCD\_gen/EEM/plain parametrizaci, hodnota RMSD je maximálně 0,0641, a to u téže parametrizace. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
+Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji (viz obr. \ref{graph_corr_EEM}). Hodnoty RMSD  pro vypočtené empirické a~referenční náboje (dále jen 'hodnoty RMSD') se pohybují nejčastěji v rozmezí 0,040-0,060; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. Statistiky parametrizací sady CCD\_gen lze nalézt v následující tabulce \ref{statistics}. Statistiky parametrizací sady Protein jsou umístěny v~příloze \ref{proteinstat}. 
 \medskip
 \begin{table}[h]
     \small
@@ -61,12 +62,12 @@ PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč pa
     \label{statistics}
 \end{table}
 \medskip
+ 
+PCC$^2$ získaných empirických a referenčních nábojů nabývá napříč parametrizacemi minimální hodnoty 0,9768 pro CCD\_gen/EEM/plain parametrizaci, hodnota RMSD je maximálně 0,0641, a to u téže parametrizace. Ve srovnání s implementovanými klasifikacemi jsou parametrizace za užití klasifikátoru \verb|plain| méně časově náročné. Hodnoty RMSD pohybující se kolem hodnoty 0,060 patří napříč parametrizacemi k nejvyšším, hodnoty PCC$^2$ empirických a referečních nábojů se jsou u klasifikace \verb|plain| vůči implementovaným klasifikátorům snížené v řádu tisícin, výjimečně setin. 
 
-Hodnota PCC$^2$ napříč parametrizacemi za užití obou molekulových sad neklesá pod hodnotu 0,97; lze tedy vyvodit, že náboje atomů získané skrze vypočtené parametry silně lineárně korelují s referenčními náboji (viz obr. \ref{graph_corr_EEM}). Hodnoty RMSD pro vypočtené empirické a~referenční náboje se pohybují nejčastěji v rozmezí 0,040-0,060; u PDB sady v některých případech klesají až k hodnotě 0,023. Uvedená rozmezí hodnot statistik platí jak pro tréninkové, tak validační sady molekul. 
+Rozdíl hodnot RMSD tréninkových a validačních sad je napříč parametrizacemi nejčastěji v řádu desetitisícin, maximální hodnota tohoto rozdílu je 0,018. Hodnoty PCC$^2$ zmíněných sad se liší v~řádu tisícin či desetitisícin, pro MAE a ABSMAX rozdíl proniká až do řádu setin. Na základě těchto údajů lze  parametry získané užitím implementovaných klasifikátorů pokládat za přenositelné. Hodnoty statistik tréninkové a validační sady klasifikátoru \verb|hbo| ilustruje tabulka \ref{prenositelnost} níže.
 
-Rozdíl hodnot RMSD tréninkových a validačních sad je nejčastěji v řádu desetitisícin, maximální hodnota tohoto rozdílu je 0,018. Hodnot PCC$^2$ zmíněných sad se liší v~řádu tisícin či desetitisícin, pro MAE a ABSMAX rozdíl proniká až do řádu setin. Na základě těchto údajů lze  parametry získané užitím implementovaných klasifikátorů pokládat za přenositelné. Hodnoty statistik tréninkové a validační sady klasifikátoru \verb|hbo| ilustruje tabulka \ref{prenositelnost}.
-
-\begin{table}[t]
+\begin{table}[h]
     \renewcommand{\arraystretch}{1.4}
     \centering
     \begin{tabular}{c|l|l|l|l|l}
@@ -78,15 +79,13 @@ Rozdíl hodnot RMSD tréninkových a validačních sad je nejčastěji v řádu 
          \multirow{2}{4em}{PEOE} & train & 0,0394 & 0,9912 & 0.0259 & 0,7313  \\
          & test & 0,0386  & 0,9916 & 0,0258 & 0,4765 \\
     \end{tabular}
-    \caption{Porovnání statistik tréninkových a validačních sad klasifikátoru \texttt{hbo}. Statistiky vykazují pro tréninkové a validační sady minimální rozdíly. Uvedené hodnoty se vztahují ke parametrizaci sady CCD\_gen.}
+    \caption{Porovnání statistik parametrizací CCD\_gen/EEM(PEOE)/hbo. Statistiky tréninkových a validačních sad vykazují minimální rozdíly.}
     \label{prenositelnost}
 \end{table}
 
-\vspace*{0cm}
-
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=14cm]{pictures/graph_correlation_SDF_EEM_substruct.png}
+\includegraphics[width=13cm]{pictures/graph_correlation_SDF_EEM_substruct.png}
 \caption{Korelační graf parametrizace CCD\_gen/EEM/substruct.  PCC$^2$=0,9870; RMSD=0,0479. Legenda ve skutečnosti obsahuje 64 atomových typů, v obrázku je oříznuta na~velikost grafu.}
 \label{graph_corr_EEM}
 \end{center}
